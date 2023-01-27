@@ -4,8 +4,8 @@
         <div class="row d-flex flex-column justify-content-center align-items-center text-center g-2 pt-3">
             <a class="col" href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR"
                     src="./public/assets/img/logo-rar.png" alt=""></a>
-            <a class="col" href="./legalNotice.html">Mentions Légales</a>
-            <a class="col" href="./cgu.html">C.G.U.</a>
+            <a class="col" href="/controllers/legalNoticeCtrl.php">Mentions Légales</a>
+            <a class="col" href="/controllers/cguCtrl.php">C.G.U.</a>
             <a class="col" href="mailto:roxylya.r.contact@gmail.com">Contact</a>
             <p class="copyright text-center">© Roxylya R, 2022 - Tous droits réservés</p>
         </div>
@@ -16,8 +16,8 @@
 
     <footer class="d-none d-lg-block container-fluid m-0 p-0">
         <div class="row d-flex justify-content-center align-items-center text-center m-0 pt-3">
-            <a class="col" href="./legalNotice.html">Mentions Légales</a>
-            <a class="col" href="./cgu.html">C.G.U.</a>
+            <a class="col" href="/controllers/legalNoticeCtrl.php">Mentions Légales</a>
+            <a class="col" href="/controllers/cguCtrl.php">C.G.U.</a>
             <a class="col" href="mailto:roxylya.r.contact@gmail.com" target="_blank">Contact</a>
             <p class="copyright pt-2 text-center">© Roxylya R, 2022 - Tous droits réservés</p>
         </div>
