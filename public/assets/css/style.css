@@ -265,6 +265,8 @@ li {
 .error {
     color: rgb(128, 9, 9);
     text-shadow: 0px 2px 2px rgb(164, 122, 7, 0.5);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
 
 }
 
