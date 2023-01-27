@@ -142,7 +142,7 @@ h1 {
     border-bottom: 0.5rem groove #8a551a;
 }
 
-.accueilText{
+.accueilText {
     color: transparent;
     background: #a47a07;
     -webkit-background-clip: text;
@@ -163,7 +163,8 @@ h1 {
 
 /* carousel */
 
-.active.carousel-item-start, .carousel-item-prev:not(.carousel-item-end) {
+.active.carousel-item-start,
+.carousel-item-prev:not(.carousel-item-end) {
     transform: translateX(-150%);
 }
 
@@ -220,4 +221,26 @@ a:active {
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
     -webkit-transition: color 1s;
     transition: color 1s;
+}
+
+/* cgu */
+
+.bgcgu {
+    color: #03182D;
+    padding: 2rem;
+    font-size: 1.3rem;
+    margin: 5rem;
+}
+
+li {
+    list-style: none;
+}
+
+.bgcgu> div> h2{
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
 }
