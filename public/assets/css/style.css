@@ -1,0 +1,223 @@
+@font-face {
+    font-family: "Black Clover Font";
+    src: url("./BlackCloverFont.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: "BD Renaissance";
+    src: url("./BDRENAIS.TTF") format("ttf");
+}
+
+body {
+    font-family: "Black Clover Font";
+    background-image: url(../img/patternrouge.png),
+        linear-gradient(to bottom, blanchedalmond, blanchedalmond);
+    background-repeat: repeat, no-repeat;
+    opacity: 0.1, 0.2;
+}
+
+/* header */
+
+header {
+    background-color: #03182D;
+}
+
+.logo {
+    width: 6rem;
+}
+
+.logo:hover {
+    text-shadow: 0rem 1rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand {
+    text-decoration: none;
+    font-size: 3rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    -webkit-transition: color 1s;
+    transition: color 1s;
+}
+
+.navbar-brand:hover {
+    color: #a47a07;
+    text-shadow: 0rem 1rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 2rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    -webkit-transition: color 1s;
+    transition: color 1s;
+}
+
+.nav-link:hover {
+    color: #a47a07;
+}
+
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-toggler:active {
+    transform: translateY(4px);
+}
+
+
+/* remplacement toggle-icon par une image */
+.navbar-toggler-icon {
+    background-image: url("../img/chandelier3.png");
+    width: 5rem;
+    height: 5rem;
+    border: none;
+}
+
+.navbar-toggler-icon:active {
+    border: none;
+}
+
+/* main */
+
+main {
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    font-size: 2rem;
+}
+
+.bdRenaissance {
+    font-family: "BD Renaissance";
+    /* color: #a47a07; */
+    font-size: 3rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+}
+
+h1 {
+    font-size: 3.2rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+}
+
+.bdRenaissanceH1 {
+    font-family: "BD Renaissance";
+    /* color: #a47a07; */
+    font-size: 3.5rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+}
+
+.bgAccueilText {
+    background-color: #03182D;
+    border-top: 0.5rem groove #8a551a;
+    border-bottom: 0.5rem groove #8a551a;
+}
+
+.accueilText{
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    font-size: 2rem;
+}
+
+.chandlierReturn {
+    width: 8rem;
+}
+
+.chandlierReturn:active {
+    transform: translateY(4px);
+}
+
+
+/* carousel */
+
+.active.carousel-item-start, .carousel-item-prev:not(.carousel-item-end) {
+    transform: translateX(-150%);
+}
+
+.carousel-item {
+    position: relative;
+    /* display: none; */
+    float: left;
+    width: 100%;
+    margin-right: -200%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: transform 3s ease-in-out;
+}
+
+/* footer */
+
+footer {
+    background-color: #03182D;
+    border-top: 7px groove #8a551a;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    -webkit-transition: color 1s;
+    transition: color 1s;
+}
+
+a:hover {
+    color: #a47a07;
+}
+
+a:active {
+    transform: translateY(4px);
+}
+
+.logoRR {
+    width: 8rem;
+}
+
+.copyright {
+    font-size: 1rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    -webkit-transition: color 1s;
+    transition: color 1s;
+}
