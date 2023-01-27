@@ -7,14 +7,14 @@
                     <div class="d-lg-flex flex-wrap justify-content-around align-items-center pt-3">
                         <div class="form-group ">
                             <label for="email">Email :</label>
-                            <input type="email" class="form-control" id="email" name="email" value="" pattern="" required>
-                            <p class="error">Message d'alerte</p>
+                            <input type="email" class="form-control" id="email" name="email" value="<?= $email ?? '' ?>" pattern="<?= REGEX_EMAIL ?>" required>
+                            <p class="error"><?= $error['email'] ?? '' ?></p>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Mot de passe :</label>
-                            <input type="password" class="form-control" id="password" name="password" value="" pattern="" required>
-                            <p class="error" id="alertPassword1">Message d'alerte</p>
+                            <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?=REGEX_PASSWORD?>" required>
+                            <p class="error" id="alertPassword1"><?= $error['password'] ?? '' ?></p>
                         </div>
                     </div>
                     <div class="form-group text-center">

@@ -70,23 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $error['avatar'] = 'Fichier non renseigné.';
     }
-}
+    if (empty($error)) {
+        header('location: /controllers/userAccountCtrl.php');
+        die;
+    }
+} 
 
-
-
-
-
-
-
-
-
-
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($error)) {
-    header('location: /controllers/userAccountCtrl.php');
-    die;
-}
 
 
 include(__DIR__ . '/../views/templates/header.php');

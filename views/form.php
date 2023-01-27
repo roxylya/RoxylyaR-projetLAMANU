@@ -24,12 +24,12 @@
                         <!-- mot de passe -->
                         <div class="form-group col-lg-5">
                             <label for="password">Mot de passe :</label>
-                            <input type="password" class="form-control" id="password" name="password" value="" pattern="" required>
+                            <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?=REGEX_PASSWORD?>" required>
                         </div>
                         <!-- confirme mot de passe -->
                         <div class="form-group col-lg-5 pt-2 pt-lg-0">
                             <label for="passwordConfirm">Confirmer mot de passe :</label>
-                            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" value="" pattern="" required>
+                            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" value="<?= $passwordConfirm ?? '' ?>" pattern="<?=REGEX_PASSWORD?>" required>
                         </div>
                     </div>
                     <!-- message d'erreur mot de passe -->
