@@ -223,7 +223,7 @@ a:active {
     transition: color 1s;
 }
 
-/* cgu */
+/* cgu et mentionslégales */
 
 .bgcgu {
     color: #03182D;
@@ -245,6 +245,7 @@ li {
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
 }
 
+/* mentions légales */
 .source{
     font-size: 1rem;
 }
