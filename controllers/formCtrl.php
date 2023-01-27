@@ -14,6 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Valider le mail :
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error['email'] = "L'adresse e-mail n'est pas valide.";
+        } else {
+            setcookie('Email', $email);
         }
     }
 
@@ -25,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Pseudo correspond à la regex ?
         if (!filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PSEUDO . '/')))) {
             $error['pseudo'] = 'Format incorrect.';
+        } else {
+            setcookie('Pseudo', $pseudo);
         }
     }
 
@@ -44,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error['password'] = 'Votre mot de passe doit contenir au moins 8 caractère dont 1 Majuscule, 1 miniscule, 1 caractère spécial et 1 chiffre.';
             } else {
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                setcookie('Mot de passe', $password);
             }
         }
     }
@@ -61,10 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
             } else {
                 $extension = pathinfo($avatar, PATHINFO_EXTENSION);
-                $avatarName = 'avatar.' . $extension;
+                $avatarName = $avatar . '.' . $extension;
                 $from = $_FILES['avatar']['tmp_name'];
                 $to = __DIR__ . '/../public/uploads/avatar/' . $avatarName;
                 move_uploaded_file($from, $to);
+                setcookie('Avatar', $to);
             }
         }
     } else {
@@ -74,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('location: /controllers/userAccountCtrl.php');
         die;
     }
-} 
+}
 
 
 
