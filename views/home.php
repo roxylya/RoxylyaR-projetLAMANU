@@ -101,7 +101,7 @@
             <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR"
                     src="/public/assets/img/logo-rar.png" alt=""></a>
         </div>
-        <div class="col text-center py-3">
+        <div class="col text-center pt-3 mb-5">
             <a href="#"><img class="chandlierReturn" title="Retour en haut" src="/public/assets/img/chandelier1.png"
                     alt="chandelier"></a>
         </div>

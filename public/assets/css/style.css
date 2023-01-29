@@ -208,7 +208,7 @@ a:active {
 }
 
 .logoRR {
-    width: 8rem;
+    width: 10rem;
 }
 
 .copyright {
@@ -335,4 +335,21 @@ input:placeholder-shown {
     padding: 1rem;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+/* usserAccount */
+.userAvatar{
+    max-height: 5rem;
+}
+
+.userPseudo{
+    font-size: 2rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    -webkit-transition: color 1s;
+    transition: color 1s;
 }
