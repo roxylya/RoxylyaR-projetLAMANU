@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <!-- article start -->
-                    <div class="outfit col-lg-3 d-flex flex-column justify-content-center align-items-center p-lg-1 m-lg-1 my-3">
+                    <div class="outfit col-lg-3 d-flex flex-column justify-content-center align-items-center p-lg-1 m-lg-1 my-3" >
                         <!-- titre de l'article -->
                         <h2 class="outfitTitle py-2">Baleine</h2>
                         <div class="d-flex flex-lg-row flex-column justify-content-around align-items-center">
