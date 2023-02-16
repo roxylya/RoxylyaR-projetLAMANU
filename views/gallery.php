@@ -1,7 +1,7 @@
 <main class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="bgcgu d-flex flex-column m-lg-5">
+            <div class="d-flex flex-column m-lg-5">
                 <div class="text-center ">
                     <h1><span class="bdRenaissanceH1">G</span>alerie</h1>
                 </div>

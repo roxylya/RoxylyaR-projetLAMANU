@@ -1,7 +1,7 @@
 <main class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="bgcgu d-flex flex-column justify-content-center align-items-center m-lg-5">
+            <div class="d-flex flex-column justify-content-center align-items-center m-lg-5">
                 <!-- titre de la page -->
                 <h1><span class="bdRenaissanceH1">I</span>nscription </h1>
                 <!-- ouverture formulaire -->

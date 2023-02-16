@@ -1,3 +1,6 @@
+/* font-family: 'Fondamento', cursive; */
+
+
 @font-face {
     font-family: "Black Clover Font";
     src: url("./BlackCloverFont.ttf") format("ttf");
@@ -10,6 +13,8 @@
 
 body {
     font-family: "Black Clover Font";
+    letter-spacing: 1px;
+    /* font-family: 'Fondamento', cursive; */
     background-image: url(../img/patternrouge.png),
         linear-gradient(to bottom, blanchedalmond, blanchedalmond);
     background-repeat: repeat, no-repeat;
@@ -230,6 +235,8 @@ a:active {
     padding: 2rem;
     font-size: 1.3rem;
     margin-top: 2rem;
+    font-family: 'Fondamento', cursive;
+    text-shadow: 0px 2px 3px rgba(30, 15, 15, 0.5);
 }
 
 li {
@@ -285,7 +292,7 @@ label {
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    font-size: 1.7;
+    font-size: 1.7rem;
 }
 
 .btn {
@@ -309,7 +316,7 @@ input[type="file"]:focus,
     outline: 0 none;
 }
 
-.form-control{
+.form-control {
     border: 1px solid rgb(169, 127, 7);
 }
 
@@ -338,11 +345,11 @@ input:placeholder-shown {
 }
 
 /* usserAccount */
-.userAvatar{
+.userAvatar {
     max-height: 5rem;
 }
 
-.userPseudo{
+.userPseudo {
     font-size: 2rem;
     color: transparent;
     background: #a47a07;
@@ -352,4 +359,24 @@ input:placeholder-shown {
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
     -webkit-transition: color 1s;
     transition: color 1s;
+}
+
+/* Catalogue */
+
+.outfit {
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+
+}
+
+.outfitTitle {
+    font-size: 2rem;
+}
+
+
+
+.outfitDescription {
+    font-size: 1rem;
+    color: #03182D;
+    font-family: 'Fondamento', cursive;
+    text-align: justify;
 }
