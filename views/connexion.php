@@ -21,7 +21,7 @@
                         <button type="submit" id="submit" class="btn btn-default">Envoyer</button>
                     </div>
                     <div class="pt-3 text-center">
-                        <p> Pas encore inscrit ? C'est par <a href="/controllers/formCtrl.php">ici</a>.</p>
+                        <p> Pas encore inscrit ? C'est par <a href="/controllers/formSubscribeCtrl.php">ici</a>.</p>
                     </div>
                 </form>
                 <div class="text-center pt-3">

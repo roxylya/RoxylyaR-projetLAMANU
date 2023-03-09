@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error['password'] = 'Votre mot de passe doit contenir au moins 8 caractère dont 1 Majuscule, 1 miniscule, 1 caractère spécial et 1 chiffre.';
             } else {
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                setcookie('Mot de passe', $password);
+                setcookie('password', $password);
             }
         }
     }
@@ -85,5 +85,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/form.php');
+include(__DIR__ . '/../views/formSubscribe.php');
 include(__DIR__ . '/../views/templates/footer.php');
