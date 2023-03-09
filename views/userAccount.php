@@ -1,9 +1,9 @@
-<main class="container-fluid">
+<main class="container-fluid py-5">
     <div class="row">
         <div class="col">
-            <div class="d-flex flex-column m-lg-5">
+            <div class="d-flex flex-column m-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissanceH1">B</span>ienvenue <?= $pseudo ?? '' ?></h1>
+                    <h1><span class="bdRenaissanceH1">B</span>ienvenue Roxylya !</h1>
                 </div>
 
                 <div class="pt-lg-5 pt-3">

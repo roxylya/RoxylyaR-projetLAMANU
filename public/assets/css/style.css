@@ -29,22 +29,22 @@ body {
 body::-webkit-scrollbar {
     width: 0.8rem;
     /* width of the entire scrollbar */
-  }
-  
-  body::-webkit-scrollbar-track {
+}
+
+body::-webkit-scrollbar-track {
     background: #03182d;
     border: 1px solid #a47a07;
     /* color of the tracking area */
-  }
-  
-  body::-webkit-scrollbar-thumb {
+}
+
+body::-webkit-scrollbar-thumb {
     background-color: #a47a07;
     /* color of the scroll thumb */
     border-radius: 0.5rem;
     /* roundness of the scroll thumb */
     border: 1px solid #f4e6c6;
     /* creates padding around scroll thumb */
-  }
+}
 
 
 /* header */
@@ -112,13 +112,58 @@ header {
 /* remplacement toggle-icon par une image */
 .navbar-toggler-icon {
     background-image: url("../img/chandelier3.png");
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 3rem;
+    object-fit: fill;
     border: none;
 }
 
 .navbar-toggler-icon:active {
     border: none;
+}
+
+/* header account */
+
+.avatarUser {
+    max-height: 5rem;
+    border-radius: 50%;
+}
+
+
+@media (max-width:800px) {
+
+    .pseudoUser {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+@media(max-width:930px){
+    .titleRoxylyaR {
+        display: none;
+    }
+}
+
+@media (max-width: 630px) {
+    .userAccount {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+
+@media (min-width: 630px) {
+    .userAccount {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
 }
 
 /* main */
@@ -210,49 +255,6 @@ h1 {
     transition: transform 3s ease-in-out;
 }
 
-/* footer */
-
-footer {
-    background-color: #03182D;
-    border-top: 7px groove #8a551a;
-}
-
-a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    -webkit-transition: color 1s;
-    transition: color 1s;
-}
-
-a:hover {
-    color: #a47a07;
-}
-
-a:active {
-    transform: translateY(4px);
-}
-
-.logoRR {
-    width: 10rem;
-}
-
-.copyright {
-    font-size: 1rem;
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    -webkit-transition: color 1s;
-    transition: color 1s;
-}
 
 /* cgu et mentionslégales */
 
@@ -288,12 +290,6 @@ li {
 }
 
 /* formulaire d'inscription */
-
-@media (min-width: 600px) {
-    .createAccount {
-        width: 50%;
-    }
-}
 
 .error {
     color: rgb(128, 9, 9);
@@ -354,6 +350,13 @@ input:placeholder-shown {
     background-color: #f5e9c9 !important;
 }
 
+@media (min-width: 600px) {
+    .createAccount {
+        width: 50%;
+    }
+
+}
+
 /* formulaire de connexion */
 
 @media (min-width: 600px) {
@@ -370,22 +373,6 @@ input:placeholder-shown {
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
-/* usserAccount */
-.userAvatar {
-    max-height: 5rem;
-}
-
-.userPseudo {
-    font-size: 2rem;
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    -webkit-transition: color 1s;
-    transition: color 1s;
-}
 
 /* Catalogue */
 
@@ -403,4 +390,48 @@ input:placeholder-shown {
     color: #03182D;
     font-family: 'Fondamento', cursive;
     text-align: justify;
+}
+
+/* footer */
+
+footer {
+    background-color: #03182D;
+    border-top: 7px groove #8a551a;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    -webkit-transition: color 1s;
+    transition: color 1s;
+}
+
+a:hover {
+    color: #a47a07;
+}
+
+a:active {
+    transform: translateY(4px);
+}
+
+.logoRR {
+    width: 10rem;
+}
+
+.copyright {
+    font-size: 1rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    -webkit-transition: color 1s;
+    transition: color 1s;
 }
