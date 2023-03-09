@@ -1,6 +1,5 @@
 /* font-family: 'Fondamento', cursive; */
 
-
 @font-face {
     font-family: "Black Clover Font";
     src: url("./BlackCloverFont.ttf") format("ttf");
@@ -11,15 +10,42 @@
     src: url("./BDRENAIS.TTF") format("ttf");
 }
 
+
+/* générale */
+
 body {
     font-family: "Black Clover Font";
     letter-spacing: 1px;
     /* font-family: 'Fondamento', cursive; */
     background-image: url(../img/patternrouge.png),
-        linear-gradient(to bottom, blanchedalmond, blanchedalmond);
+        linear-gradient(to bottom, #ffebcd, #ffebcd);
     background-repeat: repeat, no-repeat;
     opacity: 0.1, 0.2;
 }
+
+
+/* scrollbar */
+
+body::-webkit-scrollbar {
+    width: 0.8rem;
+    /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #03182d;
+    border: 1px solid #a47a07;
+    /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #a47a07;
+    /* color of the scroll thumb */
+    border-radius: 0.5rem;
+    /* roundness of the scroll thumb */
+    border: 1px solid #f4e6c6;
+    /* creates padding around scroll thumb */
+  }
+
 
 /* header */
 

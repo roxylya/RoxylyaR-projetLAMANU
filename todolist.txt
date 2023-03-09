@@ -1,0 +1,9 @@
+=> flash message
+=> rewrite url
+=> error 404
+=> dashboard admin/superadmin
+=> account user
+=> catalogue
+=> galerie
+=> livre d'or
+
