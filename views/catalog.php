@@ -1,7 +1,7 @@
-<main class="container-fluid">
+<main class="container-fluid py-5">
     <div class="row">
         <div class="col">
-            <div class="d-flex flex-column my-5 ">
+            <div class="d-flex flex-column mt-5 ">
                 <div class="text-center ">
                     <h1><span class="bdRenaissance">C</span>atalogue</h1>
                 </div>

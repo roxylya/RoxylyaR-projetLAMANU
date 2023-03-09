@@ -1,13 +1,13 @@
     <!-- main  start -->
-    <main class="container-fluid">
+    <main class="container-fluid py-5">
         <div class="row">
             <div class="col">
-                <div class="d-flex flex-column m-lg-5">
+                <div class="d-flex flex-column mt-5 ">
                     <div class="text-center ">
-                        <h1><span class="bdRenaissance">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
+                        <h1><span class="bdRenaissanceH1">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
                     </div>
                     <div class="pt-lg-5 pt-3">
-                        <h2><span class="bdRenaissance">P</span>résentation :</h2>
+                        <h2><span class="bdRenaissanceH2">P</span>résentation :</h2>
                         <p>Le site Roxylya”R” est utilisé comme un atelier d’art gratuit, issu du jeu Les
                             Royaumes
                             Renaissants. L’utilisateur qui s’inscrit pourra commander une tenue, un avatar et/ou une bannière
@@ -20,7 +20,7 @@
                             envoyer à l'admin via le formulaire de contact.</p>
                     </div>
                     <div class="pt-lg-5 pt-3">
-                        <h2><span class="bdRenaissance">P</span>lan du site :</h2>
+                        <h2><span class="bdRenaissanceH2">P</span>lan du site :</h2>
                         Depuis la page d'accueil, il est possible pour l'utilisateur de :
                         <ul>
                             <li>Se connecter ou s’inscrire</li>
@@ -66,7 +66,7 @@
                         </ul>
                     </div>
                     <div class="pt-lg-5 pt-3">
-                        <h2><span class="bdRenaissance">C</span>ompte Utilisateur :</h2>
+                        <h2><span class="bdRenaissanceH2">C</span>ompte Utilisateur :</h2>
                         <p>
                             Comme indiqué à diverses reprises, pour commander et commenter, il faut être inscrit. L'Utilisateur
                             a
@@ -91,7 +91,7 @@
                         </p>
                     </div>
                     <div class="pt-lg-5 pt-3">
-                        <h2><span class="bdRenaissance">M</span>odération :</h2>
+                        <h2><span class="bdRenaissanceH2">M</span>odération :</h2>
                         <p>
                             Roxylya "R" est un site sur lequel l’Utilisateur peut laisser des messages sur le livre d’or,
                             visible par tous; dans ses commandes destinées aux créateurs ainsi que dans contact, pour s’adresser à
@@ -102,7 +102,7 @@
                         </p>
                     </div>
                     <div class="pt-lg-5 pt-3 text-center">
-                        <h2><span class="bdRenaissance">J</span>e vous souhaite une agréable navigation !</h2>
+                        <h2><span class="bdRenaissanceH2">J</span>e vous souhaite une agréable navigation !</h2>
                     </div>
                     <div class="text-center pt-lg-5 pt-3">
                         <a href="#"><img class="chandlierReturn" title="Retour en haut" src="/public/assets/img/chandelier1.png" alt="chandelier"></a>

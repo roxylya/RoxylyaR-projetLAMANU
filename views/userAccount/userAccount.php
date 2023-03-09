@@ -1,12 +1,12 @@
 <main class="container-fluid py-5">
     <div class="row">
         <div class="col">
-            <div class="d-flex flex-column m-5">
+            <div class="d-flex flex-column mt-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissance">B</span>ienvenue Roxylya !</h1>
+                    <h1><span class="bdRenaissanceH1">B</span>ienvenue Roxylya !</h1>
                 </div>
                 <div class="profilUser mt-3 p-3 d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="text-center"><span class="bdRenaissance">M</span>on compte</h2>
+                    <h2 class="text-center"><span class="bdRenaissanceH2">M</span>on compte</h2>
                     <ul>
                         <li>
                             Pseudo : Roxylya

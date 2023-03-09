@@ -1,8 +1,8 @@
-<main class="container-fluid">
+<main class="container-fluid py-5">
     <div class="row">
         <div class="col">
-            <div class="d-flex flex-column justify-content-center align-items-center m-lg-5 ">
-                <h1><span class="bdRenaissance">C</span>onnexion </h1>
+            <div class="d-flex flex-column justify-content-center align-items-center mt-5 ">
+                <h1><span class="bdRenaissanceH2">C</span>onnexion </h1>
                 <form method="post" class="connect my-5" enctype="multipart/form-data" novalidate>
                     <div class="d-lg-flex flex-wrap justify-content-around align-items-center pt-3">
                         <div class="form-group ">
@@ -13,7 +13,7 @@
 
                         <div class="form-group">
                             <label for="password">Mot de passe :</label>
-                            <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?=REGEX_PASSWORD?>" required>
+                            <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
                             <p class="error" id="alertPassword1"><?= $error['password'] ?? '' ?></p>
                         </div>
                     </div>
