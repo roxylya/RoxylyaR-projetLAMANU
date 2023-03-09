@@ -155,7 +155,6 @@ header {
     
 }
 
-
 @media (min-width: 630px) {
     .userAccount {
         display: flex;
@@ -166,22 +165,25 @@ header {
     
 }
 
+
+/* userAccount */
+
+.avatarProfil{
+    max-height: 10rem;
+    border-radius: 50%;
+}
+
 /* main */
 
 main {
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    font-size: 2rem;
+    color: #03182D;
+    font-size: 1.3rem;
+    font-family: 'Fondamento', cursive;
+    text-shadow: 0px 2px 3px rgba(30, 15, 15, 0.5);
 }
 
 .bdRenaissance {
     font-family: "BD Renaissance";
-    /* color: #a47a07; */
-    font-size: 3rem;
     color: transparent;
     background: #a47a07;
     -webkit-background-clip: text;
@@ -198,18 +200,21 @@ h1 {
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    font-family: "Black Clover Font";
 }
 
-.bdRenaissanceH1 {
-    font-family: "BD Renaissance";
-    /* color: #a47a07; */
-    font-size: 3.5rem;
+li {
+    list-style: none;
+}
+
+h2 {
     color: transparent;
     background: #a47a07;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    font-family: "Black Clover Font";
 }
 
 .bgAccueilText {
@@ -253,31 +258,6 @@ h1 {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transition: transform 3s ease-in-out;
-}
-
-
-/* cgu et mentionslégales */
-
-.bgcgu {
-    color: #03182D;
-    padding: 2rem;
-    font-size: 1.3rem;
-    margin-top: 2rem;
-    font-family: 'Fondamento', cursive;
-    text-shadow: 0px 2px 3px rgba(30, 15, 15, 0.5);
-}
-
-li {
-    list-style: none;
-}
-
-.bgcgu>div>h2 {
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
 }
 
 /* mentions légales */

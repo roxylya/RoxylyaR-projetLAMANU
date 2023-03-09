@@ -3,7 +3,7 @@
         <div class="col">
             <div class="d-flex flex-column justify-content-center align-items-center m-lg-5">
                 <!-- titre de la page -->
-                <h1><span class="bdRenaissanceH1">I</span>nscription </h1>
+                <h1><span class="bdRenaissance">I</span>nscription </h1>
                 <!-- ouverture formulaire -->
                 <form method="post" class="createAccount my-5" enctype="multipart/form-data" novalidate>
                     <div class="d-lg-flex flex-wrap justify-content-around align-items-center pt-3">

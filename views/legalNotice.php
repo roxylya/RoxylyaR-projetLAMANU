@@ -3,7 +3,7 @@
         <div class="col">
             <div class="bgcgu d-flex flex-column m-lg-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissanceH1">M</span>entions <span class="bdRenaissanceH1">L</span>égales</h1>
+                    <h1><span class="bdRenaissance">M</span>entions <span class="bdRenaissance">L</span>égales</h1>
                     <h2>En vigueur au 01/01/2023</h2>
                 </div>
                 <div class="amorce pt-lg-5 pt-3">

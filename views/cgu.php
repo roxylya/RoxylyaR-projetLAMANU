@@ -2,9 +2,9 @@
     <main class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="bgcgu d-flex flex-column m-lg-5">
+                <div class="d-flex flex-column m-lg-5">
                     <div class="text-center ">
-                        <h1><span class="bdRenaissanceH1">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
+                        <h1><span class="bdRenaissance">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
                     </div>
                     <div class="pt-lg-5 pt-3">
                         <h2><span class="bdRenaissance">P</span>résentation :</h2>

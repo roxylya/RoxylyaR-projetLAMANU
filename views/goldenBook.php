@@ -3,7 +3,7 @@
         <div class="col">
             <div class="d-flex flex-column m-lg-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissanceH1">L</span>ivre d' <span class="bdRenaissanceH1">O</span>r</h1>
+                    <h1><span class="bdRenaissance">L</span>ivre d' <span class="bdRenaissanceH1">O</span>r</h1>
                 </div>
 
                 <div class="pt-lg-5 pt-3">

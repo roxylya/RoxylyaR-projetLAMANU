@@ -3,7 +3,7 @@
         <div class="col">
             <div class="d-flex flex-column my-5 ">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissanceH1">C</span>atalogue</h1>
+                    <h1><span class="bdRenaissance">C</span>atalogue</h1>
                 </div>
 
                 <div class="pt-lg-5 d-flex flex-wrap justify-content-around align-items-center">
