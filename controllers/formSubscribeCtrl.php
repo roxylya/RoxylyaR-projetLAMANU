@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error['avatar'] = 'Fichier non renseigné.';
     }
     if (empty($error)) {
-        header('location: /controllers/userAccountCtrl.php');
+        header('location: /controllers/userAccount/userAccountCtrl.php');
         die;
     }
 }

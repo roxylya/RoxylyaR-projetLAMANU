@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (empty($error)) {
-        header('location: /controllers/userAccountCtrl.php');
+        header('location: /controllers/userAccount/userAccountCtrl.php');
         die;
     }
 }
