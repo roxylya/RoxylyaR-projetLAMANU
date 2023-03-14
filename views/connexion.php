@@ -3,6 +3,7 @@
         <div class="col">
             <div class="d-flex flex-column justify-content-center align-items-center mt-5 ">
                 <h1><span class="bdRenaissanceH2">C</span>onnexion </h1>
+                <p class="py-1"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
                 <form method="post" class="connect my-5" enctype="multipart/form-data" novalidate>
                     <div class="d-lg-flex flex-wrap justify-content-around align-items-center pt-3">
                         <div class="form-group ">
