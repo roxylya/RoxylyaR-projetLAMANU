@@ -109,15 +109,14 @@ class User
         //On insère les données reçues   
         // on note les marqueurs nominatifs exemple :birthdate sert de contenant à une valeur
 
-        $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`,`created_at`, `updated_at`, `validated_at`, `id_roles`) 
-        VALUES(`:pseudo`, `:email`, `:password`, `:created_at`, `:updated_at`, `:validated_at`, `:id_roles`);';
+        $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`,`created_at`, `updated_at`, `id_roles`) 
+        VALUES(:pseudo, :email, :password, :created_at, :updated_at, :id_roles);';
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':pseudo', $this->pseudo);
         $sth->bindValue(':email', $this->email);
         $sth->bindValue(':password', $this->password);
         $sth->bindValue(':created_at', $this->created_at);
         $sth->bindValue(':updated_at', $this->updated_at);
-        $sth->bindValue(':validate_at', $this->validated_at);
         $sth->bindValue(':id_roles', $this->id_roles, PDO::PARAM_INT);
         $sth->execute();
 
@@ -133,10 +132,11 @@ class User
     {
         $pdo = Database::getInstance();
         // je formule ma requête affiche tout de la table liste concernant l'id récupéré
-        $sql = 'SELECT *.`users`, `name`.`roles` 
+        $sql = 'SELECT * 
         FROM `users` 
         JOIN `roles` 
-        ON  `users`.`id_roles` = `roles`.`:id_roles`;';
+        ON  `roles`.`id_roles` = `users`.`id_roles`
+        WHERE  `users`.`email`= :email;';
         // je fais appel à la méthode prepare qui me renvoie la réponse de ma requête, je stocke la réponse dans la variable 
         // $sth qui est un pdo statement:
         $sth = $pdo->prepare($sql);

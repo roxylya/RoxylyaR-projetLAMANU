@@ -9,6 +9,8 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
 
 try {
+
+    
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
     $error = [];
 
@@ -26,19 +28,19 @@ try {
             }
         }
 
-
         // Récupérer le mot de passe :
         $password =  $_POST['password'];
         if (empty($password)) {
             $error['password'] = 'Veuillez entrer votre mot de passe.';
         } else {
+            // Voir l'exemple fourni sur la page de la fonction password_hash()
+            // pour savoir d'où cela provient.
+            $user = User::get($email);
+            $hash = $user->password;
 
-            // Mot de passe correspond à la regex ?
-            if (!filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PASSWORD . '/')))) {
-                $error['password'] = 'Votre mot de passe doit contenir au moins 8 caractère dont 1 Majuscule, 1 miniscule, 1 caractère spécial et 1 chiffre.';
-            } else {
-                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-            }
+            if (!password_verify($password, $hash)) {
+                $error['password'] = 'Erreur de mot de passe.';
+            } 
         }
 
         if (empty($error)) {

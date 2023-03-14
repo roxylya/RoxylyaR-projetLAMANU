@@ -23,9 +23,10 @@ try {
             // Valider le mail :
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
-            } else {
-                setcookie('Email', $email);
-            }
+            } 
+            // else {
+            //     setcookie('Email', $email);
+            // }
         }
 
         // Nettoyer le pseudo :
@@ -36,9 +37,10 @@ try {
             // Pseudo correspond à la regex ?
             if (!filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PSEUDO . '/')))) {
                 $error['pseudo'] = 'Format incorrect.';
-            } else {
-                setcookie('Pseudo', $pseudo);
-            }
+            } 
+            // else {
+            //      setcookie('Pseudo', $pseudo);
+            // }
         }
 
         // Récupérer les mots de passe :
@@ -56,8 +58,8 @@ try {
                 if (!filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PASSWORD . '/'))) || !filter_var($passwordConfirm, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PASSWORD . '/')))) {
                     $error['password'] = 'Votre mot de passe doit contenir au moins 8 caractère dont 1 Majuscule, 1 miniscule, 1 caractère spécial et 1 chiffre.';
                 } else {
-                    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    setcookie('password', $password);
+                    $password = password_hash($password, PASSWORD_DEFAULT);
+                    // setcookie('password', $password);
                 }
             }
         }
@@ -73,7 +75,7 @@ try {
             } else {
                 if (!in_array($avatarType, EXTENSION)) {
                     $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
-                } 
+                }
                 // else {
                 //     $extension = pathinfo($avatar, PATHINFO_EXTENSION);
                 //     $avatarName = 'avatar_' . $pseudo . '.' . $extension;
@@ -88,18 +90,19 @@ try {
         }
 
         if (empty($error)) {
-            $user = new User();
-            $created_at = date('d-m-Y');
-            $updated_at = date('d-m-Y');
-            $validated_at = 'NOPE';
+            $created_at = date('Y-m-d H:i:s');
+            $updated_at = date('Y-m-d H:i:s');
+            // $validated_at = 'NOPE';
             $id_roles = 3;
+
+            $user = new User();
             // je lui donne les valeurs récupérées, nettoyées et validées :
             $user->setPseudo($pseudo);
             $user->setEmail($email);
             $user->setPassword($password);
             $user->setCreated_at($created_at);
             $user->setUpdated_at($updated_at);
-            $user->setValidated_at($validated_at);
+            // $user->setValidated_at($validated_at);
             $user->setId_roles($id_roles);
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($user->add() === true) {
@@ -112,8 +115,8 @@ try {
                 // setcookie('Avatar', $to);
                 header('location: /controllers/connexionCtrl.php?code=' . $code);
                 die;
-            }else {
-                $code= 13;
+            } else {
+                $code = 14;
                 header('location: /controllers/formSubscribeCtrl.php?code=' . $code);
             }
         }
