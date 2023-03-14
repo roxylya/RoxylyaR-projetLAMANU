@@ -13,7 +13,7 @@
                         <h2 class="outfitTitle py-2">Annev</h2>
                         <div class="d-flex flex-lg-row flex-column justify-content-around align-items-center">
                             <!-- image de l'article -->
-                            <img class="outfitImg col-lg-6" src="/public/uploads/doneCommand/Annev.png" alt="tenue annev portée par Cindy">
+                            <img class="outfitImg col-lg-6" src="/public/uploads/catalog/Annev.png" alt="tenue annev portée par Cindy">
                             <!-- descritpion de l'article -->
                             <p class="outfitDescription col-lg-6 px-3 pe-lg-3">
                                 Cindy vous présente la tenue Annev. <br>
@@ -28,7 +28,7 @@
                         <h2 class="outfitTitle py-2">Plouf</h2>
                         <div class="d-flex flex-lg-row flex-column justify-content-around align-items-center">
                             <!-- image de l'article -->
-                            <img class="outfitImg col-lg-6" src="/public/uploads/doneCommand/eliosPlouf.png" alt="tenue plouf portée par Elios">
+                            <img class="outfitImg col-lg-6" src="/public/uploads/catalog/eliosPlouf.png" alt="tenue plouf portée par Elios">
                             <!-- descritpion de l'article -->
                             <p class="outfitDescription col-lg-6 px-3 pe-lg-3">
                                 Elios vous présente la tenue Plouf, dans sa version vertbleu coincoin et nuit.
@@ -42,7 +42,7 @@
                         <h2 class="outfitTitle py-2">Baleine</h2>
                         <div class="d-flex flex-lg-row flex-column justify-content-around align-items-center">
                             <!-- image de l'article -->
-                            <img class="outfitImg col-lg-6" src="/public/uploads/doneCommand/shakyaBaleine.png" alt="tenue baleine portée par Shakya2">
+                            <img class="outfitImg col-lg-6" src="/public/uploads/catalog/shakyaBaleine.png" alt="tenue baleine portée par Shakya2">
                             <!-- descritpion de l'article -->
                             <p class="outfitDescription col-lg-6 px-3 pe-lg-3">
                                 Shakya2 vous présente la tenue Baleine dans sa version rouge et jaune. <br>

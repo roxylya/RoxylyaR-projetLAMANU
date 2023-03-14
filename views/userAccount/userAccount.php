@@ -18,7 +18,7 @@
                             Mot de passe : ********
                         </li>
                         <li>
-                            Avatar : <img class="avatarProfil" src="/public/uploads/avatar/avatarTest.jpg" alt="avatarUser">
+                            Avatar : <img class="avatarProfil" src="/public/uploads/avatars/avatarTest.jpg" alt="avatarUser">
                         </li>
                     </ul>
                 </div>
