@@ -151,7 +151,17 @@ class User
     }
 
 
+    // vérifier si le mail existe déjà dans la base de données :
+    public static function existsMail(string $mail)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `id` FROM `patients` WHERE `mail` = ?;';
+        $sth = $pdo->prepare($sql);
+        $sth->execute([$mail]);
+        $results = $sth->fetchAll();
 
+        return (empty($results)) ? false : true;
+    }
 
 
 
@@ -199,17 +209,7 @@ class User
 
 
 
-    //     // vérifier si le mail existe déjà dans la base de données :
-    //     public static function existsMail(string $mail)
-    //     {
-    //         $pdo = Database::getInstance();
-    //         $sql = 'SELECT `id` FROM `patients` WHERE `mail` = ?;';
-    //         $sth = $pdo->prepare($sql);
-    //         $sth->execute([$mail]);
-    //         $results = $sth->fetchAll();
 
-    //         return (empty($results)) ? false : true;
-    //     }
 
 
     //     // vérifier si l'id existe dans la base de données :

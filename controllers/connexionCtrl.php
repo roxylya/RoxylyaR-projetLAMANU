@@ -9,8 +9,6 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
 
 try {
-
-    
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
     $error = [];
 
@@ -25,6 +23,10 @@ try {
             // Valider le mail :
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
+            }else{
+                if(!$user= User::existsMail($email)){
+                    $error['email'] = "L'adresse mail n'est pas reconnue.";
+                }
             }
         }
 
@@ -33,14 +35,17 @@ try {
         if (empty($password)) {
             $error['password'] = 'Veuillez entrer votre mot de passe.';
         } else {
-            // Voir l'exemple fourni sur la page de la fonction password_hash()
+            // On vérifie que le mot de passe correspond au mail enregistré dans la bd avec la fonction password_verify()
             // pour savoir d'où cela provient.
-            $user = User::get($email);
-            $hash = $user->password;
+            
+            if ($user = User::get($email)) {
 
-            if (!password_verify($password, $hash)) {
-                $error['password'] = 'Erreur de mot de passe.';
-            } 
+                $hash = $user->password;
+
+                if (!password_verify($password, $hash)) {
+                    $error['password'] = 'Erreur de mot de passe.';
+                }
+            }
         }
 
         if (empty($error)) {
@@ -59,7 +64,7 @@ try {
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../views/error.php');
+    include(__DIR__ . '/../controllers/errorCtrl.php');
     die;
 }
 

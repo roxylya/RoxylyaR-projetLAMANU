@@ -241,20 +241,25 @@ h2 {
     font-family: "Black Clover Font";
 }
 
-.bgAccueilText {
+.bgHomeText {
     background-color: #03182D;
     border-top: 0.5rem groove #8a551a;
     border-bottom: 0.5rem groove #8a551a;
 }
 
-.accueilText {
+.homeText {
     color: transparent;
     background: #a47a07;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    font-size: 2rem;
+    font-size: 1.6rem;
+}
+
+
+.logoRR {
+    width: 15rem;
 }
 
 .chandlierReturn {
@@ -409,7 +414,7 @@ footer {
 
 a {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: transparent;
     background: #a47a07;
     -webkit-background-clip: text;
@@ -426,10 +431,6 @@ a:hover {
 
 a:active {
     transform: translateY(4px);
-}
-
-.logoRR {
-    width: 10rem;
 }
 
 .copyright {

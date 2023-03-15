@@ -2,14 +2,13 @@
  <main class="d-lg-none container-fluid py-5">
      <div class="row flex-column text-center mt-2">
          <div class="col">
-             <h1 class="p-3 pt-4 text-justify"><span class="bdRenaissance">B</span>ienvenue dans l'atelier
+             <h1 class="p-3 pt-4 text-justify"><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier
                  Roxylya R</h1>
-             <img class="roxylyaAccueil pb-3" src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
+             <img class="pb-3" src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
          </div>
-         <div class="col bgAccueilText py-3">
-             <p class="text-justify accueilText"><span class="bdRenaissance">A</span>fin de pouvoir commander un
-                 article, je vous
-                 invite à vous inscrire gratuitement. </p>
+         <div class="col bgHomeText py-3">
+             <p class="homeText text-justify"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
+                 article, je vous invite à vous inscrire gratuitement. </p>
              <!-- carousel start -->
              <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                  <div class="carousel-inner">
@@ -28,13 +27,12 @@
                  </div>
              </div>
              <!-- carousel end -->
-             <p class="text-justify accueilText"><span class="bdRenaissanceP">Q</span>uel article ? Une magnifique
-                 tenue, une
-                 bannière que vous afficherez avec fierté ou encore vous faire un portrait ou refaire le portrait..
+             <p class="homeText text-justify "><span class="bdRenaissanceP">Q</span>uel article ? Une magnifique
+                 tenue, une bannière que vous afficherez avec fierté ou encore vous faire un portrait ou refaire le portrait..
              </p>
          </div>
          <div class="col">
-             <p class="accueilText text-justify"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
+             <p class="homeText text-justify"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
                  Renaissants ? N'hésitez pas à créer votre compte et jouez ! <br>
                  Comment s'inscrire ? Cliquez sur le lien et suivez le guide.</p>
              <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt=""></a>
@@ -53,7 +51,7 @@
              <h1 class="w-50"><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier Roxylya R !</h1>
              <img class="w-25 pt-3" src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
          </div>
-         <div class="col bgAccueilText d-flex flex-row align-items-center justify-content-around py-3">
+         <div class="col bgHomeText d-flex flex-row align-items-center justify-content-around py-3">
              <!-- carousel start -->
              <div id="carouselExampleSlidesOnly" class="carousel slide w-50" data-bs-ride="carousel">
                  <div class="carousel-inner">
@@ -72,16 +70,15 @@
                  </div>
              </div>
              <!-- carousel end -->
-             <p class="accueilText w-50 text-justify"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
-                 article, je
-                 vous invite à vous inscrire gratuitement. <br>
+             <p class="w-50 homeText text-justify px-lg-3"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
+                 article, je vous invite à vous inscrire gratuitement. <br>
                  <span class="bdRenaissanceP">Q</span>uel article ? Une magnifique tenue, une bannière que vous
                  afficherez avec fierté ou encore vous faire un portrait ou refaire le portrait..
              </p>
          </div>
      </div>
      <div class="col align-items-center justify-content-center text-center py-5">
-         <p class="accueilText text-justify"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
+         <p class="homeText text-justify pb-5"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
              Renaissants ? N'hésitez pas à créer votre compte et jouez ! <br>
              Comment s'inscrire ? Cliquez sur le lien et suivez le guide.</p>
          <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt=""></a>
