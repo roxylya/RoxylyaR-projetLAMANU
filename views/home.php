@@ -53,7 +53,7 @@
          </div>
          <div class="col bgHomeText d-flex flex-row align-items-center justify-content-around py-3">
              <!-- carousel start -->
-             <div id="carouselExampleSlidesOnly" class="carousel slide w-50" data-bs-ride="carousel">
+             <div id="carouselExampleSlidesOnly" class="w-50 carousel slide px-lg-3" data-bs-ride="carousel">
                  <div class="carousel-inner">
                      <div class="carousel-item active">
                          <img src="/public/assets/img/carouselavatargwizio.png" class="d-block " alt="avatar Gwizio">
@@ -70,6 +70,7 @@
                  </div>
              </div>
              <!-- carousel end -->
+
              <p class="w-50 homeText text-justify px-lg-3"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
                  article, je vous invite à vous inscrire gratuitement. <br>
                  <span class="bdRenaissanceP">Q</span>uel article ? Une magnifique tenue, une bannière que vous
