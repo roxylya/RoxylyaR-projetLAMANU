@@ -127,11 +127,11 @@ class User
         return ($nbResults > 0) ? true : false;
     }
 
-    // méthode pour récupérer les informations d'un utilisateur y compris son rôle en fonction de son id_users:
+    // méthode pour récupérer les informations d'un utilisateur y compris son rôle en fonction de son id_users et son email:
     public static function get($email): object | bool
     {
         $pdo = Database::getInstance();
-        // je formule ma requête affiche tout de la table liste concernant l'id récupéré
+        // je formule ma requête affiche tout de la table liste concernant l'email récupéré
         $sql = 'SELECT * 
         FROM `users` 
         JOIN `roles` 

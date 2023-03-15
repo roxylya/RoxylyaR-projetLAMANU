@@ -9,7 +9,6 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
 
 try {
-    session_start();
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
     $error = [];
 

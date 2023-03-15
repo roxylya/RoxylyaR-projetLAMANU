@@ -171,18 +171,6 @@ header {
 }
 
 
-/* userAccount */
-
-.avatarProfil {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #a47a07;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-}
-
 /* main */
 
 main {
@@ -418,6 +406,35 @@ input:placeholder-shown {
     text-align: justify;
 }
 
+
+
+
+/* userAccount */
+
+/* .profilUser {
+    background-color: #a47a0723;
+    border-radius: 1rem;
+    padding: 1rem;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+} */
+
+.avatarProfil {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #a47a07;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+
+
+
+
+
+
 /* footer */
 
 footer {
@@ -456,14 +473,4 @@ a:active {
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
     -webkit-transition: color 1s;
     transition: color 1s;
-}
-
-/* userAccount */
-
-.profilUser {
-    background-color: #a47a0723;
-    border-radius: 1rem;
-    padding: 1rem;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }

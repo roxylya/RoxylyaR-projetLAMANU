@@ -1,9 +1,10 @@
     <!-- footer start -->
     <footer class="d-flex flex-column justify-content-center align-items-center py-4">
-        <div class="w-100 d-flex flex-lg-row flex-column justify-content-around align-items-center pb-5">
+    <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt="logo Les Royaumes Renaissants"></a>
+        <div class="w-100 d-flex flex-lg-row flex-column justify-content-around align-items-center m-0 pb-2">
             <a href="/controllers/legalNoticeCtrl.php">Mentions Légales</a>
             <a href="/controllers/cguCtrl.php">C.G.U.</a>
-            <a href="mailto:roxylya.r.contact@gmail.com">Contact</a>
+            <a href="mailto:roxylya.r.contact@gmail.com">Contact - Admin</a>
         </div>
         <p class="copyright">© Roxylya R, 2022 - Tous droits réservés</p>
     </footer>
