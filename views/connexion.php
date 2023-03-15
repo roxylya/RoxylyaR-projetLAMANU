@@ -6,7 +6,7 @@
                 <p class="py-1"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
                 <form method="post" class="connect my-5" enctype="multipart/form-data" novalidate>
                     <div class="d-lg-flex flex-wrap justify-content-around align-items-center pt-3">
-                        <div class="form-group ">
+                        <div class="form-group">
                             <label for="email">Email :</label>
                             <input type="email" class="form-control" id="email" name="email" value="<?= $email ?? '' ?>" pattern="<?= REGEX_EMAIL ?>" required>
                         </div>
@@ -19,8 +19,8 @@
                     <div class="form-group text-center">
                         <button type="submit" id="submit" class="btn btn-default">Envoyer</button>
                     </div>
-                    <div class="pt-3 text-center d-flex justify-content-center align-items-center">
-                        <p class="little pe-md-5"> Pas encore inscrit ? C'est par <a href="/controllers/formSubscribeCtrl.php">ici</a>.</p>
+                    <div class="py-3 text-center d-flex flex-lg-row flex-column justify-content-center align-items-center">
+                        <p class="little pe-lg-5"> Pas encore inscrit ? C'est par <a href="/controllers/formSubscribeCtrl.php">ici</a>.</p>
                         <p class="little"> Mot de passe oublié ? C'est par <a href="/controllers/formForgetPasswordCtrl.php">là</a>.</p>
                     </div>
                 </form>

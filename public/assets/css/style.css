@@ -125,8 +125,13 @@ header {
 /* header account */
 
 .avatarUser {
-    max-height: 5rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #a47a07;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
 
@@ -169,8 +174,13 @@ header {
 /* userAccount */
 
 .avatarProfil {
-    max-height: 10rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #a47a07;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
 /* main */
@@ -285,7 +295,7 @@ h2 {
     margin-right: -200%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    transition: transform 2s ease-in-out ;
+    transition: transform 2s ease-in-out;
 }
 
 
@@ -386,6 +396,7 @@ input:placeholder-shown {
 .little,
 .little>a {
     font-size: 1rem;
+    margin-bottom: -0.2rem;
 }
 
 

@@ -152,12 +152,12 @@ class User
 
 
     // vérifier si le mail existe déjà dans la base de données :
-    public static function existsMail(string $mail)
+    public static function existsMail(string $email)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `id` FROM `patients` WHERE `mail` = ?;';
+        $sql = 'SELECT `id_users` FROM `users` WHERE `email` = ?;';
         $sth = $pdo->prepare($sql);
-        $sth->execute([$mail]);
+        $sth->execute([$email]);
         $results = $sth->fetchAll();
 
         return (empty($results)) ? false : true;

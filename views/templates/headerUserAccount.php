@@ -23,7 +23,7 @@
                 <a class="nav-link d-none d-md-block" href="/controllers/goldenBookCtrl.php">Livre d'Or</a>
             </div>
             <div class="userAccount py-2 pe-4">
-                <img class="avatarUser text-center" src="/public/uploads/avatar/avatarTest.jpg" alt="avatarUser">
+                <img class="avatarUser text-center" src="/public/uploads/avatars/avatar_CassiopeeNox.jpg" alt="avatarUser">
                 <a class="nav-link pseudoUser" href="/controllers/userAccountCtrl.php" aria-current="page">Roxylya</a>
             </div>
             <button class="d-md-none navbar-toggler m-0 pe-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

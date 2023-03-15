@@ -9,6 +9,7 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
 
 try {
+    session_start();
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
     $error = [];
 
@@ -50,7 +51,7 @@ try {
 
         if (empty($error)) {
             $user = User::get($email);
-
+            
             if ($user->id_roles === 3) {
                 header('location: /controllers/userAccount/userAccountCtrl.php');
                 die;

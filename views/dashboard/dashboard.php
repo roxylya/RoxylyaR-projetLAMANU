@@ -3,22 +3,22 @@
         <div class="col">
             <div class="d-flex flex-column mt-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissanceH1">B</span>ienvenue Roxylya !</h1>
+                    <h1><span class="bdRenaissanceH1">B</span>onjour CassiopeeNox !</h1>
                 </div>
                 <div class="profilUser mt-3 p-3 d-flex flex-column justify-content-center align-items-center">
                     <h2 class="text-center"><span class="bdRenaissanceH2">M</span>on compte</h2>
                     <ul>
                         <li>
-                            Pseudo : Roxylya
+                            Pseudo : CassiopeeNox
                         </li>
                         <li>
-                            Mail : roxylya@hotmail.fr
+                            Mail : roxylya.r.contact@gmail.com
                         </li>
                         <li>
                             Mot de passe : ********
                         </li>
                         <li>
-                            Avatar : <img class="avatarProfil" src="/public/uploads/avatar/avatarTest.jpg" alt="avatarUser">
+                            Avatar : <img class="avatarProfil" src="/public/uploads/avatars/avatar_CassiopeeNox.jpg" alt="avatarUser">
                         </li>
                     </ul>
                 </div>
