@@ -100,6 +100,21 @@ class User
         return $this->id_roles;
     }
 
+
+
+    // vérifier si le mail existe déjà dans la base de données :
+    public static function existsMail(string $email)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `id_users` FROM `users` WHERE `email` = ?;';
+        $sth = $pdo->prepare($sql);
+        $sth->execute([$email]);
+        $results = $sth->fetchAll();
+
+        return (empty($results)) ? false : true;
+    }
+
+
     // méthode d' ajout d'un user à la bd :
     public function add()
     {
@@ -128,7 +143,7 @@ class User
     }
 
     // méthode pour récupérer les informations d'un utilisateur y compris son rôle en fonction de son id_users et son email:
-    public static function get($email): object | bool
+    public static function getByEmail($email): object | bool
     {
         $pdo = Database::getInstance();
         // je formule ma requête affiche tout de la table liste concernant l'email récupéré
@@ -150,24 +165,28 @@ class User
         return $results;
     }
 
-
-    // vérifier si le mail existe déjà dans la base de données :
-    public static function existsMail(string $email)
+    // méthode pour récupérer les informations d'un utilisateur y compris son rôle en fonction de son id_users et son email:
+    public static function getById($id_users): object | bool
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `id_users` FROM `users` WHERE `email` = ?;';
+        // je formule ma requête affiche tout de la table liste concernant l'id_users récupéré
+        $sql = 'SELECT * 
+            FROM `users` 
+            JOIN `roles` 
+            ON  `roles`.`id_roles` = `users`.`id_roles`
+            WHERE  `users`.`id_users`= :id_users;';
+        // je fais appel à la méthode prepare qui me renvoie la réponse de ma requête, je stocke la réponse dans la variable 
+        // $sth qui est un pdo statement:
         $sth = $pdo->prepare($sql);
-        $sth->execute([$email]);
-        $results = $sth->fetchAll();
-
-        return (empty($results)) ? false : true;
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        // on exécute la requête
+        $sth->execute();
+        // On stocke le résultat dans un objet puisque paramétrage effectué:
+        $results = $sth->fetch();
+        // que l'on retourne en sortie de méthode
+        return $results;
     }
-
-
-
-
-
-
 
     //     // Afficher tous les patients.
     //     public static function getAll($research = "", $firstUser = 0, $limit = 10)

@@ -23,8 +23,8 @@ try {
             // Valider le mail :
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
-            }else{
-                if(!$user= User::existsMail($email)){
+            } else {
+                if (!$user = User::existsMail($email)) {
                     $error['email'] = "L'adresse mail n'est pas reconnue.";
                 }
             }
@@ -37,8 +37,8 @@ try {
         } else {
             // On vérifie que le mot de passe correspond au mail enregistré dans la bd avec la fonction password_verify()
             // pour savoir d'où cela provient.
-            
-            if ($user = User::get($email)) {
+
+            if ($user = User::getByEmail($email)) {
 
                 $hash = $user->password;
 
@@ -49,8 +49,11 @@ try {
         }
 
         if (empty($error)) {
-            $user = User::get($email);
-            
+            $user = User::getByEmail($email);
+            // on démarre la session :
+            session_start(['cookie_lifetime' => 86400, ]);
+            $_SESSION['id_users'] = $user->id_users;
+
             if ($user->id_roles === 3) {
                 header('location: /controllers/userAccount/userAccountCtrl.php');
                 die;
