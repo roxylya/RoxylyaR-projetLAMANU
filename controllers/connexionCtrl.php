@@ -51,8 +51,9 @@ try {
         if (empty($error)) {
             $user = User::getByEmail($email);
             // on démarre la session :
-            session_start(['cookie_lifetime' => 86400, ]);
+            session_start();
             $_SESSION['id_users'] = $user->id_users;
+            $_SESSION['cookie_lifetime'] = 86400;
 
             if ($user->id_roles === 3) {
                 header('location: /controllers/userAccount/userAccountCtrl.php');

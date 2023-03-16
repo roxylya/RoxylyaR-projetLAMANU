@@ -102,8 +102,8 @@ class User
 
 
 
-    // vérifier si le mail existe déjà dans la base de données :
-    public static function existsMail(string $email)
+    // vérifier si l'email existe déjà dans la base de données :
+    public static function existsEmail(string $email)
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `id_users` FROM `users` WHERE `email` = ?;';
@@ -114,6 +114,17 @@ class User
         return (empty($results)) ? false : true;
     }
 
+      // vérifier si le pseudo existe déjà dans la base de données :
+        public static function existsPseudo(string $pseudo)
+        {
+            $pdo = Database::getInstance();
+            $sql = 'SELECT `id_users` FROM `users` WHERE `pseudo` = ?;';
+            $sth = $pdo->prepare($sql);
+            $sth->execute([$pseudo]);
+            $results = $sth->fetchAll();
+    
+            return (empty($results)) ? false : true;
+        }
 
     // méthode d' ajout d'un user à la bd :
     public function add()
@@ -188,6 +199,30 @@ class User
         return $results;
     }
 
+    // // Update :
+
+    public function update($id_users)
+    {
+        $pdo = Database::getInstance();
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare(' UPDATE `users` SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `updated_at`=:updated_at WHERE `id_users`=:id_users;');
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->bindValue(':pseudo', $this->pseudo);
+        $sth->bindValue(':email', $this->email);
+        $sth->bindValue(':password', $this->password);
+        $sth->bindValue(':updated_at', $this->updated_at);
+        $sth->execute();
+        // on vérifie si l'ajout a bien été effectué :
+        $nbResults = $sth->rowCount();
+
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return ($nbResults > 0) ? true : false;
+    }
+
+
+
+
     //     // Afficher tous les patients.
     //     public static function getAll($research = "", $firstUser = 0, $limit = 10)
     //     {
@@ -244,27 +279,7 @@ class User
     //     }
 
 
-    //     // // Update :
 
-    //     public function update($id)
-    //     {
-    //         $pdo = Database::getInstance();
-    //         //On insère les données reçues   
-    //         //  on note les marqueurs nominatifs exemple :birthdate sert de contenant à une valeur
-    //         $sth = $pdo->prepare(' UPDATE `patients` SET `lastname`=:lastname, `firstname`=:firstname, `birthdate`=:birthdate, `phone`=:phone, `mail`=:mail WHERE `id`=:id;');
-    //         $sth->bindValue(':id', $id, PDO::PARAM_INT);
-    //         $sth->bindValue(':lastname', $this->lastname);
-    //         $sth->bindValue(':firstname', $this->firstname);
-    //         $sth->bindValue(':birthdate', $this->birthdate);
-    //         $sth->bindValue(':phone', $this->phone);
-    //         $sth->bindValue(':mail', $this->mail);
-    //         $sth->execute();
-    //         // on vérifie si l'ajout a bien été effectué :
-    //         $nbResults = $sth->rowCount();
-
-    //         // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
-    //         return ($nbResults > 0) ? true : false;
-    //     }
 
     //     // Delete un patient :
 

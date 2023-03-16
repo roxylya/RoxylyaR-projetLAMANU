@@ -143,7 +143,7 @@ header {
 /* remplacement toggle-icon par une image */
 .navbar-toggler-icon {
     background-image: url("../img/chandelier3.png");
-    width: 6rem;
+    width: 4rem;
     height: 3rem;
     object-fit: fill;
     border: none;
@@ -181,7 +181,7 @@ header {
     }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 540px) {
     .userAccount {
         display: flex;
         flex-direction: column;
@@ -189,9 +189,14 @@ header {
         align-items: center;
     }
 
+    .navbar-toggler-icon {
+        width: 4rem;
+        padding-bottom: 1rem;
+    }
+
 }
 
-@media (min-width: 630px) {
+@media (min-width: 540px) {
     .userAccount {
         display: flex;
         flex-direction: row;
@@ -353,7 +358,7 @@ label {
     -moz-background-clip: text;
     background-clip: text;
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .btn {
@@ -494,16 +499,6 @@ input:placeholder-shown {
     height: 3rem;
 }
 
-.userConnected {
-    position: relative;
-}
-
-.exit {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 @media(min-width:550px) and (max-width:800px) {
 
     .actionUser,
@@ -514,6 +509,7 @@ input:placeholder-shown {
         align-items: center;
         width: 100%;
     }
+
     .profilUser {
         background-color: #a47a0723;
         border-radius: 1rem;
@@ -559,7 +555,7 @@ input:placeholder-shown {
     }
 }
 
-@media (min-width:801px) and (max-width:1199px){
+@media (min-width:801px) and (max-width:1199px) {
     .profilUser {
         background-color: #a47a0723;
         border-radius: 1rem;
@@ -638,10 +634,7 @@ input:placeholder-shown {
     }
 }
 
-
-
-
-.exitDoor{
+.exitDoor {
     width: 3rem;
 }
 

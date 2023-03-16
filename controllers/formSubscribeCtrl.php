@@ -23,11 +23,13 @@ try {
             // Valider le mail :
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
-            } 
-            // else {
-            //     setcookie('Email', $email);
-            // }
+            } else {
+                if (User::existsEmail($email) === true) {
+                    $alert['email'] = 'Email déjà existant.';
+                }
+            }
         }
+
 
         // Nettoyer le pseudo :
         $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -37,10 +39,11 @@ try {
             // Pseudo correspond à la regex ?
             if (!filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PSEUDO . '/')))) {
                 $error['pseudo'] = 'Format incorrect.';
-            } 
-            // else {
-            //      setcookie('Pseudo', $pseudo);
-            // }
+            } else {
+                if (User::existsPseudo($pseudo) === true) {
+                    $alert['pseudo'] = 'Pseudo déjà existant.';
+                }
+            }
         }
 
         // Récupérer les mots de passe :
@@ -59,7 +62,6 @@ try {
                     $error['password'] = 'Votre mot de passe doit contenir au moins 8 caractère dont 1 Majuscule, 1 miniscule, 1 caractère spécial et 1 chiffre.';
                 } else {
                     $password = password_hash($password, PASSWORD_DEFAULT);
-                    // setcookie('password', $password);
                 }
             }
         }
@@ -76,14 +78,6 @@ try {
                 if (!in_array($avatarType, EXTENSION)) {
                     $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
                 }
-                // else {
-                //     $extension = pathinfo($avatar, PATHINFO_EXTENSION);
-                //     $avatarName = 'avatar_' . $pseudo . '.' . $extension;
-                //     $from = $_FILES['avatar']['tmp_name'];
-                //     $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
-                //     move_uploaded_file($from, $to);
-                //     setcookie('Avatar', $to);
-                // }
             }
         } else {
             $error['avatar'] = 'Fichier non renseigné.';
@@ -107,8 +101,9 @@ try {
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($user->add() === true) {
                 $code = 12;
+                $user = User::getByEmail($email);
                 $extension = pathinfo($avatar, PATHINFO_EXTENSION);
-                $avatarName = 'avatar_' . $pseudo . '.' . $extension;
+                $avatarName = 'avatar_' . $user->id_users . '.' . $extension;
                 $from = $_FILES['avatar']['tmp_name'];
                 $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
