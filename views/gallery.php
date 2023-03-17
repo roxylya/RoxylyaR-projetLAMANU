@@ -3,7 +3,7 @@
         <div class="col">
             <div class="d-flex flex-column mt-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissance">G</span>alerie</h1>
+                    <h1><span class="bdRenaissanceH1">G</span>alerie</h1>
                 </div>
 
                 <div class="pt-lg-5 pt-3">

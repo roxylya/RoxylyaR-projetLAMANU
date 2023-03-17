@@ -11,17 +11,19 @@ class User
     private string $pseudo;
     private string $email;
     private string $password;
+    private string $extUserAvatar;
     private string $created_at;
     private string $updated_at;
     private string $validated_at;
     private int $id_roles;
 
-    // public function __construct(int $id_users, string $pseudo, string $email, string $password, string $created_at, string $updated_at, string $validated_at, int $idRole)
+    // public function __construct(int $id_users, string $pseudo, string $email, string $password,string $extUserAvatar, string $created_at, string $updated_at, string $validated_at, int $idRole)
     // {
     //     $this->id_users = $id_users;
     //     $this->pseudo = $pseudo;
     //     $this->email = $email;
     //     $this->password = $password;
+    //     $this->extUserAvatar = $extUserAvatar;
     //     $this->created_at = $created_at;
     //     $this->updated_at = $updated_at;
     //     $this->validated_at = $validated_at;
@@ -62,6 +64,15 @@ class User
     public function getpassword(): string
     {
         return $this->password;
+    }
+
+    public function setExtUserAvatar(string $extUserAvatar)
+    {
+        $this->extUserAvatar = $extUserAvatar;
+    }
+    public function getExtUserAvatar(): string
+    {
+        return $this->extUserAvatar;
     }
 
     public function setCreated_at(string $created_at)
@@ -135,12 +146,13 @@ class User
         //On insère les données reçues   
         // on note les marqueurs nominatifs exemple :birthdate sert de contenant à une valeur
 
-        $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`,`created_at`, `updated_at`, `id_roles`) 
-        VALUES(:pseudo, :email, :password, :created_at, :updated_at, :id_roles);';
+        $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `extUserAvatar`, `created_at`, `updated_at`, `id_roles`) 
+        VALUES(:pseudo, :email, :password, :extUserAvatar, :created_at, :updated_at, :id_roles);';
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':pseudo', $this->pseudo);
         $sth->bindValue(':email', $this->email);
         $sth->bindValue(':password', $this->password);
+        $sth->bindValue(':extUserAvatar', $this->extUserAvatar);
         $sth->bindValue(':created_at', $this->created_at);
         $sth->bindValue(':updated_at', $this->updated_at);
         $sth->bindValue(':id_roles', $this->id_roles, PDO::PARAM_INT);
@@ -206,11 +218,12 @@ class User
         $pdo = Database::getInstance();
         //On insère les données reçues   
         //  on note les marqueurs nominatifs :
-        $sth = $pdo->prepare(' UPDATE `users` SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `updated_at`=:updated_at WHERE `id_users`=:id_users;');
+        $sth = $pdo->prepare(' UPDATE `users` SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `extUserAvatar`=:extUserAvatar, `updated_at`=:updated_at WHERE `id_users`=:id_users;');
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
         $sth->bindValue(':pseudo', $this->pseudo);
         $sth->bindValue(':email', $this->email);
         $sth->bindValue(':password', $this->password);
+        $sth->bindValue(':extUserAvatar', $this->extUserAvatar);
         $sth->bindValue(':updated_at', $this->updated_at);
         $sth->execute();
         // on vérifie si l'ajout a bien été effectué :

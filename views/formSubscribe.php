@@ -43,7 +43,7 @@
                         <!-- récupération avatar -->
                         <div class="form-group col-lg-11">
                             <label for="avatar" class="form-label">Avatar :</label>
-                            <input class="form-control" type="file" id="avatar" name="avatar" value="<?= $avatar ?? '' ?>" accept="image/jpg" required>
+                            <input class="form-control" type="file" id="avatar" name="avatar" value="<?= $avatar ?? '' ?>" accept="image/png, image/jpg, image/JPG, image/jpeg, image/gif" required>
                             <p class="error text-center"><?= $error['avatar'] ?? '' ?></p>
                         </div>
                     </div>

@@ -15,12 +15,12 @@ try {
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        // Nettoyer le mail :
+        // Nettoyer l'email :
         $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
         if (empty($email)) {
             $error['email'] = "Veuillez renseigner votre mail.";
         } else {
-            // Valider le mail :
+            // Valider l'email :
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
             } else {
@@ -77,6 +77,8 @@ try {
             } else {
                 if (!in_array($avatarType, EXTENSION)) {
                     $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
+                } else {
+                    $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);
                 }
             }
         } else {
@@ -94,6 +96,7 @@ try {
             $user->setPseudo($pseudo);
             $user->setEmail($email);
             $user->setPassword($password);
+            $user->setExtUserAvatar($extUserAvatar);
             $user->setCreated_at($created_at);
             $user->setUpdated_at($updated_at);
             // $user->setValidated_at($validated_at);
@@ -102,8 +105,7 @@ try {
             if ($user->add() === true) {
                 $code = 12;
                 $user = User::getByEmail($email);
-                $extension = pathinfo($avatar, PATHINFO_EXTENSION);
-                $avatarName = 'avatar_' . $user->id_users . '.' . $extension;
+                $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
                 $from = $_FILES['avatar']['tmp_name'];
                 $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
@@ -119,7 +121,9 @@ try {
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
+    include(__DIR__ . '/../views/templates/header.php');
     include(__DIR__ . '/../views/error.php');
+    include(__DIR__ . '/../views/templates/footer.php');
     die;
 }
 

@@ -82,6 +82,11 @@ try {
             } else {
                 if (!in_array($avatarType, EXTENSION)) {
                     $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
+                } else {
+                    $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);
+                    $avatarName = 'avatar_' . $id_users . '.' . $extUserAvatar;
+                    $from = $_FILES['avatar']['tmp_name'];
+                    $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
                 }
             }
         } else {
@@ -95,14 +100,11 @@ try {
             $user->setPseudo($pseudo);
             $user->setEmail($email);
             $user->setPassword($password);
+            $user->setExtUserAvatar($extUserAvatar);
             $user->setUpdated_at($updated_at);
             // Modifier l'id sur la base de données :
             if ($user->update($id_users) === true) {
                 $code = 5;
-                $extension = pathinfo($avatar, PATHINFO_EXTENSION);
-                $avatarName = 'avatar_' . $userConnected->id_users . '.' . $extension;
-                $from = $_FILES['avatar']['tmp_name'];
-                $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
                 // setcookie('Avatar', $to);
                 header('location: /controllers/userAccount/profilAccountCtrl.php?code=' . $code);
@@ -116,7 +118,9 @@ try {
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../controllers/errorCtrl.php');
+    include(__DIR__ . '/../views/templates/header.php');
+    include(__DIR__ . '/../views/error.php');
+    include(__DIR__ . '/../views/templates/footer.php');
     die;
 }
 

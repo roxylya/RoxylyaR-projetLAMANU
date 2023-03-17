@@ -18,13 +18,13 @@ try {
         // Nettoyer le mail :
         $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
         if (empty($email)) {
-            $error['email'] = "Veuillez renseigner votre mail.";
+            $error['email'] = "Veuillez renseigner votre email.";
         } else {
             // Valider le mail :
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
             } else {
-                if (!$user = User::existsMail($email)) {
+                if (!$user = User::existsEmail($email)) {
                     $error['email'] = "L'adresse mail n'est pas reconnue.";
                 }
             }

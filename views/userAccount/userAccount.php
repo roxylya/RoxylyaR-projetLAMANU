@@ -14,7 +14,7 @@
                             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/icons8-panier-en-osier-96.png" alt="">Mes <br> achats</div>
                         </a>
                     </div>
-                    <img class="avatarProfil" src="/public/uploads/avatars/avatar_<?= $userConnected->pseudo ?>.jpg" alt="avatarUser">
+                    <img class="avatarProfil" src="/public/uploads/avatars/avatar_<?= $userConnected->id_users . '.' . $userConnected->extUserAvatar?>" alt="avatarUser">
                     <div class="lookUser p-5">
                         <a href="/controllers/userAccount/dressingUserCtrl.php"><div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/armoire.png" alt="">Mon <br> dressing</div></a>
                         <a href="/controllers/userAccount/galleryUserCtrl.php"><div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/tableau.png" alt="">Ma <br> galerie</div></a>

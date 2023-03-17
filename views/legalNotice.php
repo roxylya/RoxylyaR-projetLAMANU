@@ -1,9 +1,9 @@
-<main class="container-fluid">
+<main class="container-fluid pt-5">
     <div class="row">
         <div class="col">
             <div class="bgcgu d-flex flex-column m-lg-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissance">M</span>entions <span class="bdRenaissance">L</span>égales</h1>
+                    <h1><span class="bdRenaissanceH1">M</span>entions <span class="bdRenaissanceH1">L</span>égales</h1>
                     <h2>En vigueur au 01/01/2023</h2>
                 </div>
                 <div class="amorce pt-lg-5 pt-3">
@@ -19,26 +19,26 @@
                 <p> Ces dernières sont accessibles sur le Site à la rubrique « Mentions légales ».</p>
                 </div>
                 <div class="pt-lg-5 pt-3">
-                    <h2>ARTICLE 1 - L'EDITEUR</h2>
+                    <h3>ARTICLE 1 - L'EDITEUR</h3>
                     <p>L’édition et la direction de la publication du Site est assurée par Adeline Jeuniaux,
                         domiciliée à Amiens (Somme) dont l'adresse e-mail est roxylya.r.contact@gmail.com,
                         ci-après l'"Editeur".</p>
                     <p class="aCompleter">***********</p>
                 </div>
                 <div class="pt-lg-5 pt-3">
-                    <h2>ARTICLE 2 - L'HEBERGEUR</h2>
+                    <h3>ARTICLE 2 - L'HEBERGEUR</h3>
                     <p class="aCompleter">L'hébergeur du Site est la société XXX, dont le siège social est situé au XXX, avec le
                         numéro de téléphone : XXXXXXXXXX + adresse mail de contact : XXXXX@XXXXX.XXX .</p>
                 </div>
                 <div class="pt-lg-5 pt-3">
-                    <h2>ARTICLE 3 - ACCES AU SITE</h2>
+                    <h3>ARTICLE 3 - ACCES AU SITE</h3>
                     <p>Le Site est accessible en tout endroit, 7j/7, 24h/24 sauf cas de force majeure,
                         interruption programmée ou non et pouvant découlant d’une nécessité de maintenance.</p>
                     <p>En cas de modification, interruption ou suspension du Site, l'Editeur ne saurait être
                         tenu responsable.</p>
                 </div>
                 <div class="pt-lg-5 pt-3">
-                    <h2>ARTICLE 4 - COLLECTE DES DONNEES</h2>
+                    <h3>ARTICLE 4 - COLLECTE DES DONNEES</h3>
                     <p>Le Site assure à l'Utilisateur une collecte et un traitement d'informations personnelles dans le respect
                         de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers
                         et aux libertés.</p>
