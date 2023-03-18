@@ -20,7 +20,7 @@ try {
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Récupérer le mot de passe :
-        $password =  $_POST['password'];
+        $password =  $_POST['passwordDelete'];
         if (empty($password)) {
             $error['passwordDelete'] = 'Veuillez entrer votre mot de passe.';
         } else {
@@ -31,14 +31,14 @@ try {
             if (!password_verify($password, $hash)) {
                 $error['passwordDelete'] = 'Erreur de mot de passe.';
             } else {
-                if($user= User::delete($id_users)){
+                if(User::delete($id_users) === true){
                     $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $id_users . '.' . $extUserAvatar;
                     if (file_exists($oldAvatar)) {
                         // var_dump($oldAvatar);
                         unlink($oldAvatar);
                     }
                     $code= 1;
-                    header('location: /controllers/homeCtrl.php?code='. $code);
+                    header('location: /controllers/userAccount/logOutCtrl.php?code='. $code);
                     die;
                 }else{
                     $code= 0;

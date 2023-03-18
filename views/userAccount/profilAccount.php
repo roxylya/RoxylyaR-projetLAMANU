@@ -70,7 +70,7 @@
 
                                         <form method="post" action="/controllers/userAccount/deleteUserAccountCtrl.php" enctype="multipart/form-data">
                                             <div class="form-group col-lg-5 py-3">
-                                                <input placeholder="mot de passe" type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
+                                                <input placeholder="mot de passe" type="password" class="form-control" id="passwordDelete" name="passwordDelete" value="<?= $password ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
                                                 <p class="error pt-1"><?= $error['passwordDelete'] ?? '' ?></p>
                                             </div>
 
