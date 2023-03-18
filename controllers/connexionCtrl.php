@@ -10,8 +10,7 @@ require_once(__DIR__ . '/../models/User.php');
 
 try {
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
-   
-        $error = [];
+    $error = [];
 
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -49,6 +48,7 @@ try {
             }
         }
 
+        // Si pas de message d'erreur :
         if (empty($error)) {
             $user = User::getByEmail($email);
             // on démarre la session :

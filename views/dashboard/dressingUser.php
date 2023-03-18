@@ -3,7 +3,7 @@
         <div class="col">
             <div class="d-flex flex-column mt-5">
                 <div class="text-center ">
-                    <h1><span class="bdRenaissanceH1">M</span>es <span class="bdRenaissanceH1">A</span>chats</h1>
+                    <h1><span class="bdRenaissanceH1">M</span>on <span class="bdRenaissanceH1">D</span>ressing</h1>
                 </div>
                 <div class="profilUser mt-3 p-3 d-flex flex-column justify-content-center align-items-center">
                    

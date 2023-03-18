@@ -126,17 +126,17 @@ class User
     }
 
 
-      // vérifier si le pseudo existe déjà dans la base de données :
-        public static function existsPseudo(string $pseudo)
-        {
-            $pdo = Database::getInstance();
-            $sql = 'SELECT `id_users` FROM `users` WHERE `pseudo` = ?;';
-            $sth = $pdo->prepare($sql);
-            $sth->execute([$pseudo]);
-            $results = $sth->fetchAll();
-    
-            return (empty($results)) ? false : true;
-        }
+    // vérifier si le pseudo existe déjà dans la base de données :
+    public static function existsPseudo(string $pseudo)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `id_users` FROM `users` WHERE `pseudo` = ?;';
+        $sth = $pdo->prepare($sql);
+        $sth->execute([$pseudo]);
+        $results = $sth->fetchAll();
+
+        return (empty($results)) ? false : true;
+    }
 
 
     // méthode d' ajout d'un user à la bd :
@@ -218,9 +218,12 @@ class User
     public function update($id_users)
     {
         $pdo = Database::getInstance();
+        $sql=' UPDATE `users` 
+        SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `extUserAvatar`=:extUserAvatar, `updated_at`=:updated_at 
+        WHERE `id_users`=:id_users;';
         //On insère les données reçues   
         //  on note les marqueurs nominatifs :
-        $sth = $pdo->prepare(' UPDATE `users` SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `extUserAvatar`=:extUserAvatar, `updated_at`=:updated_at WHERE `id_users`=:id_users;');
+        $sth = $pdo->prepare($sql);
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
         $sth->bindValue(':pseudo', $this->pseudo);
         $sth->bindValue(':email', $this->email);
@@ -237,34 +240,47 @@ class User
 
     // Delete un user :
 
-        public static function delete($id_users)
-        {
-            $pdo = Database::getInstance();
-            // je mets des as pour différencier mes id des différentes tables :
-            $sql = 'DELETE FROM `users` 
+    public static function delete($id_users)
+    {
+        $pdo = Database::getInstance();
+        // je mets des as pour différencier mes id des différentes tables :
+        $sql = 'DELETE FROM `users` 
               WHERE `users`.`id_users`=:id_users ;';
+        // on prépare la requête
+        $sth = $pdo->prepare($sql);
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        // on exécute la requête
+        $sth->execute();
+        // on vérifie si la suppression a bien été effectuée :
+        $nbResults = $sth->rowCount();
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return ($nbResults > 0) ? true : false;
+    }
 
-            // on prépare la requête
-            $sth = $pdo->prepare($sql);
-            // On affecte les valeurs au marqueur nominatif :
-            $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
-            // on exécute la requête
-            $sth->execute();
-            // on vérifie si la suppression a bien été effectuée :
-            $nbResults = $sth->rowCount();
-            // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
-            return ($nbResults > 0) ? true : false;
-        }
 
+    //     // vérifier si l'id_users existe dans la base de données :
+    //     public static function existsId(int $id_users)
+    //     {
+    //         $pdo = Database::getInstance();
+    //         $sql = 'SELECT `id_users` FROM `users` WHERE `id_users` = ?;';
+    //         $sth = $pdo->prepare($sql);
+    //         $sth->execute([$id_users]);
+    //         $results = $sth->fetchAll();
 
-    //     // Afficher tous les patients.
+    //         return (empty($results)) ? false : true;
+    //     }
+
+    //     // Afficher tous les users. (admin)
     //     public static function getAll($research = "", $firstUser = 0, $limit = 10)
     //     {
     //         $pdo = Database::getInstance();
-    //         $sql = 'SELECT *.`user`,  
-    //         FROM `user` 
-    //         WHERE `pseudo` LIKE :research OR `email` LIKE :research OR `password` LIKE :research OR `created_at` LIKE :research OR `validate_at` LIKE :research OR `id_roles` LIKE :research 
-    //         ORDER BY `lastname`
+    //         $sql = 'SELECT *.`users`, `name`.`roles`
+    //         FROM `users` 
+    //         JOIN `roles`
+    //         ON  `roles`.`id_roles` = `users`.`id_roles`
+    //         WHERE `pseudo` LIKE :research OR `email` LIKE :research OR `password` LIKE :research OR `extUserAvatar` LIKE :research OR `created_at` LIKE :research OR `validate_at` LIKE :research OR `name` LIKE :research 
+    //         ORDER BY `pseudo`
     //         LIMIT :firstUser, :limit ;';
     //         $sth = $pdo->prepare($sql);
     //         // On affecte les valeurs au marqueur nominatif :
@@ -277,15 +293,15 @@ class User
     //         return $results;
     //     }
 
-    //     // Afficher le nombre de patients récupéré dans la recherche :
+    //     // Afficher le nombre d'users récupéré dans la recherche :
     //     public static function getAllCount($research = "")
     //     {
     //         $pdo = Database::getInstance();
-    //         $sql = 'SELECT * 
-    //         FROM `patients` 
-    //         WHERE `lastname` LIKE :research OR `firstname` LIKE :research OR `birthdate` LIKE :research OR `phone` LIKE :research OR `mail` 
-    //         LIKE :research 
-    //         ORDER BY `lastname`;';
+    //         $sql = 'SELECT *.`users`, `name`.`roles`
+    //         FROM `users` 
+    //         JOIN `roles`
+    //         ON  `roles`.`id_roles` = `users`.`id_roles`
+    //         WHERE `pseudo` LIKE :research OR `email` LIKE :research OR `password` LIKE :research OR `extUserAvatar` LIKE :research OR `created_at` LIKE :research OR `validate_at` LIKE :research OR `name` LIKE :research ;';
     //         $sth = $pdo->prepare($sql);
     //         // On affecte les valeurs au marqueur nominatif :
     //         $sth->bindValue(':research', '%' . $research . '%', PDO::PARAM_STR);
@@ -294,26 +310,4 @@ class User
 
     //         return $results;
     //     }
-
-
-
-
-
-
-    //     // vérifier si l'id existe dans la base de données :
-    //     public static function existsId(int $id)
-    //     {
-    //         $pdo = Database::getInstance();
-    //         $sql = 'SELECT `id` FROM `patients` WHERE `id` = ?;';
-    //         $sth = $pdo->prepare($sql);
-    //         $sth->execute([$id]);
-    //         $results = $sth->fetchAll();
-
-    //         return (empty($results)) ? false : true;
-    //     }
-
-
-
-
-    
 }

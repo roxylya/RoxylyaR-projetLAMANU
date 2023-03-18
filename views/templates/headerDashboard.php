@@ -25,7 +25,7 @@
             <div class="d-flex justify-content-around align-items-center">
                 <div class="userAccount py-2 me-4">
                     <img class="avatarUser text-center" src="/public/uploads/avatars/avatar_<?= $userConnected->id_users . '.' . $userConnected->extUserAvatar ?>" alt="avatarUser">
-                    <a class="nav-link pseudoUser p-0 ms-1 me-md-3" href="/controllers/userAccount/userAccountCtrl.php" aria-current="page"><?= $userConnected->pseudo ?></a>
+                    <a class="nav-link pseudoUser p-0 ms-1 me-md-3" href="/controllers/dashboard/dashboardCtrl.php" ><?= $userConnected->pseudo ?></a>
                 </div>
                 <a class="exit me-3" href="/controllers/logOutCtrl.php" title="Se déconnecter"><img class="exitDoor" src="/public/assets/img/door.png" alt="porte ouverte icône de déconnexion"></a>
             </div>

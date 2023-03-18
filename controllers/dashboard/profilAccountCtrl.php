@@ -117,7 +117,7 @@ try {
                 $from = $_FILES['avatar']['tmp_name'];
                 $to = __DIR__ . '/../../public/uploads/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
-                header('location: /controllers/userAccount/userAccountCtrl.php?code=' . $code);
+                header('location: /controllers/dashboard/userAccountCtrl.php?code=' . $code);
                 die;
                 // session_destroy();
                 // $userConnected = User::getById($id_users);
@@ -133,13 +133,13 @@ try {
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../../views/templates/headerUserAccount.php');
+    include(__DIR__ . '/../../views/templates/headerDashboard.php');
     include(__DIR__ . '/../../views/error.php');
     include(__DIR__ . '/../../views/templates/footer.php');
     die;
 }
 
 
-include(__DIR__ . '/../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../views/userAccount/profilAccount.php');
+include(__DIR__ . '/../../views/templates/headerDashboard.php');
+include(__DIR__ . '/../../views/dashboard/profilAccount.php');
 include(__DIR__ . '/../../views/templates/footer.php');
