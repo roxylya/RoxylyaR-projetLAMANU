@@ -53,39 +53,8 @@
                         <!-- bouton pour envoyer le formulaire -->
                         <div class="form-group d-flex flex-column  pb-2">
                             <button type="submit" id="submit" class="btn d-flex align-self-center">Modifier</button>
-                            <a class="delete py-3 ps-md-5" title="Votre pseudo s'il apparaît sur le site sera remplacé par anonyme. Les commandes réalisées seront sauvegardées dans la base de données, les images des commandes pourront rester visibles sur le site. Vos autres données : email, pseudo, mot de passe et avatar de compte utilisateur seront supprimées, vous n'aurez plus accès à votre compte. L'annulation de la suppression de votre compte n'est pas possible." data-bs-toggle="modal" data-bs-target="#deleteUserAccount">Supprimer mon compte</a>
+                            <a class="delete py-3 ps-md-5" href="/controllers/userAccount/deleteUserAccountCtrl.php">Supprimer mon compte</a>
                         </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="deleteUserAccount" tabindex="-1" aria-labelledby="deleteUserAccountLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="deleteUserAccountLabel"><span class="bdRenaissanceH1">S</span>uppression du compte</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Vous vous apprêtez à supprimer votre compte ainsi que les données enregistrées. <br>
-                                        Merci de renseigner votre mot de passe.
-
-                                        <form method="post" action="/controllers/userAccount/deleteUserAccountCtrl.php" enctype="multipart/form-data">
-                                            <div class="form-group col-lg-5 py-3">
-                                                <input placeholder="mot de passe" type="password" class="form-control" id="passwordDelete" name="passwordDelete" value="<?= $password ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
-                                                <p class="error pt-1"><?= $error['passwordDelete'] ?? '' ?></p>
-                                            </div>
-
-                                        </form>
-                                        Êtes-vous sûr de vouloir supprimer votre compte ?
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-around align-items-center m-0 ">
-                                        <button type="button" class="btn btnNo text-center m-0 p-0" data-bs-dismiss="modal">Non.</button>
-                                        <a class="text-center" href="/controllers/userAccount/deleteUserAccountCtrl.php?id_users=<?= $userConnected->id_users ?>"> <button type="button" class="btn btnDelete text-center m-0 p-0">OUI.</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal end -->
-
                     </form>
                     <!-- fermeture formulaire -->
                 </div>
