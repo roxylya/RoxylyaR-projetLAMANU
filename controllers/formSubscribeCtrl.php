@@ -109,7 +109,7 @@ try {
                 $from = $_FILES['avatar']['tmp_name'];
                 $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
-                // setcookie('Avatar', $to);
+                // setcookie('avatar', $to);
                 header('location: /controllers/connexionCtrl.php?code=' . $code);
                 die;
             } else {

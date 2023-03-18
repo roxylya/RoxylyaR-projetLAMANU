@@ -125,6 +125,7 @@ class User
         return (empty($results)) ? false : true;
     }
 
+
       // vérifier si le pseudo existe déjà dans la base de données :
         public static function existsPseudo(string $pseudo)
         {
@@ -136,6 +137,7 @@ class User
     
             return (empty($results)) ? false : true;
         }
+
 
     // méthode d' ajout d'un user à la bd :
     public function add()
@@ -233,7 +235,26 @@ class User
         return ($nbResults > 0) ? true : false;
     }
 
+    // Delete un user :
 
+        public static function delete($id_users)
+        {
+            $pdo = Database::getInstance();
+            // je mets des as pour différencier mes id des différentes tables :
+            $sql = 'DELETE FROM `users` 
+              WHERE `users`.`id_users`=:id_users ;';
+
+            // on prépare la requête
+            $sth = $pdo->prepare($sql);
+            // On affecte les valeurs au marqueur nominatif :
+            $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+            // on exécute la requête
+            $sth->execute();
+            // on vérifie si la suppression a bien été effectuée :
+            $nbResults = $sth->rowCount();
+            // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+            return ($nbResults > 0) ? true : false;
+        }
 
 
     //     // Afficher tous les patients.
@@ -294,24 +315,5 @@ class User
 
 
 
-    //     // Delete un patient :
-
-    //     public static function delete($id)
-    //     {
-    //         $pdo = Database::getInstance();
-    //         // je mets des as pour différencier mes id des différentes tables :
-    //         $sql = 'DELETE FROM `patients` 
-    //           WHERE `patients`.`id`=:id ;';
-
-    //         // on prépare la requête
-    //         $sth = $pdo->prepare($sql);
-    //         // On affecte les valeurs au marqueur nominatif :
-    //         $sth->bindValue(':id', $id, PDO::PARAM_INT);
-    //         // on exécute la requête
-    //         $sth->execute();
-    //         // on vérifie si l'ajout a bien été effectué :
-    //         $nbResults = $sth->rowCount();
-    //         // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
-    //         return ($nbResults > 0) ? true : false;
-    //     }
+    
 }

@@ -1,10 +1,11 @@
 <main class="container-fluid py-5">
     <div class="row">
         <div class="col">
-            <div class="userConnected d-flex flex-column mt-5">
-                <div class="text-center ">
+            <div class="userConnected d-flex flex-column justify-content-center align-items-center mt-5">
+                <div class="">
                     <h1><span class="bdRenaissanceH1">B</span>ienvenue <?= $userConnected->pseudo ?> !</h1>
                 </div>
+                <p class="pt-2"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
                 <div class="profilUser mt-5 p-3">
                     <div class="actionUser p-5">
                         <a href="/controllers/userAccount/profilAccountCtrl.php">

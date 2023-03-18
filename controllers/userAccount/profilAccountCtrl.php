@@ -32,6 +32,8 @@ try {
                 if (User::existsEmail($email) === true && $email != $userConnected->email) {
                     // si le mail existe j'ajoute le message d'erreur au tableau d'alert :
                     $alert['Email'] = 'Email déjà existant.';
+                } else {
+                    setcookie('email', $email);
                 }
             }
         }
@@ -44,10 +46,14 @@ try {
             // Pseudo correspond à la regex ?
             if (!filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PSEUDO . '/')))) {
                 $error['pseudo'] = 'Format incorrect.';
+            } else {
+                if (User::existsPseudo($pseudo) === true && $pseudo != $userConnected->pseudo) {
+                    // si le pseudo existe j'ajoute le message d'erreur au tableau d'alert :
+                    $alert['pseudo'] = 'Pseudo déjà existant.';
+                } else {
+                    setcookie('pseudo', $pseudo);
+                }
             }
-            // else {
-            //      setcookie('Pseudo', $pseudo);
-            // }
         }
 
         // Récupérer les mots de passe :
@@ -66,7 +72,7 @@ try {
                     $error['password'] = 'Votre mot de passe doit contenir au moins 8 caractère dont 1 Majuscule, 1 miniscule, 1 caractère spécial et 1 chiffre.';
                 } else {
                     $password = password_hash($password, PASSWORD_DEFAULT);
-                    // setcookie('password', $password);
+                    setcookie('password', $password);
                 }
             }
         }
@@ -83,10 +89,12 @@ try {
                 if (!in_array($avatarType, EXTENSION)) {
                     $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
                 } else {
+                    $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $userConnected->id_users . '.' . $userConnected->extUserAvatar;
+                    if (file_exists($oldAvatar)) {
+                        // var_dump($oldAvatar);
+                        unlink($oldAvatar);
+                    }
                     $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);
-                    $avatarName = 'avatar_' . $id_users . '.' . $extUserAvatar;
-                    $from = $_FILES['avatar']['tmp_name'];
-                    $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
                 }
             }
         } else {
@@ -102,25 +110,32 @@ try {
             $user->setPassword($password);
             $user->setExtUserAvatar($extUserAvatar);
             $user->setUpdated_at($updated_at);
-            // Modifier l'id sur la base de données :
+            // Modifier les informations de l'user en fonction de son id sur la base de données :
             if ($user->update($id_users) === true) {
                 $code = 5;
+                $avatarName = 'avatar_' . $id_users . '.' . $extUserAvatar;
+                $from = $_FILES['avatar']['tmp_name'];
+                $to = __DIR__ . '/../../public/uploads/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
-                // setcookie('Avatar', $to);
-                header('location: /controllers/userAccount/profilAccountCtrl.php?code=' . $code);
+                header('location: /controllers/userAccount/userAccountCtrl.php?code=' . $code);
                 die;
+                // session_destroy();
+                // $userConnected = User::getById($id_users);
+                // session_start();
+                // $_SESSION['id_users'] = $userConnected->id_users;
+                // $id_users = $_SESSION['id_users'];
+                // setcookie('avatar', $to);
             } else {
                 $code = 4;
-                header('location: /controllers//userAccount/profilAccountCtrl.php?code=' . $code);
             }
         }
     }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../views/templates/header.php');
-    include(__DIR__ . '/../views/error.php');
-    include(__DIR__ . '/../views/templates/footer.php');
+    include(__DIR__ . '/../../views/templates/header.php');
+    include(__DIR__ . '/../../views/error.php');
+    include(__DIR__ . '/../../views/templates/footer.php');
     die;
 }
 

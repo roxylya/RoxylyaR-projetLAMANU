@@ -477,6 +477,7 @@ input:placeholder-shown {
     border: 1px solid #a47a07;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    background-image: url('/public/assets/img/defaultAvatar.png');
 }
 
 .btnUserAccount {
@@ -498,6 +499,81 @@ input:placeholder-shown {
     width: 3rem;
     height: 3rem;
 }
+
+.delete {
+    font-size: 1rem;
+    color: #03182D;
+}
+
+.delete:hover,
+.delete:focus,
+.delete:active {
+    font-size: 1rem;
+    color: #03182D;
+}
+
+.delete:active {
+    transform: translateY(2px);
+}
+
+/* modal */
+.modal-content {
+    background-color: #03182D;
+    border: 1px solid #a47a07;
+}
+.modal-header{
+    border-bottom: 1px solid #a47a07;
+}
+.modal-title {
+    font-size: 3rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+}
+
+.modal-title>span {
+    font-size: 2rem;
+}
+
+.modal-body {
+    font-size: 1rem;
+    color: #a47a07;
+}
+
+.modal-footer>.btn {
+    background-color: #03182D;
+    border: 1px solid #A97F07;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: 1.5rem;
+    color: #a47a07c3;
+    width: 5rem;
+    height: 2rem;
+    font-family: 'Black Clover Font';
+}
+
+.btnDelete{
+    background-color: #2d0b03;
+    border: 1px solid #A97F07;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: 1.5rem;
+    color: #a47a07c3;
+    width: 5rem;
+    height: 2rem;
+    font-family: 'Black Clover Font';
+}
+.modal-footer{
+    border-top: 1px solid #a47a07;
+ 
+}
+.modal-footer>a{
+    margin-top: -0.3rem;
+}
+
 
 @media(min-width:550px) and (max-width:800px) {
 

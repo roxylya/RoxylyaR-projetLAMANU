@@ -10,7 +10,17 @@ require_once(__DIR__ . '/../models/User.php');
 
 try {
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
-    $error = [];
+    if ($code === 1){
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        session_destroy();
+    }
+        $error = [];
 
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
