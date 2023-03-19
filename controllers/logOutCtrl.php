@@ -1,6 +1,5 @@
 <?php
 try {
-
     session_start();
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
     if ($code === 1) {

@@ -213,12 +213,12 @@ class User
         return $results;
     }
 
-    // // Update :
+    // Update :
 
     public function update($id_users)
     {
         $pdo = Database::getInstance();
-        $sql=' UPDATE `users` 
+        $sql = ' UPDATE `users` 
         SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `extUserAvatar`=:extUserAvatar, `updated_at`=:updated_at 
         WHERE `id_users`=:id_users;';
         //On insère les données reçues   
@@ -237,6 +237,31 @@ class User
         // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
         return ($nbResults > 0) ? true : false;
     }
+
+
+    // Update Password quand mot de passe oublié :
+
+    public function updatePassword($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = ' UPDATE `users` 
+         SET `password`=:password, `updated_at`=:updated_at 
+         WHERE `id_users`=:id_users;';
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->bindValue(':password', $this->password);
+        $sth->bindValue(':updated_at', $this->updated_at);
+        $sth->execute();
+        // on vérifie si l'ajout a bien été effectué :
+        $nbResults = $sth->rowCount();
+
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return ($nbResults > 0) ? true : false;
+    }
+
+
 
     // Delete un user :
 

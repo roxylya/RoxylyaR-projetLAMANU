@@ -119,12 +119,6 @@ try {
                 move_uploaded_file($from, $to);
                 header('location: /controllers/userAccount/userAccountCtrl.php?code=' . $code);
                 die;
-                // session_destroy();
-                // $userConnected = User::getById($id_users);
-                // session_start();
-                // $_SESSION['id_users'] = $userConnected->id_users;
-                // $id_users = $_SESSION['id_users'];
-                // setcookie('avatar', $to);
             } else {
                 $code = 4;
             }

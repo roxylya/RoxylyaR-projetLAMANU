@@ -15,13 +15,13 @@
                             <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
                         </div>
                     </div>
-                    <p class="error text-center pt-2" id="alertPassword1"><?= $error['password'] ?? $error['email'] ?? '' ?></p>
+                    <p class="w-100 error text-center pt-2" id="alertPassword1"><?= $error['password'] ?? $error['email'] ?? '' ?></p>
                     <div class="form-group text-center">
                         <button type="submit" id="submit" class="btn btn-default">Envoyer</button>
                     </div>
                     <div class="py-3 text-center d-flex flex-lg-row flex-column justify-content-center align-items-center">
                         <p class="little pe-lg-5"> Pas encore inscrit ? C'est par <a href="/controllers/formSubscribeCtrl.php">ici</a>.</p>
-                        <p class="little"> Mot de passe oublié ? C'est par <a href="/controllers/formForgetPasswordCtrl.php">là</a>.</p>
+                        <p class="little"> Mot de passe oublié ? C'est par <a href="/controllers/forgetPassword/formForgetPasswordCtrl.php">là</a>.</p>
                     </div>
                 </form>
                 <div class="text-center pt-3">

@@ -14,5 +14,7 @@ define('CODES', [
     11 => 'Votre message a été envoyé.',
     12 => 'Pour vous connecter, valider votre email.',
     13 => 'Mail validé, vous pouvez vous connecter.',
-    14 => 'Enregistrement impossible, veuillez remplir le formulaire.'
+    14 => 'Enregistrement impossible, veuillez remplir le formulaire.',
+    15 => 'Le mot de passe n\'a pas été modifié.' ,
+    16 => 'Le mot de passe a été modifié.'
 ]);

@@ -1,12 +1,16 @@
 <?php
+
 // on a besoin d'accéder à la db :
 require_once(__DIR__ . '/../config/Database.php');
 // on a besoin d'accéder aux constantes :
 require_once(__DIR__ . '/../config/constants.php');
-// on a besoin du model User :
+// on a besoin d'accéder au tableau de messages :
+require_once(__DIR__ . '/../config/config.php');
+// on a besoin d'accéder au helper :
+require_once(__DIR__ . '/../helper/dd.php');
+// on a besoin du model :
 require_once(__DIR__ . '/../models/User.php');
 
-// je teste si mon code fonctionne :
 try {
 
     // je crée un tableau où se trouveront tous les messages d'erreur :
