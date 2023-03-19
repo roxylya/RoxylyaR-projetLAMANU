@@ -13,7 +13,7 @@
         * L'annulation de la demande de suppression de votre compte n'est pas possible.</p>
     <form method="post" action="/controllers/userAccount/deleteUserAccountCtrl.php">
         <div class="form-group py-3">
-            <label class="pb-2" for="passwordDelete">Confirmer votre mot de passe :</label>
+            <label class="pb-2" for="passwordDelete">Votre mot de passe :</label>
             <input type="password" class="form-control" id="passwordDelete" name="passwordDelete" value="<?= $passwordDelete ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
             <p class="error pt-1"><?= $error['passwordDelete'] ?? '' ?></p>
         </div>

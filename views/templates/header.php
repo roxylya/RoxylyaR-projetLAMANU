@@ -14,12 +14,12 @@
 
 <body>
     <!-- header start -->
-    <header>
+    <header class="bgBlue">
         <!-- nav start -->
-        <nav class="nav justify-content-around align-items-center py-3">
-            <a class="nav-link active" href="/controllers/homeCtrl.php" aria-current="page"><img class="logo" src="/public/assets/img/logo800.png" alt="lettre R, façon vitrail"> Roxylya "R"</a>
+        <nav class="nav justify-content-around align-items-center blackClover py-3 ">
+            <a class="nav-link" href="/controllers/homeCtrl.php" aria-current="page"><img class="logo" src="/public/assets/img/logo800.png" alt="lettre R, façon vitrail"> Roxylya "R"</a>
             <div class="d-flex">
-                <a class="nav-link d-none d-lg-block" aria-current="page" href="/controllers/catalogCtrl.php">Catalogue</a>
+                <a class="nav-link d-none d-lg-block " aria-current="page" href="/controllers/catalogCtrl.php">Catalogue</a>
                 <a class="nav-link d-none d-lg-block" href="/controllers/galleryCtrl.php">Galerie</a>
                 <a class="nav-link d-none d-lg-block" href="/controllers/goldenBookCtrl.php">Livre d'Or</a>
                 <a class="nav-link d-none d-lg-block" href="/controllers/connexionCtrl.php">Connexion</a>
@@ -50,4 +50,4 @@
     <main class="container-fluid py-5">
         <div class="row">
             <div class="col">
-                <div class="userConnected d-flex flex-column justify-content-center align-items-center mt-5">
+                <div class="d-flex flex-column justify-content-center align-items-center mt-lg-3">
