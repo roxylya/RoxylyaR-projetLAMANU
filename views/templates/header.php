@@ -47,7 +47,5 @@
         <img class="topFrise position-absolute bottom-10 end-0" alt="Responsive image" src="/public/assets/img/friseroxylyar.png" alt="frise dorée type renaissance">
     </header>
     <!-- header end -->
-    <main class="container-fluid py-5">
-        <div class="row">
-            <div class="col">
-                <div class="d-flex flex-column justify-content-center align-items-center mt-lg-3">
+    <main class="py-5 m-0">
+                <div class="d-flex flex-column justify-content-center align-items-center m-0 mt-3">

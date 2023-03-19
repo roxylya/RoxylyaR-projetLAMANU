@@ -55,4 +55,4 @@ try {
 }
 
 include(__DIR__ . '/../views/home.php');
-include(__DIR__ . '/../views/templates/footerHome.php');
+include(__DIR__ . '/../views/templates/footer.php');

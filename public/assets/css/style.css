@@ -1,3 +1,5 @@
+/* polices */
+
 /* font-family: 'Fondamento', cursive; */
 
 @font-face {
@@ -9,6 +11,8 @@
     font-family: "BD Renaissance";
     src: url("./BDRENAIS.TTF") format("ttf");
 }
+
+/* =================================================================================================== */
 
 /* scrollbar */
 
@@ -32,12 +36,11 @@ body::-webkit-scrollbar-thumb {
     /* creates padding around scroll thumb */
 }
 
+/* =================================================================================================== */
 
 /* générale */
 
 body {
-    /* font-family: "Black Clover Font"; */
-    /* letter-spacing: 1px; */
     /* font-family: 'Fondamento', cursive; */
     background-image: url(../img/patternrouge.png),
         linear-gradient(to bottom, #ffebcd, #ffebcd);
@@ -49,11 +52,11 @@ li {
     list-style: none;
 }
 
-.bgBlue{
+.bgBlue {
     background-color: #03182D;
 }
 
-.bgGold{
+.bgGold {
     background-color: #A97F07;
 }
 
@@ -66,7 +69,7 @@ li {
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
 }
 
-.gold{
+.gold {
     color: transparent;
     background: #a47a07;
     -webkit-background-clip: text;
@@ -98,13 +101,16 @@ li {
     font-size: 3rem;
     font-family: "BD Renaissance";
 }
-.blackClover{
+
+.blackClover {
     font-family: "Black Clover Font";
+    letter-spacing: 1px;
 }
 
-.fondamento{
+.fondamento {
     font-family: "Fondamento";
 }
+
 h1 {
     font-size: 3.2rem;
 }
@@ -113,16 +119,24 @@ h2 {
     font-size: 2.5rem;
 }
 
-.small{
-    font-size: 1rem;
+.small {
+    font-size: 0.7rem;
 }
 
-.medium{
+.medium {
     font-size: 1.5rem;
 }
 
-.large{
+.large {
     font-size: 2rem;
+}
+
+.xLarge {
+    font-size: 3rem;
+}
+
+.justify{
+    text-align: justify;
 }
 
 /* logo jeu les royaumes renaissants */
@@ -139,8 +153,47 @@ h2 {
     transform: translateY(4px);
 }
 
-/* header */
+.borderGold {
+    border-top: 0.5rem groove #8a551a;
+    border-bottom: 0.5rem groove #8a551a;
+}
 
+.box {
+    border-radius: 1rem;
+    border: 1px solid #A97F07;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.box>p {
+    text-align: justify;
+}
+
+
+.exitDoor {
+    width: 2rem;
+    margin-bottom: -0.5rem;
+}
+
+a {
+    text-decoration: none;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+}
+
+a:hover {
+    color: #a47a07;
+}
+
+a:active {
+    color: #a47a07;
+    transform: translateY(4px);
+}
+
+
+/* =================================================================================================== */
+
+/* header */
 
 .logo {
     width: 6rem;
@@ -253,60 +306,35 @@ h2 {
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
-@media (max-width:800px) {
-    .pseudoUser {
-        font-size: 1.5rem;
-    }
-}
-
 @media(max-width:500px) {
     .titleRoxylyaR {
         display: none;
     }
 }
 
-/* home.php */
-
-.bgHomeText {
-    border-top: 0.5rem groove #8a551a;
-    border-bottom: 0.5rem groove #8a551a;
-}
+/* =================================================================================================== */
 
 /* carousel */
 
 .active.carousel-item-start,
 .carousel-item-prev:not(.carousel-item-end) {
-    transform: translateX(-150%);
+    transform: translateX(-100%);
 }
 
 .carousel-item {
     position: relative;
     float: left;
+    object-fit: contain;
     width: 100%;
-    margin-right: -200%;
+    margin-right: -150%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transition: transform 2s ease-in-out;
 }
 
-/* formulaire d'inscription */
-.createAccount {
-    background-color: #a47a0723;
-    border-radius: 1rem;
-    padding: 1rem;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-}
 
-label {
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    font-size: 1.4rem;
-}
+/* =================================================================================================== */
+/* formulaire d'inscription */
 
 .btn {
     background-color: #03182D;
@@ -358,6 +386,7 @@ input:placeholder-shown {
     margin-bottom: -0.2rem;
 }
 
+/* =================================================================================================== */
 
 /* Catalogue */
 
@@ -377,7 +406,7 @@ input:placeholder-shown {
     text-align: justify;
 }
 
-
+/* =================================================================================================== */
 /* userAccount */
 
 .avatarProfil {
@@ -438,7 +467,7 @@ input:placeholder-shown {
     font-family: 'Black Clover Font';
 }
 
-.btnChoice>a>.btnDelete{
+.btnChoice>a>.btnDelete {
     background-color: #2d0b03;
     border: 1px solid #A97F07;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -450,59 +479,13 @@ input:placeholder-shown {
     font-family: 'Black Clover Font';
 }
 
-.box {
-    border-radius: 1rem;
-    border: 1px solid #A97F07;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-}
 
-.box>p{
-    text-align: justify;
-}
-
-
-.exitDoor {
-    width: 2rem;
-    margin-bottom: -0.5rem;
-}
-
+/* =================================================================================================== */
 /* footer */
 
 footer {
-    background-color: #03182D;
     border-top: 7px groove #8a551a;
 }
 
-a {
-    text-decoration: none;
-    font-size: 1.8rem;
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    -webkit-transition: color 1s;
-    transition: color 1s;
-}
 
-a:hover {
-    color: #a47a07;
-}
 
-a:active {
-    transform: translateY(4px);
-}
-
-.copyright {
-    font-size: 1rem;
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    -webkit-transition: color 1s;
-    transition: color 1s;
-}

@@ -1,9 +1,9 @@
-<div class="mobile d-lg-none m-0 p-0 d-flex flex-column align-items-center">
-    <h1 class="text-center"><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier
+<div class="w-100 mobile d-md-none m-0 p-0 d-flex flex-column align-items-center">
+    <h1 class="text-center blackClover gold"><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier
         Roxylya R</h1>
-    <img class="pt-3" src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
-    <div class="bgHomeText py-3">
-        <p class="homeText text-justify"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
+    <img class="py-3" src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
+    <div class="borderGold bgBlue py-3">
+        <p class="gold blackClover medium justify px-3"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
             article, je vous invite à vous inscrire gratuitement. </p>
         <!-- carousel start -->
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -23,27 +23,26 @@
             </div>
         </div>
         <!-- carousel end -->
-        <p class="homeText text-justify "><span class="bdRenaissanceP">Q</span>uel article ? Une magnifique
+        <p class="gold blackClover medium justify px-3"><span class="bdRenaissanceP">Q</span>uel article ? Une magnifique
             tenue, une bannière que vous afficherez avec fierté ou encore vous faire un portrait ou refaire le portrait..
         </p>
     </div>
-    <div class="col">
-        <p class="homeText text-justify"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <p class="gold blackClover medium text-center px-3"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
             Renaissants ? N'hésitez pas à créer votre compte et jouez ! <br>
             Comment s'inscrire ? Cliquez sur le lien et suivez le guide.</p>
-        <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt=""></a>
-    </div>
+     </div>
 </div>
 <!-- main mobile end -->
 <!-- main desktop start -->
-<div class="desktop d-none d-lg-flex flex-column align-items-center m-0 p-0">
-    <div class="d-flex justify-content-around align-items-center m-0 p-0">
-    <h1><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier Roxylya R !</h1>
-    <img src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
-</div>
-    <div class="bgHomeText d-flex flex-row align-items-center justify-content-around py-3">
+<div class="desktop d-none d-md-flex flex-column align-items-center m-0 p-0">
+    <div class="d-flex justify-content-around align-items-center m-0 p-0 py-3">
+        <h1 class="text-center blackClover gold"><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier Roxylya R !</h1>
+        <img src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
+    </div>
+    <div class="bgBlue borderGold d-flex flex-row align-items-center justify-content-around p-3 m-0">
         <!-- carousel start -->
-        <div id="carouselExampleSlidesOnly" class="w-50 carousel slide px-lg-3" data-bs-ride="carousel">
+        <div id="carouselExampleSlidesOnly" class="w-50 carousel slide m-0" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="/public/assets/img/carouselavatargwizio.png" class="d-block " alt="avatar Gwizio">
@@ -61,19 +60,20 @@
         </div>
         <!-- carousel end -->
 
-        <p class="w-50 homeText text-justify px-lg-3"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
+        <p class="w-50 justify gold blackClover large justify px-2"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un
             article, je vous invite à vous inscrire gratuitement. <br>
             <span class="bdRenaissanceP">Q</span>uel article ? Une magnifique tenue, une bannière que vous
             afficherez avec fierté ou encore vous faire un portrait ou refaire le portrait..
         </p>
     </div>
 
-    <div class="col align-items-center justify-content-center text-center py-5">
-        <p class="homeText text-justify pb-5"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
+    <div class="d-flex flex-column align-items-center justify-content-center py-3">
+        <p class="gold blackClover text-center large pb-2"><span class="bdRenaissanceP">V</span>ous ne connaissez pas les Royaumes
             Renaissants ? N'hésitez pas à créer votre compte et jouez ! <br>
             Comment s'inscrire ? Cliquez sur le lien et suivez le guide.</p>
-        <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt=""></a>
+        <!-- <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt=""></a> -->
     </div>
 </div>
+
 
 <!-- main desktop end -->
