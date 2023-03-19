@@ -46,9 +46,8 @@
 
  <!-- main desktop start -->
  <main class="d-none d-lg-block container-fluid">
-     <div class="row text-center d-flex flex-column pt-5">
-     <p class="py-1"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
-         <div class="col d-flex flex-row align-items-center justify-content-around pb-5">
+     <div class="row text-center d-flex flex-column">
+         <div class="col d-flex flex-row align-items-center justify-content-around py-5">
              <h1 class="w-50"><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier Roxylya R !</h1>
              <img class="w-25 pt-3" src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
          </div>

@@ -21,7 +21,7 @@ try {
 
     // on affiche l'header correspondant selon si user connecté ou non :
     if (!isset($_SESSION['id_users'])) {
-        include(__DIR__ . '/../views/templates/header.php');
+        include(__DIR__ . '/../views/templates/headerHome.php');
     } else {
         // on récupère l'id_users connecté:
         $id_users = $_SESSION['id_users'];
@@ -55,4 +55,4 @@ try {
 }
 
 include(__DIR__ . '/../views/home.php');
-include(__DIR__ . '/../views/templates/footer.php');
+include(__DIR__ . '/../views/templates/footerHome.php');

@@ -1,13 +1,5 @@
-    <div class="text-center py-3">
-        <a href="#"><img class="chandlierReturn pt-5" title="Retour en haut" src="/public/assets/img/chandelier1.png" alt="chandelier"></a>
-    </div>
-    </div>
-    </div>
-    </div>
-    </main>
-
-    <!-- footer start -->
-    <footer class="d-flex flex-column justify-content-center align-items-center py-4">
+  <!-- footer start -->
+  <footer class="d-flex flex-column justify-content-center align-items-center py-4">
         <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt="logo Les Royaumes Renaissants"></a>
         <div class="w-100 d-flex flex-lg-row flex-column justify-content-around align-items-center m-0 pb-2">
             <a href="/controllers/legalNoticeCtrl.php">Mentions Légales</a>
