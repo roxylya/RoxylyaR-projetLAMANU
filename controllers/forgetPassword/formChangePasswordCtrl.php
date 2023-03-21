@@ -50,7 +50,7 @@ try {
             // Modifier les informations de l'user en fonction de son id sur la base de données :
             if ($user->updatePassword($id_users) === true) {
                 $code = 15;
-                header('location: /controllers/connexionCtrl.php?code=' . $code);
+                header('location: /../connection.html?code=' . $code);
                 die;
             } else {
                 $code = 16;
@@ -60,9 +60,7 @@ try {
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../../views/templates/header.php');
-    include(__DIR__ . '/../../views/error.php');
-    include(__DIR__ . '/../../views/templates/footer.php');
+    include(__DIR__ . '/../erreur.html');
     die;
 }
 

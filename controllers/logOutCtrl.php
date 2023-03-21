@@ -25,7 +25,7 @@ try {
 
         // on détruit la session.
         session_destroy();
-        header('location: /controllers/homeCtrl.php');
+        header('location: /accueil.html');
         die;
     }
 
@@ -53,13 +53,11 @@ try {
     // on détruit la session.
     session_destroy();
 
-    header('location: /controllers/homeCtrl.php');
+    header('location: /accueil.html');
     die;
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../views/templates/header.php');
-    include(__DIR__ . '/../views/error.php');
-    include(__DIR__ . '/../views/templates/footer.php');
+    include(__DIR__ . '/erreur.html');
     die;
 }

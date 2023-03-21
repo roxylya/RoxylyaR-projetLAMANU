@@ -1,8 +1,8 @@
-<div class="text-center">
-    <h1><span class="bdRenaissanceH1">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
-</div>
-<div class="box d-flex flex-column m-lg-5 m-2 p-lg-5 p-2">
-    <div class="pt-3">
+<div class="box bgWhite fondamento d-flex flex-column m-md-5 m-4 p-md-5 p-3">
+    <div class="text-center blue">
+        <h1><span class="bdRenaissanceH1">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
+    </div>
+    <div class="pt-3 blue">
         <h2><span class="bdRenaissanceH2">P</span>résentation :</h2>
         <p>Le présent document a pour objet de définir les modalités et conditions dans lesquelles d’une part, ____ , ci-après dénommé l’EDITEUR, met à la disposition de ses utilisateurs le site, et les services disponibles sur le site et d’autre part, la manière par laquelle l’utilisateur accède au site et utilise ses services.
 
@@ -30,7 +30,7 @@
             compétences de la créatrice. Ainsi, si vous avez des remarques ou constatations, merci de les
             envoyer à l'admin via le formulaire de contact.</p>
     </div>
-    <div class="pt-lg-5 pt-3">
+    <div class="pt-2 blue">
         <h2><span class="bdRenaissanceH2">P</span>lan du site :</h2>
         Depuis la page d'accueil, il est possible pour l'utilisateur de :
         <ul>
@@ -76,7 +76,7 @@
             <li>Importer les fichiers images et transférer vers le compte utilisateur</li>
         </ul>
     </div>
-    <div class="pt-lg-5 pt-3">
+    <div class="pt-2 blue">
         <h2><span class="bdRenaissanceH2">C</span>ompte Utilisateur :</h2>
         <p>
             Comme indiqué à diverses reprises, pour commander et commenter, il faut être inscrit. L'Utilisateur
@@ -101,7 +101,7 @@
             Invité.
         </p>
     </div>
-    <div class="pt-lg-5 pt-3">
+    <div class="pt-2 blue">
         <h2><span class="bdRenaissanceH2">M</span>odération :</h2>
         <p>
             Roxylya "R" est un site sur lequel l’Utilisateur peut laisser des messages sur le livre d’or,
@@ -112,7 +112,7 @@
             navigation dans la sérénité.
         </p>
     </div>
-    <div class="pt-lg-5 pt-3 text-center">
+    <div class="pt-2 blue text-center">
         <h2><span class="bdRenaissanceH2">J</span>e vous souhaite une agréable navigation !</h2>
     </div>
 </div>

@@ -34,6 +34,8 @@
      </div>
 </div>
 <!-- main mobile end -->
+
+
 <!-- main desktop start -->
 <div class="desktop d-none d-md-flex flex-column align-items-center m-0 p-0">
     <div class="d-flex justify-content-around align-items-center m-0 p-0 py-3">
@@ -74,6 +76,4 @@
         <!-- <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt=""></a> -->
     </div>
 </div>
-
-
 <!-- main desktop end -->

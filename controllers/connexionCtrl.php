@@ -59,12 +59,8 @@ try {
             $_SESSION['id_users'] = $user->id_users;
             $_SESSION['cookie_lifetime'] = 86400;
 
-            if ($user->id_roles === 3) {
-                header('location: /controllers/userAccount/userAccountCtrl.php');
-                die;
-            }
-            if ($user->id_roles === 1 || $user->id_roles === 2) {
-                header('location: /controllers/dashboard/dashboardCtrl.php');
+            if ($user->id_roles === 3 || $user->id_roles === 1 || $user->id_roles === 2) {
+                header('location: /mon-compte.html');
                 die;
             }
         }
@@ -72,7 +68,7 @@ try {
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../controllers/errorCtrl.php');
+    include(__DIR__ . '/erreur.html');
     die;
 }
 

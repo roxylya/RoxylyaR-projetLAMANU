@@ -40,7 +40,7 @@ try {
                     die;
                 } else {
                     $code = 0;
-                    header('location: /controllers/userAccount/profilAccountCtrl.php?code=' . $code);
+                    header('location: /mon-compte-mes-informations.html?code=' . $code);
                     die;
                 }
             }
@@ -49,9 +49,7 @@ try {
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
-    include(__DIR__ . '/../../views/templates/headerUserAccount.php');
-    include(__DIR__ . '/../../views/error.php');
-    include(__DIR__ . '/../../views/templates/footer.php');
+    include(__DIR__ . '/../erreur.html');
     die;
 }
 
