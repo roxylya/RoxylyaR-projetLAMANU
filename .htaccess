@@ -8,19 +8,19 @@ RewriteRule ^conditions-generales-d-utilisation.html$ /controllers/cguCtrl.php [
 
 RewriteRule ^catalogue.html$ /controllers/catalogCtrl.php [L]
 
-RewriteRule ^catalogue.html/femmes$ /controllers/catalogCtrl.php?category=femmes [L]
+RewriteRule ^catalogue-hommes.html$ /controllers/catalogMenCtrl.php [L]
 
-RewriteRule ^catalogue.html/hommes$ /controllers/catalogCtrl.php?category=hommes [L]
+RewriteRule ^catalogue-femmes.html$ /controllers/catalogWomenCtrl.php [L]
 
-RewriteRule ^catalogue.html/enfants$ /controllers/catalogCtrl.php?category=enfants [L]
+RewriteRule ^catalogue-enfants.html$ /controllers/catalogChildrenCtrl.php [L]
 
 RewriteRule ^livre-d-or.html$ /controllers/goldenBookCtrl.php [L]
 
 RewriteRule ^galerie.html$ /controllers/galleryCtrl.php [L]
 
-RewriteRule ^galerie.html/fresques$ /controllers/galleryCtrl.php?type=fresques [L]
+RewriteRule ^galerie-fresques.html$ /controllers/galleryFresquesCtrl.php [L]
 
-RewriteRule ^galerie.html/portraits$ /controllers/galleryCtrl.php?type=portraits [L]
+RewriteRule ^galerie-portraits.html$ /controllers/galleryPortraitsCtrl.php [L]
 
 RewriteRule ^connection.html$ /controllers/connexionCtrl.php [L]
 

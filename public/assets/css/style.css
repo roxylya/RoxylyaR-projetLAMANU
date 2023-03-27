@@ -542,16 +542,40 @@ input[type="checkbox"]:checked+label::before {
 
 .catalog>.box {
     width: 22rem;
-    height: 40rem;
+    height: 35rem;
+}
+
+.catalog>.box>img{
+    max-height: 25rem;
 }
 
 .gallery>.box {
     width: 27rem;
-    height: 15rem;
+    height: 20rem;
 }
 
 .gallery>.box>img{
-    max-width: 22rem;
+    max-width: 24rem;
+}
+
+@media (max-width:470px){
+    .catalog>.box {
+        width: 18rem;
+        height: 35rem;
+    }
+    
+    .catalog>.box>img{
+        max-height: 25rem;
+    }
+    
+    .gallery>.box {
+        width: 20rem;
+        height: 20rem;
+    }
+    
+    .gallery>.box>img{
+        max-width: 18rem;
+    }
 }
 
 /* =================================================================================================== */
