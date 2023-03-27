@@ -170,6 +170,10 @@ h2 {
     box-shadow: 1px 4px 8px 2px rgba(0, 0, 0, 1);
     -webkit-box-shadow: 1px 4px 12px 2px rgba(0, 0, 0, 1);
     -moz-box-shadow: 1px 4px 12px 2px rgba(0, 0, 0, 1);
+    /* background-image: url(../img/patternrouge.png),
+        linear-gradient(to bottom, #ffebcd, #ffebcd);
+    background-repeat: repeat, no-repeat;
+    opacity: 0.1, 0.2; */
 }
 
 .box>p {
@@ -298,6 +302,7 @@ a:active {
     height: 2rem;
     object-fit: fill;
     border: none;
+    margin-left: 3rem;
 }
 
 .navbar-toggler-icon:active {
@@ -380,6 +385,7 @@ input[type="file"]:focus,
 .checkCgu>label>a:active {
     color: #03182D;
 }
+
 /* checkbox */
 
 /* j'efface la version bootstrap */
@@ -391,22 +397,24 @@ input[type="file"]:focus,
 
 input[type="checkbox"] {
     display: none;
-  }
-  input[type="checkbox"]+ label::before {
-    content:'';
+}
+
+input[type="checkbox"]+label::before {
+    content: '';
     border: 1px solid rgb(169, 127, 7);
     border-radius: 0.3rem;
     padding: 0 0.6rem;
     margin-right: 0.3rem;
-  }
-  input[type="checkbox"]:checked + label::before {
+}
+
+input[type="checkbox"]:checked+label::before {
     background-color: rgb(169, 127, 7);
     content: '✔';
     font-size: 1rem;
     padding: 0 0.2rem;
     color: #03182D;
     border: 1px solid #03182D;
-  }
+}
 
 
 /* formulaire de connexion */
@@ -428,26 +436,6 @@ input[type="checkbox"] {
 .little>a:active,
 .little>a:hover {
     color: #03182D;
-}
-
-/* =================================================================================================== */
-
-/* Catalogue */
-
-.outfit {
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    border-radius: 1rem;
-}
-
-.outfitTitle {
-    font-size: 2rem;
-}
-
-.outfitDescription {
-    font-size: 1rem;
-    color: #03182D;
-    font-family: 'Fondamento', cursive;
-    text-align: justify;
 }
 
 /* =================================================================================================== */
@@ -523,6 +511,48 @@ input[type="checkbox"] {
     font-family: 'Black Clover Font';
 }
 
+/* catalogue */
+
+.navCatalog>a {
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    font-size: 1.8rem;
+    font-family: 'Black Clover Font';
+}
+
+.navCatalog>a:hover,
+.navCatalog>a:focus,
+.navCatalog>a:active {
+    color: transparent;
+    background: #03182D;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+    border-bottom: 1px solid #03182D;
+}
+
+.navCatalog>a {
+    border-bottom: 1px solid #A97F07;
+}
+
+.catalog>.box {
+    width: 22rem;
+    height: 40rem;
+}
+
+.gallery>.box {
+    width: 27rem;
+    height: 15rem;
+}
+
+.gallery>.box>img{
+    max-width: 22rem;
+}
 
 /* =================================================================================================== */
 /* footer */
