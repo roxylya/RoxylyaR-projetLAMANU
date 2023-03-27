@@ -1,5 +1,5 @@
 <div class="box bgWhite fondamento d-flex flex-column m-md-5 m-4 p-md-5 p-3">
-    <div class="text-center blue">
+    <div class="text-center blue blackClover">
         <h1><span class="bdRenaissanceH1">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
     </div>
     <div class="pt-3 blue">

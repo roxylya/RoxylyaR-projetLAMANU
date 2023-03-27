@@ -1,4 +1,4 @@
-<div class="text-center ">
+<div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">G</span>alerie</h1>
 </div>
 

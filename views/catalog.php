@@ -1,4 +1,4 @@
-<div class="text-center ">
+<div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">C</span>atalogue</h1>
 </div>
 <div class="pt-md-5 d-flex flex-wrap justify-content-around align-items-center">

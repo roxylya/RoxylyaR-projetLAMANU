@@ -1,5 +1,5 @@
 <div class="box fondamento fondamento bgWhite d-flex flex-column m-md-5 m-4 p-md-5 p-3">
-    <div class="text-center ">
+    <div class="text-center blackClover">
         <h1 class="blue"><span class="bdRenaissanceH1 blue">M</span>entions <span class="bdRenaissanceH1 blue">L</span>égales</h1>
         <p class="blue">En vigueur au 01/04/2023</p>
     </div>

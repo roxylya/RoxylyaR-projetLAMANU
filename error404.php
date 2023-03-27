@@ -1,2 +1,2 @@
-<h1 class="m-5">Erreur 404</h1>
-<h2 class="mb-5">Page Introuvable</h2>
+<h1 class="m-5 gold blackClover">Erreur 404</h1>
+<h2 class="mb-5 gold blackClover">Page Introuvable</h2>

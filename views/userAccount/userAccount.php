@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">B</span>ienvenue <?= $userConnected->pseudo ?> !</h1>
 </div>
 <p class="pt-2"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>

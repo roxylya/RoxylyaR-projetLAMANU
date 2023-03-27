@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">S</span>uppression de <span class="bdRenaissanceH1">M</span>on <span class="bdRenaissanceH1">C</span>ompte</h1>
 </div>
 <p class="py-1"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>

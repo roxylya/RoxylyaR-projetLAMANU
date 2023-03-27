@@ -1,42 +1,51 @@
 RewriteEngine On
-; home :
+
 RewriteRule ^accueil.html$ /controllers/homeCtrl.php [L]
-; mentions légales :
+
 RewriteRule ^mentions-legales.html$ /controllers/legalNoticeCtrl.php [L]
-; conditions générales d'utilisation :
+
 RewriteRule ^conditions-generales-d-utilisation.html$ /controllers/cguCtrl.php [L]
-; catalogue :
+
 RewriteRule ^catalogue.html$ /controllers/catalogCtrl.php [L]
-; livre d'or :
+
 RewriteRule ^livre-d-or.html$ /controllers/goldenBookCtrl.php [L]
-; galerie :
+
 RewriteRule ^galerie.html$ /controllers/galleryCtrl.php [L]
 
-; connexion :
+
 RewriteRule ^connection.html$ /controllers/connexionCtrl.php [L]
-; inscription :
+
 RewriteRule ^inscription.html$ /controllers/formSubscribeCtrl.php [L]
-; mot de passe oublié :
+
 RewriteRule ^changer-de-mot-de-passe.html$ /controllers/forgetPassword/formChangePasswordCtrl.php [L]
+
 RewriteRule ^mot-de-passe-oublié.html$ /controllers/forgetPassword/formForgetPasswordCtrl.php [L]
 
-; compte utilisateur :
 RewriteRule ^mon-compte.html$ /controllers/userAccount/userAccountCtrl.php [L]
+
 RewriteRule ^mon-compte-mon-dressing.html$ /controllers//userAccount/dressingUserCtrl.php [L]
+
 RewriteRule ^mon-compte-ma-galerie.html$ /controllers//userAccount/galleryUserCtrl.php [L]
+
 RewriteRule ^mon-compte-mes-achats.html$ /controllers//userAccount/ordersUserCtrl.php [L]
+
 RewriteRule ^mon-compte-mes-informations.html$ /controllers//userAccount/profilAccountCtrl.php [L]
 
-; dashboard :
+
 RewriteRule ^admin.html$ /controllers/dashboard/dashboardCtrl.php [L]
+
 RewriteRule ^admin-utilisateurs.html$ /controllers/dashboard/dashboardCtrl.php [L]
+
 RewriteRule ^admin-catalogue.html$ /controllers/dashboard/getAllCatalogCtrl.php [L]
+
 RewriteRule ^admin-galerie.html$ /controllers/dashboard/getAllGalleriesCtrl.php [L]
+
 RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllCommentCtrl.php [L]
+
 RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllOrdersCtrl.php [L]
 
-; erreurs :
 RewriteRule ^erreur.html$ /controllers/errorCtrl.php [L]
+
 RewriteRule ^page-non-trouvee.html$ /controllers/error404Ctrl.php [L]
 
 ErrorDocument 404 /controllers/error404Ctrl.php

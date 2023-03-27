@@ -60,8 +60,8 @@ li {
     background-color: #A97F07;
 }
 
-.bgWhite{
-    background-color: #eee1c3 ;
+.bgWhite {
+    background-color: #eee1c3;
 }
 
 .blue {
@@ -188,7 +188,8 @@ a {
     transition: color 1s;
 }
 
-a:hover {
+a:hover,
+a:focus {
     color: #a47a07;
 }
 
@@ -196,6 +197,7 @@ a:active {
     color: #a47a07;
     transform: translateY(4px);
 }
+
 
 
 /* =================================================================================================== */
@@ -364,23 +366,50 @@ input[type="file"]:focus,
     outline: 0 none;
 }
 
+
 .form-control {
     border: 1px solid rgb(169, 127, 7);
 }
 
-input:not(:placeholder-shown) {
-    background-color: #f5e9c9 !important;
-}
 
-input:placeholder-shown {
-    background-color: #f5e9c9 !important;
+.checkCgu>label>a,
+.checkCgu>label>a:hover,
+.checkCgu>label>a:focus,
+.checkCgu>label>a:active {
+    color: #03182D;
 }
+/* checkbox */
+
+/* j'efface la version bootstrap */
+/* input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+} */
+
+input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"]+ label::before {
+    content:'';
+    border: 1px solid rgb(169, 127, 7);
+    border-radius: 0.3rem;
+    padding: 0 0.6rem;
+    margin-right: 0.3rem;
+  }
+  input[type="checkbox"]:checked + label::before {
+    background-color: rgb(169, 127, 7);
+    content: '✔';
+    font-size: 1rem;
+    padding: 0 0.2rem;
+    color: #03182D;
+    border: 1px solid #03182D;
+  }
 
 
 /* formulaire de connexion */
 
 .connect {
-    background-color: #a47a0723;
     border-radius: 1rem;
     padding: 1rem;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
@@ -391,6 +420,12 @@ input:placeholder-shown {
 .little>a {
     font-size: 1rem;
     margin-bottom: -0.2rem;
+}
+
+.little>a:focus,
+.little>a:active,
+.little>a:hover {
+    color: #03182D;
 }
 
 /* =================================================================================================== */
