@@ -89,6 +89,15 @@ try {
             $error['avatar'] = 'Fichier non renseigné.';
         }
 
+
+        // Vérifier checkbox :
+            $checkbox = filter_input(INPUT_POST, 'cGU', FILTER_SANITIZE_SPECIAL_CHARS);
+            if(empty($checkbox)){
+                $error['checkboxCgu'] = 'Vous devez accepter les Conditions Générales d\'Utilisation pour vous inscrire.';
+            }
+
+
+
         if (empty($error)) {
             $created_at = date('Y-m-d H:i:s');
             $updated_at = date('Y-m-d H:i:s');

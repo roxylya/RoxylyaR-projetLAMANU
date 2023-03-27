@@ -183,6 +183,7 @@ h2 {
 }
 
 a {
+    color: #03182D;
     text-decoration: none;
     -webkit-transition: color 1s;
     transition: color 1s;
@@ -364,6 +365,7 @@ input[type="file"]:focus,
     border-color: rgb(169, 127, 7, 0.8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(3, 24, 45, 0.6);
     outline: 0 none;
+    max-width: 30rem;
 }
 
 
