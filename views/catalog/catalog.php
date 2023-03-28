@@ -18,6 +18,7 @@
             Cindy vous présente la tenue Annev, dans la version mauve et blanche réhaussée de fil d'or.
         </p>
     </div>
+    <!-- article end -->
     <!-- article start -->
     <div class="box col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-5 my-3">
         <!-- titre de l'article -->
@@ -30,6 +31,7 @@
             Elios vous présente la tenue Plouf, dans sa version vertbleu coincoin et nuit.
         </p>
     </div>
+    <!-- article end -->
     <!-- article start -->
     <div class="box col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-5 my-3">
         <!-- titre de l'article -->
