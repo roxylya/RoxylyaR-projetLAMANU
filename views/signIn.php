@@ -17,6 +17,6 @@
     </div>
     <div class="py-3 text-center d-flex flex-lg-row flex-column justify-content-center align-items-center">
         <p class="little pe-lg-5"> Pas encore inscrit ? C'est par <a class="blue" href="/inscription.html">ici</a>.</p>
-        <p class="little mt-lg-0 mt-2"> Mot de passe oublié ? C'est par <a class="blue" href="/mot-de-passe-oublié.html">là</a>.</p>
+        <p class="little mt-lg-0 mt-2"> Mot de passe oublié ? C'est par <a class="blue" href="/mot-de-passe-oublie.html">là</a>.</p>
     </div>
 </form>
