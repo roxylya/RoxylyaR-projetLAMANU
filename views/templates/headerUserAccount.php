@@ -16,11 +16,11 @@
     <header class="bgBlue">
         <!-- nav start -->
         <nav class="nav justify-content-between align-items-center blackClover py-3 position-relative">
-            <a class="nav-link m-0" href="/controllers/homeCtrl.php"><img class="logo" src="/public/assets/img/logo800.png" alt="lettre R, façon vitrail"> <span class="titleRoxylyaR">Roxylya "R"</span> </a>
+            <a class="nav-link m-0" href="/accueil.html"><img class="logo" src="/public/assets/img/logo800.png" alt="lettre R, façon vitrail"> <span class="titleRoxylyaR">Roxylya "R"</span> </a>
             <div class="d-flex justify-content-between align-items-center p-0 m-0">
-                <a class="nav-link d-none d-lg-block" aria-current="page" href="/controllers/catalogCtrl.php">Catalogue</a>
-                <a class="nav-link d-none d-lg-block" href="/controllers/galleryCtrl.php">Galerie</a>
-                <a class="nav-link d-none d-lg-block" href="/controllers/goldenBookCtrl.php">Livre d'Or</a>
+                <a class="nav-link d-none d-lg-block" aria-current="page" href="/catalogue.html">Catalogue</a>
+                <a class="nav-link d-none d-lg-block" href="/galerie.html">Galerie</a>
+                <a class="nav-link d-none d-lg-block" href="/livre-d-or.html">Livre d'Or</a>
             </div>
             <div class="d-flex flex-md-row flex-column justify-content-around align-items-center pe-5">
                 <img class="avatarUser text-center" src="/public/uploads/avatars/avatar_<?= $userConnected->id_users . '.' . $userConnected->extUserAvatar ?>" alt="avatarUser">
@@ -32,13 +32,13 @@
             <div class="collapse navbar-collapse text-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/catalogCtrl.php">Catalogue</a>
+                        <a class="nav-link" href="/catalogue.html">Catalogue</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/galleryCtrl.php">Galerie</a>
+                        <a class="nav-link" href="/galerie.html">Galerie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/goldenBookCtrl.php">Livre d'Or</a>
+                        <a class="nav-link" href="/livre-d-or.html">Livre d'Or</a>
                     </li>
                 </ul>
             </div>

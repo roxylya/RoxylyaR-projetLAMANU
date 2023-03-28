@@ -17,12 +17,12 @@
     <header class="bgBlue">
         <!-- nav start -->
         <nav class="nav justify-content-around align-items-center blackClover py-3 ">
-            <a class="nav-link" href="/controllers/homeCtrl.php" aria-current="page"><img class="logo" src="/public/assets/img/logo800.png" alt="lettre R, façon vitrail"> Roxylya "R"</a>
+            <a class="nav-link" href="/accueil.html" aria-current="page"><img class="logo" src="/public/assets/img/logo800.png" alt="lettre R, façon vitrail"> Roxylya "R"</a>
             <div class="d-flex">
-                <a class="nav-link d-none d-lg-block " aria-current="page" href="/controllers/catalogCtrl.php">Catalogue</a>
-                <a class="nav-link d-none d-lg-block" href="/controllers/galleryCtrl.php">Galerie</a>
-                <a class="nav-link d-none d-lg-block" href="/controllers/goldenBookCtrl.php">Livre d'Or</a>
-                <a class="nav-link d-none d-lg-block" href="/controllers/connexionCtrl.php">Connexion</a>
+                <a class="nav-link d-none d-lg-block " aria-current="page" href="/catalogue.html">Catalogue</a>
+                <a class="nav-link d-none d-lg-block" href="/galerie.html">Galerie</a>
+                <a class="nav-link d-none d-lg-block" href="/livre-d-or.html">Livre d'Or</a>
+                <a class="nav-link d-none d-lg-block" href="/connexion.html">Connexion</a>
             </div>
             <button class="d-lg-none navbar-toggler m-0 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,15 +30,15 @@
             <div class="collapse navbar-collapse text-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/controllers/catalogCtrl.php">Catalogue</a>
+                        <a class="nav-link" aria-current="page" href="/catalogue.html">Catalogue</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/galleryCtrl.php">Galerie</a>
+                        <a class="nav-link" href="/galerie.html">Galerie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/goldenBookCtrl.php">Livre d'Or</a>
+                        <a class="nav-link" href="/livre-d-or.html">Livre d'Or</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/connexionCtrl.php">Connexion</a>
+                        <a class="nav-link" href="/connexion.html">Connexion</a>
                     </li>
                 </ul>
             </div>

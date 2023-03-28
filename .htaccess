@@ -22,13 +22,13 @@ RewriteRule ^galerie-fresques.html$ /controllers/gallery/galleryFresquesCtrl.php
 
 RewriteRule ^galerie-portraits.html$ /controllers/gallery/galleryPortraitsCtrl.php [L]
 
-RewriteRule ^connection.html$ /controllers/connexionCtrl.php [L]
+RewriteRule ^connexion.html$ /controllers/signInCtrl.php [L]
 
-RewriteRule ^inscription.html$ /controllers/formSubscribeCtrl.php [L]
+RewriteRule ^inscription.html$ /controllers/signUpCtrl.php [L]
 
 RewriteRule ^changer-de-mot-de-passe.html$ /controllers/forgetPassword/formChangePasswordCtrl.php [L]
 
-RewriteRule ^mot-de-passe-oublié.html$ /controllers/forgetPassword/formForgetPasswordCtrl.php [L]
+RewriteRule ^mot-de-passe-oublie.html$ /controllers/forgetPassword/formForgetPasswordCtrl.php [L]
 
 RewriteRule ^mon-compte.html$ /controllers/userAccount/userAccountCtrl.php [L]
 
@@ -39,7 +39,6 @@ RewriteRule ^mon-compte-ma-galerie.html$ /controllers//userAccount/galleryUserCt
 RewriteRule ^mon-compte-mes-achats.html$ /controllers//userAccount/ordersUserCtrl.php [L]
 
 RewriteRule ^mon-compte-mes-informations.html$ /controllers//userAccount/profilAccountCtrl.php [L]
-
 
 RewriteRule ^admin.html$ /controllers/dashboard/dashboardCtrl.php [L]
 

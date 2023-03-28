@@ -8,8 +8,8 @@
     <footer class="bgBlue d-flex flex-column justify-content-center align-items-center py-4">
         <a href="https://www.renaissancekingdoms.com/?lan=fr" target="_blank"><img class="logoRR" src="/public/assets/img/logo-rar.png" alt="logo Les Royaumes Renaissants"></a>
         <div class="w-100 d-flex flex-md-row flex-column justify-content-around align-items-center m-0 pb-2">
-            <a class="gold blackClover medium" href="/controllers/legalNoticeCtrl.php">Mentions Légales</a>
-            <a class="gold blackClover medium" href="/controllers/cguCtrl.php">C.G.U.</a>
+            <a class="gold blackClover medium" href="/mentions-legales.html">Mentions Légales</a>
+            <a class="gold blackClover medium" href="/conditions-generales-d-utilisation.html">C.G.U.</a>
             <a class="gold blackClover medium" href="mailto:roxylya.r.contact@gmail.com">Contact - Admin</a>
         </div>
         <p class="gold blackClover">© Roxylya R, 2022 - Tous droits réservés</p>

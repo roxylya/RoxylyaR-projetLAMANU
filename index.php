@@ -1,4 +1,4 @@
 <?php
-header('location: /controllers/homeCtrl.php');
+header('location: /accueil.html');
 
 die;
