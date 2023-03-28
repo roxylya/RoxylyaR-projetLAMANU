@@ -4,7 +4,7 @@ try {
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
     if ($code === 1) {
         // vidage des données de session :
-        $_SESSION = array();
+        unset($_SESSION['id_users']);
 
         // si cookies :
         // Si vous voulez détruire complètement la session, effacez également

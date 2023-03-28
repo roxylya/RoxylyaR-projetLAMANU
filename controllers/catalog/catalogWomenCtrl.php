@@ -36,5 +36,5 @@ try {
     die;
 }
 
-include(__DIR__ . '/../../views/catalog/catalogWomen.php');
+include(__DIR__ . '/../../views/catalogcatalogWomen.php');
 include(__DIR__ . '/../../views/templates/footer.php');

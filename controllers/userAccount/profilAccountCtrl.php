@@ -91,7 +91,7 @@ try {
                 } else {
                     $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $userConnected->id_users . '.' . $userConnected->extUserAvatar;
                     if (file_exists($oldAvatar)) {
-                        // var_dump($oldAvatar);
+                        //sinon enlever la condition et mettre un @ devant unlink;
                         unlink($oldAvatar);
                     }
                     $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);

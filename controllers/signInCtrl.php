@@ -56,7 +56,7 @@ try {
             $user = User::getByEmail($email);
             // on démarre la session :
             session_start();
-            $_SESSION['id_users'] = $user->id_users;
+            $_SESSION['id_users'] = $id_users;
             $_SESSION['cookie_lifetime'] = 86400;
 
             if ($user->id_roles === 3 || $user->id_roles === 1 || $user->id_roles === 2) {

@@ -545,7 +545,7 @@ input[type="checkbox"]:checked+label::before {
     height: 35rem;
 }
 
-.catalog>.box>img{
+.catalog>.box>img {
     max-height: 25rem;
 }
 
@@ -554,29 +554,42 @@ input[type="checkbox"]:checked+label::before {
     height: 20rem;
 }
 
-.gallery>.box>img{
+.gallery>.box>img {
     max-width: 24rem;
 }
 
-@media (max-width:470px){
+@media (max-width:470px) {
     .catalog>.box {
         width: 18rem;
         height: 35rem;
     }
-    
-    .catalog>.box>img{
+
+    .catalog>.box>img {
         max-height: 25rem;
     }
-    
+
     .gallery>.box {
         width: 20rem;
         height: 20rem;
     }
-    
-    .gallery>.box>img{
+
+    .gallery>.box>img {
         max-width: 18rem;
     }
 }
+
+
+/* =================================================================================================== */
+/* livre d'or */
+
+.commentHeader>img {
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+    border-radius: 1.5rem;
+    border: 1px solid #a47a07;
+}
+
 
 /* =================================================================================================== */
 /* footer */

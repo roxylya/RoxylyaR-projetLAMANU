@@ -91,10 +91,10 @@ try {
 
 
         // Vérifier checkbox :
-            $checkbox = filter_input(INPUT_POST, 'cGU', FILTER_SANITIZE_SPECIAL_CHARS);
-            if(empty($checkbox)){
-                $error['checkboxCgu'] = 'Vous devez accepter les Conditions Générales d\'Utilisation pour vous inscrire.';
-            }
+        $checkbox = filter_input(INPUT_POST, 'cGU', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($checkbox)) {
+            $error['checkboxCgu'] = 'Vous devez accepter les Conditions Générales d\'Utilisation pour vous inscrire.';
+        }
 
 
 
@@ -123,7 +123,21 @@ try {
                 $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
                 // setcookie('avatar', $to);
-                header('location: /connection.html?code=' . $code);
+
+                // mail de validation :
+                $link = $_SERVER['REQUEST_SCHEME'] . '://' .$_SERVER['HOST'].'/controllers/validateMailCtrl.php?id_users='. $user->id_users;
+                $for = $user->mail ;
+                $subject = 'Validation de votre inscription sur Roxylya R';
+                $message = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="<?= $link ?>">lien</a>.';
+                mail($for,$subject,$message);
+    
+                //     array|string $additional_headers = [],
+                //     string $additional_params = ""
+
+                // php mailer pour faire de l'envoi de mail (configurer le server smtp) 
+
+                // redirection vers la page de connexion :
+                header('location: /connexion.html?code=' . $code);
                 die;
             } else {
                 $code = 14;

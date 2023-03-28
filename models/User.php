@@ -213,6 +213,28 @@ class User
         return $results;
     }
 
+ // Update Validation du mail :
+
+ public static function updateValidate($id_users)
+ {
+     $pdo = Database::getInstance();
+     $sql = ' UPDATE `users` 
+      SET `validated_at`= NOW()
+      WHERE `id_users`=:id_users;';
+     //On insère les données reçues   
+     //  on note les marqueurs nominatifs :
+     $sth = $pdo->prepare($sql);
+     $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+     $sth->execute();
+     // on vérifie si l'ajout a bien été effectué :
+     $nbResults = $sth->rowCount();
+
+     // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+     return ($nbResults > 0) ? true : false;
+ }
+
+
+
     // Update :
 
     public function update($id_users)
