@@ -54,14 +54,20 @@ try {
         // Si pas de message d'erreur :
         if (empty($error)) {
             $user = User::getByEmail($email);
-            // on démarre la session :
-            session_start();
-            $_SESSION['id_users'] = $id_users;
-            $_SESSION['cookie_lifetime'] = 86400;
+            if ($user->validated_at != NULL) {
+                // on démarre la session :
+                session_start();
+                $_SESSION['id_users'] = $user->id_users;
+                $_SESSION['cookie_lifetime'] = 86400;
 
-            if ($user->id_roles === 3 || $user->id_roles === 1 || $user->id_roles === 2) {
-                header('location: /mon-compte.html');
-                die;
+                if ($user->id_roles === 3 || $user->id_roles === 1 || $user->id_roles === 2) {
+                    header('location: /mon-compte.html');
+                    die;
+                }
+            } else {
+                $code = 12 ;
+                header('location: /accueil.html' . $code);
+                    die;
             }
         }
     }

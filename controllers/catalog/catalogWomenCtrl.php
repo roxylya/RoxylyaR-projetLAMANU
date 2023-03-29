@@ -1,15 +1,15 @@
 <?php
 
 // on a besoin d'accéder à la db :
-require_once(__DIR__ . '/../config/Database.php');
+require_once(__DIR__ . '/../../config/Database.php');
 // on a besoin d'accéder aux constantes :
-require_once(__DIR__ . '/../config/constants.php');
+require_once(__DIR__ . '/../../config/constants.php');
 // on a besoin d'accéder au tableau de messages :
-require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../../config/config.php');
 // on a besoin d'accéder au helper :
-require_once(__DIR__ . '/../helper/dd.php');
+require_once(__DIR__ . '/../../helper/dd.php');
 // on a besoin du model :
-require_once(__DIR__ . '/../models/User.php');
+require_once(__DIR__ . '/../../models/User.php');
 
 
 try {
@@ -36,5 +36,5 @@ try {
     die;
 }
 
-include(__DIR__ . '/../../views/catalogcatalogWomen.php');
+include(__DIR__ . '/../../views/catalog/catalogWomen.php');
 include(__DIR__ . '/../../views/templates/footer.php');

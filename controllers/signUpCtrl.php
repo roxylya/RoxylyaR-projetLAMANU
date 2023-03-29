@@ -133,7 +133,6 @@ try {
     
                 //     array|string $additional_headers = [],
                 //     string $additional_params = ""
-
                 // php mailer pour faire de l'envoi de mail (configurer le server smtp) 
 
                 // redirection vers la page de connexion :
