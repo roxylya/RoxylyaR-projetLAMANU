@@ -456,7 +456,7 @@ input[type="checkbox"]:checked+label::before {
     border: 1px solid #A97F07;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #a47a07c3;
     width: 12rem;
     text-align: center;
@@ -596,9 +596,46 @@ input[type="checkbox"]:checked+label::before {
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
-.commentHeader>div{
+.commentHeader>div {
     border-bottom: 1px solid #a47a07;
 }
+
+/* =================================================================================================== */
+/* table */
+table{
+    border: 1px solid #a47a07;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+th{
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: transparent;
+    background: #a47a07;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
+}
+
+td{
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #a47a07;
+    color: transparent;
+    background: #03182D;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    /* text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5); */
+}
+
+
+
+
+
+
+
 
 /* =================================================================================================== */
 /* footer */

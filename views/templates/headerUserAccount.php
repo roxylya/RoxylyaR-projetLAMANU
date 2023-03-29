@@ -24,7 +24,7 @@
             </div>
             <div class="d-flex flex-md-row flex-column justify-content-around align-items-center pe-5">
                 <img class="avatarUser text-center" src="/public/uploads/avatars/avatar_<?= $userConnected->id_users . '.' . $userConnected->extUserAvatar ?>" alt="avatarUser">
-                <a class="nav-link pseudoUser p-0 ms-1 me-md-3" href="/controllers/userAccount/userAccountCtrl.php" aria-current="page"><?= $userConnected->pseudo ?></a>
+                <a class="nav-link pseudoUser p-0 ms-1 me-md-3" href="/mon-compte.html" aria-current="page"><?= $userConnected->pseudo ?></a>
             </div>
             <button class="d-lg-none navbar-toggler m-0 pe-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="d-lg-none navbar-toggler-icon"></span>

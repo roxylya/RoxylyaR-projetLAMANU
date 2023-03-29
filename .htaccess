@@ -32,17 +32,19 @@ RewriteRule ^mot-de-passe-oublie.html$ /controllers/forgetPassword/formForgetPas
 
 RewriteRule ^mon-compte.html$ /controllers/userAccount/userAccountCtrl.php [L]
 
-RewriteRule ^mon-compte-mon-dressing.html$ /controllers//userAccount/dressingUserCtrl.php [L]
+RewriteRule ^mon-compte-mon-dressing.html$ /controllers/userAccount/dressingUserCtrl.php [L]
 
-RewriteRule ^mon-compte-ma-galerie.html$ /controllers//userAccount/galleryUserCtrl.php [L]
+RewriteRule ^mon-compte-ma-galerie.html$ /controllers/userAccount/galleryUserCtrl.php [L]
 
-RewriteRule ^mon-compte-mes-achats.html$ /controllers//userAccount/ordersUserCtrl.php [L]
+RewriteRule ^mon-compte-mes-achats.html$ /controllers/userAccount/ordersUserCtrl.php [L]
 
-RewriteRule ^mon-compte-mes-informations.html$ /controllers//userAccount/profilAccountCtrl.php [L]
+RewriteRule ^mon-compte-je-commande.html$ /controllers/userAccount/commandCtrl.php [L]
+
+RewriteRule ^mon-compte-mes-informations.html$ /controllers/userAccount/profilAccountCtrl.php [L]
+
+RewriteRule ^mon-compte-mes-messages.html$ /controllers/userAccount/commentsCtrl.php [L]
 
 RewriteRule ^admin.html$ /controllers/dashboard/dashboardCtrl.php [L]
-
-RewriteRule ^admin-utilisateurs.html$ /controllers/dashboard/dashboardCtrl.php [L]
 
 RewriteRule ^admin-catalogue.html$ /controllers/dashboard/getAllCatalogCtrl.php [L]
 
