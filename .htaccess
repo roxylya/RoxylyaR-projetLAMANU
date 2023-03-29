@@ -38,6 +38,8 @@ RewriteRule ^mon-compte-ma-galerie.html$ /controllers/userAccount/galleryUserCtr
 
 RewriteRule ^mon-compte-mes-achats.html$ /controllers/userAccount/ordersUserCtrl.php [L]
 
+RewriteRule ^mon-compte-mes-achats-details.html$ /controllers/userAccount/detailsOrderCtrl.php [L]
+
 RewriteRule ^mon-compte-je-commande.html$ /controllers/userAccount/commandCtrl.php [L]
 
 RewriteRule ^mon-compte-mes-informations.html$ /controllers/userAccount/profilAccountCtrl.php [L]

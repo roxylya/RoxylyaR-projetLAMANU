@@ -22,7 +22,7 @@
                 <a class="nav-link d-none d-lg-block" href="/galerie.html">Galerie</a>
                 <a class="nav-link d-none d-lg-block" href="/livre-d-or.html">Livre d'Or</a>
             </div>
-            <div class="d-flex flex-md-row flex-column justify-content-around align-items-center pe-5">
+            <div class="d-flex flex-md-row flex-column justify-content-around align-items-center pe-md-5">
                 <img class="avatarUser text-center" src="/public/uploads/avatars/avatar_<?= $userConnected->id_users . '.' . $userConnected->extUserAvatar ?>" alt="avatarUser">
                 <a class="nav-link pseudoUser p-0 ms-1 me-md-3" href="/mon-compte.html" aria-current="page"><?= $userConnected->pseudo ?></a>
             </div>

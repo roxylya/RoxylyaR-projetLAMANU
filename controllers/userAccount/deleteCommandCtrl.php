@@ -19,8 +19,3 @@ try {
     include(__DIR__ . '/../erreur.html');
     die;
 }
-
-
-include(__DIR__ . '/../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../views/userAccount/command.php');
-include(__DIR__ . '/../../views/templates/footer.php');

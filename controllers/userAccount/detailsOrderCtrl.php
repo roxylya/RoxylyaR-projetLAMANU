@@ -20,7 +20,6 @@ try {
     die;
 }
 
-
 include(__DIR__ . '/../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../views/userAccount/command.php');
+include(__DIR__ . '/../../views/userAccount/detailsOrder.php');
 include(__DIR__ . '/../../views/templates/footer.php');
