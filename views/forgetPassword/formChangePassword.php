@@ -5,7 +5,7 @@
         <div class="d-lg-flex flex-wrap justify-content-around align-items-center">
             <!-- mot de passe -->
             <div class="w-100 form-group col-lg-5">
-                <label for="password">Mot de passe :</label>
+                <label for="password">Nouveau Mot de passe :</label>
                 <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
             </div>
             <!-- confirme mot de passe -->

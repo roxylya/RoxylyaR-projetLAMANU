@@ -11,37 +11,42 @@ require_once(__DIR__ . '/../../models/User.php');
 
 try {
     session_start();
-    $id_users = $_SESSION['id_users'];
-    $userConnected = User::getById($id_users);
-    // je crée un tableau où se trouveront tous les messages d'erreur :
-    $error = [];
-    // Vérifier les données envoyées :
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        // Récupérer le mot de passe :
-        $passwordDelete =  $_POST['passwordDelete'];
-        if (empty($passwordDelete)) {
-            $error['passwordDelete'] = 'Veuillez entrer votre mot de passe.';
-        } else {
-            // On vérifie que le mot de passe correspond au mail enregistré dans la bd avec la fonction password_verify()
-            // pour savoir d'où cela provient.
-            $hash = $userConnected->password;
+    if (!isset($_SESSION['user'])) {
+        header('location: /accueil.html');
+        die;
+    } else {
+        $user = $_SESSION['user'];
+        // $userConnected = User::getById($id_users);
 
-            if (!password_verify($passwordDelete, $hash)) {
-                $error['passwordDelete'] = 'Erreur de mot de passe.';
+        $error = [];
+        // Vérifier les données envoyées :
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Récupérer le mot de passe :
+            $passwordDelete =  $_POST['passwordDelete'];
+            if (empty($passwordDelete)) {
+                $error['passwordDelete'] = 'Veuillez entrer votre mot de passe.';
             } else {
-                if (User::delete($id_users) === true) {
-                    $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $userConnected->id_users . '.' . $userConnected->extUserAvatar;
-                    if (file_exists($oldAvatar)) {
-                        // var_dump($oldAvatar);
-                        unlink($oldAvatar);
-                    }
-                    $code = 1;
-                    header('location: /controllers/logOutCtrl.php?code=' . $code);
-                    die;
+                // On vérifie que le mot de passe correspond au mail enregistré dans la bd avec la fonction password_verify()
+                // pour savoir d'où cela provient.
+                $hash = $user->password;
+
+                if (!password_verify($passwordDelete, $hash)) {
+                    $error['passwordDelete'] = 'Erreur de mot de passe.';
                 } else {
-                    $code = 0;
-                    header('location: /mon-compte-mes-informations.html?code=' . $code);
-                    die;
+                    if (User::delete($user->id_users) === true) {
+                        $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $userConnected->id_users . '.' . $userConnected->extUserAvatar;
+                        if (file_exists($oldAvatar)) {
+                            // var_dump($oldAvatar);
+                            unlink($oldAvatar);
+                        }
+                        $code = 1;
+                        header('location: /controllers/logOutCtrl.php?code=' . $code);
+                        die;
+                    } else {
+                        $code = 0;
+                        header('location: /mon-compte-mes-informations.html?code=' . $code);
+                        die;
+                    }
                 }
             }
         }

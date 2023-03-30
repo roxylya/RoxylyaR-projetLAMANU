@@ -30,12 +30,15 @@ try {
             } else {
                 if (User::existsEmail($email) === false) {
                     $alert['email'] = 'L\'email ne correspond à aucun compte utilisateur.';
-                }
+                } 
             }
         }
 
         if (empty($error)) {
+            $user = User::getByEmail($email);
             // envoyer un lien sur le mail communiqué qui redirigera vers formChangePassword
+
+            // à faire mail
         }
     }
 } catch (\Throwable $th) {

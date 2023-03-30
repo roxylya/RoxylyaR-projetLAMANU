@@ -1,5 +1,5 @@
 <div class="text-center gold blackClover">
-    <h1><span class="bdRenaissanceH1">B</span>ienvenue <?= $userConnected->pseudo ?> !</h1>
+    <h1><span class="bdRenaissanceH1">B</span>ienvenue <?= $user->pseudo ?> !</h1>
 </div>
 <p class="pt-2"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
 <div class="box bgBlue medium d-flex flex-lg-row flex-column justify-content-around align-items-center mt-3 mb-5 p-3 p-md-5">
@@ -14,7 +14,7 @@
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/panier-en-osier.png" alt="icône panier en osier">Commander</div>
         </a>
     </div>
-    <img class="avatarProfil" src="/public/uploads/avatars/avatar_<?= $userConnected->id_users . '.' . $userConnected->extUserAvatar ?>" alt="avatarUser">
+    <img class="avatarProfil" src="/public/uploads/avatars/avatar_<?= $user->id_users . '.' . $user->extUserAvatar ?>" alt="avatarUser">
     <div class="lookUser p-3">
         <a href="/mon-compte-mon-dressing.html">
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/penderie.png" alt="icône penderie">Mon dressing</div>
@@ -22,7 +22,7 @@
         <a href="/mon-compte-ma-galerie.html">
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/galerie-dart.png" alt="icône galerie">Ma galerie</div>
         </a>   
-        <?php if($userConnected->id_roles === 1 || $userConnected->id_roles === 2){ ?>
+        <?php if($user->id_roles === 1 || $user->id_roles === 2){ ?>
         <a href="/admin.html">
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/admin.png" alt="icône admin">Dashboard</div>
         </a>

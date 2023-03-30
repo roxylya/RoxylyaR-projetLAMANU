@@ -125,10 +125,10 @@ try {
                 // setcookie('avatar', $to);
 
                 // mail de validation :
-                $link = $_SERVER['REQUEST_SCHEME'] . '://' .$_SERVER['HOST'].'/controllers/validateMailCtrl.php?id_users='. $user->id_users;
+                $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].'/controllers/validateMailCtrl.php?id_users='. $user->id_users;
                 $for = $user->mail ;
                 $subject = 'Validation de votre inscription sur Roxylya R';
-                $message = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="<?= $link ?>">lien</a>.';
+                $message = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="'. $link .'">lien</a>.';
                 mail($for,$subject,$message);
     
                 //     array|string $additional_headers = [],

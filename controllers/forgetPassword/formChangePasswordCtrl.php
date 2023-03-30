@@ -13,10 +13,14 @@ require_once(__DIR__ . '/../../models/User.php');
 
 
 try {
-    // on doit récupérer via le lien cliqué l'id_user correspondant:
-    // $id_users;
+
     // je crée un tableau où se trouveront tous les messages d'erreur :
     $error = [];
+
+    // on doit récupérer via le lien cliqué l'id_user correspondant:
+    // $id_users;
+    // récupération de l'id_users
+    $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
 
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {

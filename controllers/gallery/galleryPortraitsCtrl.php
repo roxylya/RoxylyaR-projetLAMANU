@@ -16,14 +16,14 @@ try {
     // si une session est en cours on la récupère :
     session_start();
     // on affiche l'header correspondant selon si user connecté ou non :
-    if (!isset($_SESSION['id_users'])) {
+    if (!isset($_SESSION['user'])) {
         include(__DIR__ . '/../../views/templates/header.php');
     } else {
-        // on récupère l'id_users connecté:
-        $id_users = $_SESSION['id_users'];
-        // on récupère les informations de l'user connecté :
-        $userConnected = User::getById($id_users);
-        if ($userConnected->id_roles === 1 || $userConnected->id_roles === 2 || $userConnected->id_roles === 3) {
+        // on récupère l'user connecté:
+        $user = $_SESSION['user'];
+        // // on récupère les informations de l'user connecté :
+        // $user = User::getById($user);
+        if ($user->id_roles === 1 || $user->id_roles === 2 || $user->id_roles === 3) {
             include(__DIR__ . '/../../views/templates/headerUserAccount.php');
         }
     }

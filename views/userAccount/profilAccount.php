@@ -8,13 +8,13 @@
         <!-- mail -->
         <div class="w-100 form-group">
             <label for="email">Email :</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= $email ?? $userConnected->email ?>" pattern="<?= REGEX_EMAIL ?>" required>
+            <input type="email" class="form-control" id="email" name="email" value="<?= $email ?? $user->email ?>" pattern="<?= REGEX_EMAIL ?>" required>
             <p class="error text-center"><?= $error['email'] ?? '' ?></p>
         </div>
         <!-- pseudo -->
         <div class="w-100 form-group">
             <label for="pseudo">Pseudo RR:</label>
-            <input type="text" class="form-control" id="pseudo" name="pseudo" value="<?= $pseudo ?? $userConnected->pseudo ?>" pattern="<?= REGEX_PSEUDO ?>" required>
+            <input type="text" class="form-control" id="pseudo" name="pseudo" value="<?= $pseudo ?? $user->pseudo ?>" pattern="<?= REGEX_PSEUDO ?>" required>
             <p class="error text-center"><?= $error['pseudo'] ?? '' ?></p>
         </div>
         <!-- mot de passe -->
@@ -35,7 +35,7 @@
         <!-- récupération avatar -->
         <div class="w-100 form-group">
             <label for="avatar" class="form-label">Avatar :</label>
-            <input class="form-control" type="file" id="avatar" name="avatar" value="<?= $avatar ?? 'avatar_' . $userConnected->id_users . '.' . $userConnected->extUserAvatar ?>" accept="image/png, image/jpg, image/JPG, image/jpeg, image/gif" required>
+            <input class="form-control" type="file" id="avatar" name="avatar" value="<?= $avatar ?? 'avatar_' . $user->id_users . '.' . $user->extUserAvatar ?>" accept="image/png, image/jpg, image/JPG, image/jpeg, image/gif" required>
             <p class="error text-center"><?= $error['avatar'] ?? '' ?></p>
         </div>
         <!-- bouton pour envoyer le formulaire -->

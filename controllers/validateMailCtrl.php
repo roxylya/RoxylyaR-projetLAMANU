@@ -5,9 +5,9 @@ try {
     $validationIsOk = User::updateValidate($id_users);
 
     if ($validationIsOk) {
-        session_start();
-        $id_users = $_SESSION['id_users'];
-        $user = User::getById($id_users);
+        // session_start();
+        // $user = User::getById($id_users);
+        // $user = $_SESSION['user'];
         $code = 13;
         header('location: /connexion.html?code=' . $code);
         die;

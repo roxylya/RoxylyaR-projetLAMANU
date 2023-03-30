@@ -1,5 +1,5 @@
 <h1 class="gold blackClover"><span class="bdRenaissanceH1">C</span>onnexion </h1>
-<p class="py-1"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
+<p class="py-1 red fondamento little"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
 <form method="post" class="connect medium mt-2 mb-5 gold fondamento mx-0" enctype="multipart/form-data" novalidate>
     <div class="d-lg-flex flex-wrap justify-content-around align-items-center pt-3">
         <div class="w-100 form-group">

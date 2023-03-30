@@ -12,8 +12,13 @@ require_once(__DIR__ . '/../../models/User.php');
 
 try {
     session_start();
-    $id_users = $_SESSION['id_users'];
-    $userConnected = User::getById($id_users);
+    if (!isset($_SESSION['user'])) {
+        header('location: /accueil.html');
+        die;
+    } else {
+        $user = $_SESSION['user'];
+        // $userConnected = User::getById($id_users);
+    }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $errorMessage = $th->getMessage();
