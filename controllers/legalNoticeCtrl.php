@@ -28,11 +28,10 @@ try {
         }
     }
 } catch (\Throwable $th) {
-   // on récupère le message d'erreur :
-   $errorMessage = $th->getMessage();
-   // on affiche la page d'erreur
-   include(__DIR__ . '/erreur.html');
-   die;
+    // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
+    $_SESSION['errorMessage'] = $th->getMessage();
+    header('location: /erreur.html');
+    die;
 }
 
 include(__DIR__ . '/../views/legalNotice.php');
