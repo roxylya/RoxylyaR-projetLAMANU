@@ -82,10 +82,6 @@ try {
                 $error['avatar'] = 'L\'image est obligatoire';
             }
 
-            if ($_FILES['avatar']['error'] == 0) {
-                $error['avatar'] = 'Une erreur est survenue lors du transfert';
-            }
-
             if (!in_array($avatarType, EXTENSION)) {
                 $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
             }
@@ -228,6 +224,7 @@ try {
     }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
+    session_start();
     $_SESSION['errorMessage'] = $th->getMessage();
     header('location: /erreur.html');
     die;
