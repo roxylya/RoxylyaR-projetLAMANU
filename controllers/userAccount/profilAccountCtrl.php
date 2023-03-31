@@ -34,7 +34,7 @@ try {
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $error['email'] = 'L\'adresse e-mail n\'est pas valide.';
                 } else {
-                    if (User::existsEmail($email) === true && $email != $userConnected->email) {
+                    if (User::existsEmail($email) === true && $email != $user->email) {
                         // si le mail existe j'ajoute le message d'erreur au tableau d'alert :
                         $alert['Email'] = 'Email déjà existant.';
                     } else {
@@ -52,7 +52,7 @@ try {
                 if (!filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_PSEUDO . '/')))) {
                     $error['pseudo'] = 'Format incorrect.';
                 } else {
-                    if (User::existsPseudo($pseudo) === true && $pseudo != $userConnected->pseudo) {
+                    if (User::existsPseudo($pseudo) === true && $pseudo != $user->pseudo) {
                         // si le pseudo existe j'ajoute le message d'erreur au tableau d'alert :
                         $alert['pseudo'] = 'Pseudo déjà existant.';
                     } else {
@@ -94,7 +94,7 @@ try {
                     if (!in_array($avatarType, EXTENSION)) {
                         $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
                     } else {
-                        $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $userConnected->id_users . '.' . $userConnected->extUserAvatar;
+                        $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $user->id_users . '.' . $user->extUserAvatar;
                         if (file_exists($oldAvatar)) {
                             //sinon enlever la condition et mettre un @ devant unlink;
                             unlink($oldAvatar);
@@ -120,7 +120,7 @@ try {
                     $code = 5;
                     $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
                     $from = $_FILES['avatar']['tmp_name'];
-                    $to = __DIR__ . '/../../public/uploads/avatars/' . $avatarName;
+                    $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                     move_uploaded_file($from, $to);
                     header('location: /mon-compte.html?code=' . $code);
                     die;

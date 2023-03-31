@@ -34,7 +34,7 @@ try {
                     $error['passwordDelete'] = 'Erreur de mot de passe.';
                 } else {
                     if (User::delete($user->id_users) === true) {
-                        $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $userConnected->id_users . '.' . $userConnected->extUserAvatar;
+                        $oldAvatar = LOCATION_UPLOAD . '/avatars/avatar_' . $user->id_users . '.' . $user->extUserAvatar;
                         if (file_exists($oldAvatar)) {
                             // var_dump($oldAvatar);
                             unlink($oldAvatar);

@@ -24,7 +24,7 @@ require_once(__DIR__ . '/../helper/dd.php');
 
 class Database
 {
-    private static $connection;
+    private static object $connection;
 
     // pour la transaction :
     public static function getInstance()

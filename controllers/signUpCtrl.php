@@ -90,7 +90,7 @@ try {
                 $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
             }
 
-            if ($FILES['avatar']['size'] > MAX_FILESIZE) {
+            if ($_FILES['avatar']['size'] > MAX_FILESIZE) {
                 $error['avatar'] = 'Le poids de l\'image doit être inférieur à 5mo.';
             } else {
                 $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);
