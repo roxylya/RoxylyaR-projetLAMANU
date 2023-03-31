@@ -57,7 +57,7 @@ try {
             if ($user->validated_at != NULL) {
                 // on démarre la session :
                 session_start();
-                $_SESSION['id_users'] = $user->id_users;
+                $_SESSION['user'] = $user;
                 // $_SESSION['cookie_lifetime'] = 86400;
 
                 if ($user->id_roles === 3 || $user->id_roles === 1 || $user->id_roles === 2) {

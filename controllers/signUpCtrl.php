@@ -71,22 +71,30 @@ try {
         }
 
         // Vérification de l'image :
-        if (isset($_FILES['avatar'])) {
+        if (!isset($_FILES['avatar'])) {
+            $error['avatar'] = 'Une erreur est survenue.';
+        } else {
             $avatar = $_FILES['avatar']['name'];
             $avatarType = $_FILES['avatar']['type'];
             $avatarError = $_FILES['avatar']['error'];
 
-            if (empty($avatar)) {
-                $error['avatar'] = 'Une erreur est survenue.';
-            } else {
-                if (!in_array($avatarType, EXTENSION)) {
-                    $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
-                } else {
-                    $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);
-                }
+            if ($_FILES['avatar']['error'] == 4) {
+                $error['avatar'] = 'L\'image est obligatoire';
             }
-        } else {
-            $error['avatar'] = 'Fichier non renseigné.';
+
+            if ($_FILES['avatar']['error'] == 0) {
+                $error['avatar'] = 'Une erreur est survenue lors du transfert';
+            }
+
+            if (!in_array($avatarType, EXTENSION)) {
+                $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
+            }
+
+            if ($FILES['avatar']['size'] > MAX_FILESIZE) {
+                $error['avatar'] = 'Le poids de l\'image doit être inférieur à 5mo.';
+            } else {
+                $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);
+            }
         }
 
 
@@ -117,20 +125,94 @@ try {
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($user->add() === true) {
                 $code = 12;
+                // je sauvegarde l'avatar :
                 $user = User::getByEmail($email);
                 $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
                 $from = $_FILES['avatar']['tmp_name'];
-                $to = __DIR__ . '/../public/uploads/avatars/' . $avatarName;
+                $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
-                // setcookie('avatar', $to);
+
+                // définition des points de référence image en portrait ou en paysage :
+                $size = 400;
+
+                $height_original = imagesy($gd_original);
+                $width_original = imagesx($gd_original);
+
+                $isPortrait = ($height_original > $width_original) ? true : false;
+                if ($isPortrait === true) {
+                    $width_scaled = $size;
+                    $height_scaled = -1;
+                } else {
+                    $width_scaled = round($width_original / $height_original) * $height_scaled;
+                    $height_scaled = $size;
+                }
+
+                //  je redimensionne l'image à 400px de large max :  
+                if ($extUserAvatar == 'image/gif') {
+                    $gd_original = imagecreatefromgif($to);
+                    $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
+                    $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                    imagegif($gd_scaled, $to_scaled);
+                    $height_scaled = imagesy($gd_scaled);
+                    $y_cropped = ($height_scaled - $size) / 2;
+                    $width_scaled = imagesx($gd_scaled);
+                    $x_cropped = ($width_scaled - $size) / 2;
+                    if ($height_scaled > $width_scaled) {
+                        // portrait :
+                        imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
+                    } else {
+                        // paysage :
+                        imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
+                    }
+                    imagegif($gd_scaled, $to_scaled, 85);
+                } elseif ($extUserAvatar == 'image/png') {
+                    $gd_original = imagecreatefrompng($to);
+                    $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
+                    $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                    imagepng($gd_scaled, $to_scaled);
+                    $height_scaled = imagesy($gd_scaled);
+                    $y_cropped = ($height_scaled - $size) / 2;
+                    $width_scaled = imagesx($gd_scaled);
+                    $x_cropped = ($width_scaled - $size) / 2;
+                    if ($height_scaled > $width_scaled) {
+                        // portrait :
+                        imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
+                    } else {
+                        // paysage :
+                        imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
+                    }
+                    imagepng($gd_scaled, $to_scaled, 85);
+                } elseif ($extUserAvatar == 'image/JPG' || $extUserAvatar == 'image/jpg' || $extUserAvatar == 'image/jpeg') {
+                    $gd_original = imagecreatefromjpeg($to);
+                    $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
+                    $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                    imagejpeg($gd_scaled, $to_scaled);
+                    $height_scaled = imagesy($gd_scaled);
+                    $y_cropped = ($height_scaled - $size) / 2;
+                    $width_scaled = imagesx($gd_scaled);
+                    $x_cropped = ($width_scaled - $size) / 2;
+                    if ($height_scaled > $width_scaled) {
+                        // portrait :
+                        imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
+                    } else {
+                        // paysage :
+                        imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
+                    }
+                    imagejpeg($gd_scaled, $to_scaled, 85);
+                } else {
+                    $message = 'Image non prise en charge.';
+                }
+
+
+
 
                 // mail de validation :
-                $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].'/controllers/validateMailCtrl.php?id_users='. $user->id_users;
-                $for = $user->mail ;
+                $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
+                $for = $user->mail;
                 $subject = 'Validation de votre inscription sur Roxylya R';
-                $message = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="'. $link .'">lien</a>.';
-                mail($for,$subject,$message);
-    
+                $message = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
+                mail($for, $subject, $message);
+
                 //     array|string $additional_headers = [],
                 //     string $additional_params = ""
                 // php mailer pour faire de l'envoi de mail (configurer le server smtp) 
