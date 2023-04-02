@@ -1,15 +1,17 @@
 <?php
 
 // on a besoin d'accéder à la db :
-require_once(__DIR__ . '/../../config/Database.php');
+require_once(__DIR__ . '/../../../config/Database.php');
 // on a besoin d'accéder aux constantes :
-require_once(__DIR__ . '/../../config/constants.php');
+require_once(__DIR__ . '/../../../config/constants.php');
 // on a besoin d'accéder au tableau de messages :
-require_once(__DIR__ . '/../../config/config.php');
+require_once(__DIR__ . '/../../../config/config.php');
+// on a besoin de la session flash :
+require_once(__DIR__ . '/../../../config/SessionFlash.php');
 // on a besoin d'accéder au helper :
-require_once(__DIR__ . '/../../helper/dd.php');
+require_once(__DIR__ . '/../../../helper/dd.php');
 // on a besoin du model :
-require_once(__DIR__ . '/../../models/User.php');
+require_once(__DIR__ . '/../../../models/User.php');
 
 
 try {
@@ -17,14 +19,14 @@ try {
     session_start();
     // on affiche l'header correspondant selon si user connecté ou non :
     if (!isset($_SESSION['user'])) {
-        include(__DIR__ . '/../../views/templates/header.php');
+        include(__DIR__ . '/../../../views/templates/header.php');
     } else {
         // on récupère l'id_users connecté:
         $user = $_SESSION['user'];
         // // on récupère les informations de l'user connecté :
         // $userConnected = User::getById($id_users);
         if ($user->id_roles === 1 || $user->id_roles === 2 || $user->id_roles === 3) {
-            include(__DIR__ . '/../../views/templates/headerUserAccount.php');
+            include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
         }
     }
 } catch (\Throwable $th) {
@@ -34,5 +36,5 @@ try {
     die;
 }
 
-include(__DIR__ . '/../../views/dashboard/users.php');
-include(__DIR__ . '/../../views/templates/footer.php');
+include(__DIR__ . '/../../../views/dashboard/users.php');
+include(__DIR__ . '/../../../views/templates/footer.php');

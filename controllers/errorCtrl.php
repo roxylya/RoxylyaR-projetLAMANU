@@ -6,15 +6,21 @@ require_once(__DIR__ . '/../config/Database.php');
 require_once(__DIR__ . '/../config/constants.php');
 // on a besoin d'accéder au tableau de messages :
 require_once(__DIR__ . '/../config/config.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../config/SessionFlash.php');
 // on a besoin d'accéder au helper :
 require_once(__DIR__ . '/../helper/dd.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../models/User.php');
-
+// on a besoin du model :
+require_once(__DIR__ . '/../config/SessionFlash.php');
 
     // si une session est en cours on la récupère :
     session_start();
-    $errorMessage = $_SESSION['errorMessage'];
+    if($_SESSION['errorMessage']){
+        $errorMessage = $_SESSION['errorMessage'];
+    }
+
     // on affiche l'header correspondant selon si user connecté ou non :
     if (!isset($_SESSION['user'])) {
         include(__DIR__ . '/../views/templates/header.php');

@@ -6,6 +6,8 @@ require_once(__DIR__ . '/../../config/Database.php');
 require_once(__DIR__ . '/../../config/constants.php');
 // on a besoin d'accéder aux constantes :
 require_once(__DIR__ . '/../../config/config.php');
+// on a besoin de la session flash :
+require_once(__DIR__ . '/../../config/SessionFlash.php');
 // on a besoin du models :
 require_once(__DIR__ . '/../../models/User.php');
 
@@ -16,7 +18,6 @@ try {
         die;
     } else {
         $user = $_SESSION['user'];
-        // $userConnected = User::getById($id_users);
     }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
