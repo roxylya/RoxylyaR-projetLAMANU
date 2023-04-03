@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // on a besoin d'accéder à la db :
 require_once(__DIR__ . '/../config/Database.php');
@@ -19,19 +19,20 @@ try {
   session_start();
   // on affiche l'header correspondant selon si user connecté ou non :
   if (!isset($_SESSION['user'])) {
-      include(__DIR__ . '/../views/templates/header.php');
+    include(__DIR__ . '/../views/templates/header.php');
   } else {
-      // on récupère l'id_users connecté:
-      $user = $_SESSION['user'];
+    // on récupère l'id_users connecté:
+    $user = $_SESSION['user'];
     //   // on récupère les informations de l'user connecté :
     //   $user = User::getById($id_users);
-      if ($user->id_roles === 1 || $user->id_roles === 2 || $user->id_roles === 3) {
-          include(__DIR__ . '/../views/templates/headerUserAccount.php');
-      }
+    if ($user->id_roles === 1 || $user->id_roles === 2 || $user->id_roles === 3) {
+      include(__DIR__ . '/../views/templates/headerUserAccount.php');
+    }
   }
 } catch (\Throwable $th) {
   // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
-  $_SESSION['errorMessage'] = $th->getMessage();
+  $message = $th->getMessage();
+  Session::setMessage($message);
   header('location: /erreur.html');
   die;
 }

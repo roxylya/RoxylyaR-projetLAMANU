@@ -31,11 +31,10 @@ try {
     }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
-    session_start();
-    $_SESSION['errorMessage'] = $th->getMessage();
+    $message = $th->getMessage();
+    Session::setMessage($message);
     header('location: /erreur.html');
     die;
-}
-
+  }
 include(__DIR__ . '/../../../views/dashboard/goldenBook.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

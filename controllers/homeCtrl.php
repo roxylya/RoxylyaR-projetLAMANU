@@ -35,10 +35,11 @@ try {
     }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
-    $_SESSION['errorMessage'] = $th->getMessage();
+    $message = $th->getMessage();
+    Session::setMessage($message);
     header('location: /erreur.html');
     die;
-}
+  }
 
 include(__DIR__ . '/../views/home.php');
 include(__DIR__ . '/../views/templates/footer.php');

@@ -2,12 +2,26 @@
 
 class Session
 {
-    public function __construct()
+    // public function __construct()
+    // {
+    //     session_start();
+    // }
+    public static function setMessage($message)
     {
-        session_start();
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        $_SESSION['message'] = $message;
     }
-    public function setFlash($message)
+
+    public static function getMessage()
     {
-        $_SESSION['flash'] = $message;
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        if (isset($_SESSION['message'])) {
+            return  $_SESSION['message'];
+            unset($_SESSION['message']);
+        }
     }
 }
