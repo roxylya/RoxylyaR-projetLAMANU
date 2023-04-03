@@ -20,7 +20,7 @@ class Session
             session_start();
         }
         if (isset($_SESSION['message'])) {
-            return  $_SESSION['message'];
+            $_SESSION['message'];
             unset($_SESSION['message']);
         }
     }

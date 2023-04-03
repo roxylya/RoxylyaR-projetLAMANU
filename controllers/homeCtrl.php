@@ -10,13 +10,13 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../config/SessionFlash.php');
 // on a besoin d'accéder au helper :
 require_once(__DIR__ . '/../helper/dd.php');
+// on a besoin d'accéder aux fonctions :
+require_once(__DIR__ . '/../helper/functions.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../models/User.php');
 
 
 try {
-    // on récupère le message s'il y en a un :
-    $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
 
     // si une session est en cours on la récupère :
     session_start();

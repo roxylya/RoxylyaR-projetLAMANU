@@ -15,7 +15,9 @@ require_once(__DIR__ . '/../models/User.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../config/SessionFlash.php');
 
-
+if (session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
 // on affiche l'header correspondant selon si user connecté ou non :
 if (!isset($_SESSION['user'])) {

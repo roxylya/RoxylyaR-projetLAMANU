@@ -10,6 +10,8 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../config/SessionFlash.php');
 // on a besoin d'accéder au helper :
 require_once(__DIR__ . '/../helper/dd.php');
+// on a besoin d'accéder aux fonctions :
+require_once(__DIR__ . '/../helper/functions.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../models/User.php');
 
@@ -102,8 +104,6 @@ try {
             $error['checkboxCgu'] = 'Vous devez accepter les Conditions Générales d\'Utilisation pour vous inscrire.';
         }
 
-
-
         if (empty($error)) {
             $created_at = date('Y-m-d H:i:s');
             $updated_at = date('Y-m-d H:i:s');
@@ -122,22 +122,18 @@ try {
             $user->setId_roles($id_roles);
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($user->add() === true) {
-                $code = 12;
                 // je sauvegarde l'avatar :
                 $user = User::getByEmail($email);
                 $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
                 $from = $_FILES['avatar']['tmp_name'];
+                $type = $_FILES['avatar']['type'];
                 $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
 
                 // définition des points de référence image en portrait ou en paysage :
                 $size = 400;
 
-                $height_original = imagesy($gd_original);
-                $width_original = imagesx($gd_original);
-
-                $isPortrait = ($height_original > $width_original) ? true : false;
-                if ($isPortrait === true) {
+                if (isPortrait($to) === true) {
                     $width_scaled = $size;
                     $height_scaled = -1;
                 } else {
@@ -146,7 +142,7 @@ try {
                 }
 
                 //  je redimensionne l'image à 400px de large max :  
-                if ($extUserAvatar == 'image/gif') {
+                if ($type == 'image/gif') {
                     $gd_original = imagecreatefromgif($to);
                     $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
                     $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
@@ -163,7 +159,7 @@ try {
                         imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
                     }
                     imagegif($gd_scaled, $to_scaled, 85);
-                } elseif ($extUserAvatar == 'image/png') {
+                } elseif ($type == 'image/png') {
                     $gd_original = imagecreatefrompng($to);
                     $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
                     $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
@@ -180,7 +176,7 @@ try {
                         imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
                     }
                     imagepng($gd_scaled, $to_scaled, 85);
-                } elseif ($extUserAvatar == 'image/JPG' || $extUserAvatar == 'image/jpg' || $extUserAvatar == 'image/jpeg') {
+                } elseif ($type == 'image/JPG' || $extUserAvatar == 'image/jpg' || $extUserAvatar == 'image/jpeg') {
                     $gd_original = imagecreatefromjpeg($to);
                     $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
                     $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
@@ -198,29 +194,34 @@ try {
                     }
                     imagejpeg($gd_scaled, $to_scaled, 85);
                 } else {
-                    $message = 'Image non prise en charge.';
+                    $message = "Il y a un soucis. Mais où?";
+                    Session::setMessage($message);
+                    header('location: /erreur.html');
+                    die;
                 }
-
-
-
 
                 // mail de validation :
                 $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
                 $for = $user->mail;
                 $subject = 'Validation de votre inscription sur Roxylya R';
-                $message = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
-                mail($for, $subject, $message);
+                $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
+                mail($for, $subject, $text);
 
                 //     array|string $additional_headers = [],
                 //     string $additional_params = ""
                 // php mailer pour faire de l'envoi de mail (configurer le server smtp) 
 
                 // redirection vers la page de connexion :
-                header('location: /connexion.html?code=' . $code);
+                $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
+                Session::setMessage($message);
+
+                header('location: /connexion.html');
                 die;
             } else {
-                $code = 14;
-                header('location: /inscription.html?code=' . $code);
+                $message = 'Une erreur est survenue, remplissez à nouveau le formulaire.';
+                Session::setMessage($message);
+                header('location: /inscription.html');
+                die;
             }
         }
     }
@@ -230,7 +231,7 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 
 include(__DIR__ . '/../views/templates/header.php');

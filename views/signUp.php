@@ -18,12 +18,12 @@
         <!-- mot de passe -->
         <div class="w-100 form-group pt-2">
             <label for="password">Mot de passe :</label>
-            <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
+            <input type="password" class="form-control" id="password" name="password" pattern="<?= REGEX_PASSWORD ?>" required>
         </div>
         <!-- confirme mot de passe -->
         <div class="w-100 form-group pt-2">
             <label for="passwordConfirm">Confirmer mot de passe :</label>
-            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" value="<?= $passwordConfirm ?? '' ?>" pattern="<?= REGEX_PASSWORD ?>" required>
+            <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" pattern="<?= REGEX_PASSWORD ?>" required>
         </div>
         <!-- message d'erreur mot de passe -->
         <div class="w-100 text-center pt-1">

@@ -14,8 +14,8 @@ require_once(__DIR__ . '/../helper/dd.php');
 require_once(__DIR__ . '/../models/User.php');
 
 try {
-    $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
     $error = [];
+    $message = Session::getMessage();
 
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -60,16 +60,14 @@ try {
                 // on démarre la session :
                 session_start();
                 $_SESSION['user'] = $user;
-                // $_SESSION['cookie_lifetime'] = 86400;
 
                 if ($user->id_roles === 3 || $user->id_roles === 1 || $user->id_roles === 2) {
                     header('location: /mon-compte.html');
                     die;
                 }
             } else {
-                $code = 12 ;
-                header('location: /accueil.html' . $code);
-                    die;
+               $message = 'Validez votre mail pour pouvoir vous connecter.';
+                Session::setMessage($message);
             }
         }
     }
@@ -79,7 +77,7 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/signIn.php');
