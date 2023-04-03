@@ -1,6 +1,6 @@
 <div class="box bgWhite fondamento d-flex flex-column m-md-5 m-4 p-md-5 p-3">
     <div class="text-center blue blackClover">
-        <h1><span class="bdRenaissanceH1">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
+        <h1 class="gold"><span class="bdRenaissanceH1 ">C</span>onditions <span class="bdRenaissanceH1">G</span>énérales d' <span class="bdRenaissanceH1">U</span>tilisation</h1>
     </div>
     <div class="pt-3 blue">
         <h2><span class="bdRenaissanceH2">P</span>résentation :</h2>
@@ -112,7 +112,7 @@
             navigation dans la sérénité.
         </p>
     </div>
-    <div class="pt-2 blue text-center">
-        <h2><span class="bdRenaissanceH2">J</span>e vous souhaite une agréable navigation !</h2>
+    <div class="pt-2 gold text-center">
+        <h3><span class="bdRenaissanceH3">J</span>e vous souhaite une agréable navigation !</h3>
     </div>
 </div>

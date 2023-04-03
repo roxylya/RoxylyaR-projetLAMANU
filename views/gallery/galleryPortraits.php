@@ -6,19 +6,19 @@
 </div>
 <div class="gallery d-flex flex-wrap justify-content-around align-items-center pt-2 mb-2">
     <!-- article start -->
-    <div class="box col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-3 my-3">
+    <div class="box bgBlue col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-3 my-3">
         <!-- titre de l'article -->
-        <h2 class="blue blackClover">Cassiopée Nox</h2>
-        <p class="little gold fondamento"> Par Roxylya<span class="blue"> | </span>Le 12/12/2021<span class="blue"> | </span>Portraits.</p>
+        <h2 class="gold blackClover">Cassiopée Nox</h2>
+        <p class="little gold fondamento"> Par Roxylya<span class="gold"> | </span>Le 12/12/2021<span class="gold"> | </span>Portraits.</p>
         <!-- image de l'article -->
         <img class="pt-4" src="/public/uploads/gallery/avatarCassiopeeNox08082022.jpg" alt="avatar Cassiopée Nox">
     </div>
     <!-- article end -->
     <!-- article start -->
-    <div class="box col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-3 my-3">
+    <div class="box bgBlue col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-3 my-3">
         <!-- titre de l'article -->
-        <h2 class="blue blackClover">Cassiopée Nox</h2>
-        <p class="little gold fondamento"> Par Roxylya<span class="blue"> | </span>Le 12/12/2021<span class="blue"> | </span>Portraits.</p>
+        <h2 class="gold blackClover">Cassiopée Nox</h2>
+        <p class="little gold fondamento"> Par Roxylya<span class="gold"> | </span>Le 12/12/2021<span class="gold"> | </span>Portraits.</p>
         <!-- image de l'article -->
         <img class="pt-4" src="/public/uploads/gallery/avatarCassiopeeNox08092021.jpg" alt="avatar Cassiopée Nox">
     </div>
