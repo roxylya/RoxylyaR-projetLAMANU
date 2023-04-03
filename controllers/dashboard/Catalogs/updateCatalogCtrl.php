@@ -31,6 +31,7 @@ try {
     }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
+    session_start();
     $_SESSION['errorMessage'] = $th->getMessage();
     header('location: /erreur.html');
     die;
