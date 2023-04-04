@@ -213,25 +213,25 @@ class User
         return $results;
     }
 
- // Update Validation du mail :
+    // Update Validation du mail :
 
- public static function updateValidate($id_users)
- {
-     $pdo = Database::getInstance();
-     $sql = ' UPDATE `users` 
+    public static function updateValidate($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = ' UPDATE `users` 
       SET `validated_at`= NOW()
       WHERE `id_users`=:id_users;';
-     //On insère les données reçues   
-     //  on note les marqueurs nominatifs :
-     $sth = $pdo->prepare($sql);
-     $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
-     $sth->execute();
-     // on vérifie si l'ajout a bien été effectué :
-     $nbResults = $sth->rowCount();
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->execute();
+        // on vérifie si l'ajout a bien été effectué :
+        $nbResults = $sth->rowCount();
 
-     // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
-     return ($nbResults > 0) ? true : false;
- }
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return ($nbResults > 0) ? true : false;
+    }
 
 
 
@@ -306,44 +306,44 @@ class User
     }
 
 
-   
-        // Afficher tous les users. (admin)
-        public static function getAll($research = "", $firstUser = 0, $limit = 10)
-        {
-            $pdo = Database::getInstance();
-            $sql = 'SELECT *.`users`, `name`.`roles`
+
+    // Afficher tous les users. (admin)
+    public static function getAll($search = "", $firstUser = 0, $limit = 10)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `users`.*, `roles`.`name`
             FROM `users` 
             JOIN `roles`
             ON  `roles`.`id_roles` = `users`.`id_roles`
-            WHERE `pseudo` LIKE :research OR `email` LIKE :research OR `password` LIKE :research OR `extUserAvatar` LIKE :research OR `created_at` LIKE :research OR `validate_at` LIKE :research OR `name` LIKE :research 
+            WHERE `pseudo` LIKE :search OR `email` LIKE :search OR `password` LIKE :search OR `extUserAvatar` LIKE :search OR `created_at` LIKE :search OR `validated_at` LIKE :search OR `name` LIKE :search 
             ORDER BY `pseudo`
             LIMIT :firstUser, :limit ;';
-            $sth = $pdo->prepare($sql);
-            // On affecte les valeurs au marqueur nominatif :
-            $sth->bindValue(':research', '%' . $research . '%', PDO::PARAM_STR);
-            $sth->bindValue(':firstUser',  $firstUser, PDO::PARAM_INT);
-            $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
-            $sth->execute();
-            $results = $sth->fetchAll();
+        $sth = $pdo->prepare($sql);
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        $sth->bindValue(':firstUser',  $firstUser, PDO::PARAM_INT);
+        $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $sth->execute();
+        $results = $sth->fetchAll();
 
-            return $results;
-        }
+        return $results;
+    }
 
-        // Afficher le nombre d'users récupéré dans la recherche :
-        public static function getAllCount($research = "")
-        {
-            $pdo = Database::getInstance();
-            $sql = 'SELECT *.`users`, `name`.`roles`
+    // Afficher le nombre d'users récupéré dans la recherche :
+    public static function getAllCount($search = "")
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `users`.*, `roles`.`name`
             FROM `users` 
             JOIN `roles`
             ON  `roles`.`id_roles` = `users`.`id_roles`
-            WHERE `pseudo` LIKE :research OR `email` LIKE :research OR `password` LIKE :research OR `extUserAvatar` LIKE :research OR `created_at` LIKE :research OR `validate_at` LIKE :research OR `name` LIKE :research ;';
-            $sth = $pdo->prepare($sql);
-            // On affecte les valeurs au marqueur nominatif :
-            $sth->bindValue(':research', '%' . $research . '%', PDO::PARAM_STR);
-            $sth->execute();
-            $results = $sth->fetchAll();
+            WHERE `pseudo` LIKE :search OR `email` LIKE :search OR `password` LIKE :search OR `extUserAvatar` LIKE :search OR `created_at` LIKE :search OR `validated_at` LIKE :search OR `name` LIKE :search;';
+        $sth = $pdo->prepare($sql);
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        $sth->execute();
+        $results = $sth->fetchAll();
 
-            return $results;
-        }
+        return $results;
+    }
 }
