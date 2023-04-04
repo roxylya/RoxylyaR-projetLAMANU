@@ -35,7 +35,7 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 include(__DIR__ . '/../../views/catalog/catalogMen.php');
 include(__DIR__ . '/../../views/templates/footer.php');

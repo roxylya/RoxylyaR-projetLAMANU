@@ -26,7 +26,7 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 include(__DIR__ . '/../../views/templates/headerUserAccount.php');
 include(__DIR__ . '/../../views/userAccount/galleryUser.php');

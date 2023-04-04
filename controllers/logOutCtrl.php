@@ -61,4 +61,4 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}

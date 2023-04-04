@@ -69,7 +69,7 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 
 include(__DIR__ . '/../../views/templates/header.php');

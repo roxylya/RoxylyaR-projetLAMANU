@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // on a besoin d'accéder à la db :
 require_once(__DIR__ . '/../config/Database.php');
@@ -35,7 +35,7 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 include(__DIR__ . '/../views/legalNotice.php');
 include(__DIR__ . '/../views/templates/footer.php');

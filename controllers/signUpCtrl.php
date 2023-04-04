@@ -213,15 +213,11 @@ try {
 
                 // redirection vers la page de connexion :
                 $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
-                Session::setMessage($message);
-
+                Session::setMessage($message);               
                 header('location: /connexion.html');
                 die;
             } else {
                 $message = 'Une erreur est survenue, remplissez à nouveau le formulaire.';
-                Session::setMessage($message);
-                header('location: /inscription.html');
-                die;
             }
         }
     }

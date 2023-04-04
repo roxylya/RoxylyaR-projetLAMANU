@@ -67,7 +67,6 @@ try {
                 }
             } else {
                $message = 'Validez votre mail pour pouvoir vous connecter.';
-                Session::setMessage($message);
             }
         }
     }

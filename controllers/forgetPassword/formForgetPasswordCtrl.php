@@ -32,7 +32,7 @@ try {
             } else {
                 if (User::existsEmail($email) === false) {
                     $alert['email'] = 'L\'email ne correspond à aucun compte utilisateur.';
-                } 
+                }
             }
         }
 
@@ -49,7 +49,7 @@ try {
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 
 include(__DIR__ . '/../../views/templates/header.php');
