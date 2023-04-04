@@ -194,7 +194,7 @@ try {
                         imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
                     }
                     imagepng($gd_scaled, $to_scaled, 85);
-                } elseif ($type == 'image/JPG' || $extUserAvatar == 'image/jpg' || $extUserAvatar == 'image/jpeg') {
+                } elseif ($type == 'image/JPG' || $type == 'image/jpg' || $type == 'image/jpeg') {
                     $gd_original = imagecreatefromjpeg($to);
                     $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
                     $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
