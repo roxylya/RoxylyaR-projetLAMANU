@@ -5,23 +5,9 @@ function isPortrait($to)
 {
     $type = mime_content_type($to);
     switch ($type) {
-        case 'image/gif':
-            $gd_original = imagecreatefromgif($to);
-
-            break;
 
         case 'image/png':
             $gd_original = imagecreatefrompng($to);
-
-            break;
-
-        case 'image/jpg':
-            $gd_original = imagecreatefromjpeg($to);
-
-            break;
-
-        case 'image/JPG':
-            $gd_original = imagecreatefromjpeg($to);
 
             break;
 
@@ -44,23 +30,9 @@ function getHeightOriginal($to)
 {
     $type = mime_content_type($to);
     switch ($type) {
-        case 'image/gif':
-            $gd_original = imagecreatefromgif($to);
-
-            break;
 
         case 'image/png':
             $gd_original = imagecreatefrompng($to);
-
-            break;
-
-        case 'image/jpg':
-            $gd_original = imagecreatefromjpeg($to);
-
-            break;
-
-        case 'image/JPG':
-            $gd_original = imagecreatefromjpeg($to);
 
             break;
 
@@ -81,23 +53,9 @@ function getWidthOriginal($to)
 {
     $type = mime_content_type($to);
     switch ($type) {
-        case 'image/gif':
-            $gd_original = imagecreatefromgif($to);
-
-            break;
 
         case 'image/png':
             $gd_original = imagecreatefrompng($to);
-
-            break;
-
-        case 'image/jpg':
-            $gd_original = imagecreatefromjpeg($to);
-
-            break;
-
-        case 'image/JPG':
-            $gd_original = imagecreatefromjpeg($to);
 
             break;
 
@@ -111,3 +69,47 @@ function getWidthOriginal($to)
 
     return $width_original;
 }
+
+
+  //  je redimensionne l'image à 400px de large max :  
+//  
+// if ($type == 'image/png') {
+//     $gd_original = imagecreatefrompng($to);
+//     $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+//     $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+//     imagepng($gd_scaled, $to_scaled);
+//     // $height_scaled = imagesy($gd_scaled);
+//     // $y_cropped = ($height_scaled - $size) / 2;
+//     // $width_scaled = imagesx($gd_scaled);
+//     // $x_cropped = ($width_scaled - $size) / 2;
+//     // if ($height_scaled > $width_scaled) {
+//     //     // portrait :
+//     //     imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
+//     // } else {
+//     //     // paysage :
+//     //     imagecrop($gd_scaled, ['x' => $x_cropped, 'y' => 0, 'width' => $size, 'height' => $size]);
+//     // }
+//     // imagepng($gd_scaled, $to_scaled, 85);
+// } elseif ($type == 'image/jpeg') {
+//     $gd_original = imagecreatefromjpeg($to);
+//     $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+//     $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+//     imagejpeg($gd_scaled, $to_scaled,85);
+//     // $height_scaled = imagesy($gd_scaled);
+//     // $y_cropped = ($height_scaled - $size) / 2;
+//     // $width_scaled = imagesx($gd_scaled);
+//     // $x_cropped = ($width_scaled - $size) / 2;
+//     // if (isPortrait($to)) {
+//     //     // portrait :
+//     //     $gd_cropped = imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
+//     // } else {
+//     //     // paysage :
+//     //     $gd_cropped =  imagecrop($gd_scaled, ['x' => $x_cropped, 'y' => 0, 'width' => $size, 'height' => $size]);
+//     // }
+//     // imagejpeg($gd_cropped, $to_scaled, 85);
+// } else {
+//     $message = "Il y a un soucis. Mais où?";
+//     Session::setMessage($message);
+//     header('location: /erreur.html');
+//     die;
+// }

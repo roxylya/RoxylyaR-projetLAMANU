@@ -87,7 +87,7 @@ try {
             }
 
             if (!in_array($avatarType, EXTENSION)) {
-                $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
+                $error['avatar'] = 'Les images acceptées : .png, jpg, jepg.';
             }
 
             if ($_FILES['avatar']['size'] > MAX_FILESIZE) {
@@ -148,81 +148,59 @@ try {
 
 
                 // définition des points de référence image en portrait ou en paysage :
-                $size = 400;
-                if (isPortrait($to) === true) {
+                $size = 200;
+                $width_original = getWidthOriginal($to);
+                $height_original = getHeightOriginal($to);
+                if (isPortrait($to) === true && $width_original > 200) {
                     $width_scaled = $size;
                     $height_scaled = -1;
-                } else {
-                    $width_original = getWidthOriginal($to);
-                    $height_original = getHeightOriginal($to);
-                    $height_scaled = $size;
-                    $width_scaled = round($width_original / $height_original) * $height_scaled;
-                }
 
-                //  je redimensionne l'image à 400px de large max :  
-                if ($type == 'image/gif') {
-                    $gd_original = imagecreatefromgif($to);
-                    $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
-                    $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                    imagegif($gd_scaled, $to_scaled);
-                    $height_scaled = imagesy($gd_scaled);
-                    $y_cropped = ($height_scaled - $size) / 2;
-                    $width_scaled = imagesx($gd_scaled);
-                    $x_cropped = ($width_scaled - $size) / 2;
-                    if ($height_scaled > $width_scaled) {
-                        // portrait :
-                        imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
+                    if ($type == 'image/png') {
+                        $gd_original = imagecreatefrompng($to);
+                        $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                        $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                        imagepng($gd_scaled, $to_scaled);
+                    } elseif ($type == 'image/jpeg') {
+                        $gd_original = imagecreatefromjpeg($to);
+                        $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                        $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                        imagejpeg($gd_scaled, $to_scaled, 85);
                     } else {
-                        // paysage :
-                        imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
+                        $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. Merci.";
+                        Session::setMessage($message);
+                        header('location: /erreur.html');
+                        die;
                     }
-                    imagegif($gd_scaled, $to_scaled, 85);
-                } elseif ($type == 'image/png') {
-                    $gd_original = imagecreatefrompng($to);
-                    $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
-                    $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                    imagepng($gd_scaled, $to_scaled);
-                    $height_scaled = imagesy($gd_scaled);
-                    $y_cropped = ($height_scaled - $size) / 2;
-                    $width_scaled = imagesx($gd_scaled);
-                    $x_cropped = ($width_scaled - $size) / 2;
-                    if ($height_scaled > $width_scaled) {
-                        // portrait :
-                        imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
+                }
+                if (isPortrait($to) === false && $height_original > 200) {
+                    $height_scaled = $size;
+                    $width_scaled = intval(($width_original / $height_original) * $height_scaled);
+
+                    //  je redimensionne l'image à 200px de large max :  
+                    if ($type == 'image/gif') {
+                        $gd_original = imagecreatefromgif($to);
+                        $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                        $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                        imagegif($gd_scaled, $to_scaled);
+                    } elseif ($type == 'image/png') {
+                        $gd_original = imagecreatefrompng($to);
+                        $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                        $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                        imagepng($gd_scaled, $to_scaled);
+                    } elseif ($type == 'image/jpeg') {
+                        $gd_original = imagecreatefromjpeg($to);
+                        $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                        $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                        imagejpeg($gd_scaled, $to_scaled, 85);
                     } else {
-                        // paysage :
-                        imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
+                        $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. Merci.";
+                        Session::setMessage($message);
+                        header('location: /erreur.html');
+                        die;
                     }
-                    imagepng($gd_scaled, $to_scaled, 85);
-                } elseif ($type == 'image/JPG' || $type == 'image/jpg' || $type == 'image/jpeg') {
-                    $gd_original = imagecreatefromjpeg($to);
-                    $gd_scaled = imagescale($gd_original, $size, -1, IMG_BICUBIC);
-                    $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                    imagejpeg($gd_scaled, $to_scaled);
-                    $height_scaled = imagesy($gd_scaled);
-                    $y_cropped = ($height_scaled - $size) / 2;
-                    $width_scaled = imagesx($gd_scaled);
-                    $x_cropped = ($width_scaled - $size) / 2;
-                    if ($height_scaled > $width_scaled) {
-                        // portrait :
-                        imagecrop($gd_scaled, ['x' => 0, 'y' => $y_cropped, 'width' => $size, 'height' => $size]);
-                    } else {
-                        // paysage :
-                        imagecrop($gd_scaled, ['x' => 0, 'y' => $x_cropped, 'width' => $size, 'height' => $size]);
-                    }
-                    imagejpeg($gd_scaled, $to_scaled, 85);
-                } else {
-                    $message = "Il y a un soucis. Mais où?";
-                    Session::setMessage($message);
-                    header('location: /erreur.html');
+                    header('location: /connexion.html');
                     die;
                 }
-
-
-                header('location: /connexion.html');
-                die;
-            } else {
-                $message = 'Une erreur est survenue, remplissez à nouveau le formulaire.';
             }
         }
     }
