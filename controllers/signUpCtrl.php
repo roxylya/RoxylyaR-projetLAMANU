@@ -105,8 +105,8 @@ try {
         }
 
         if (empty($error)) {
-            $created_at = date('Y-m-d H:i:s');
-            $updated_at = date('Y-m-d H:i:s');
+            // $created_at = date('Y-m-d H:i:s');
+            // $updated_at = date('Y-m-d H:i:s');
             // $validated_at = 'NOPE';
             $id_roles = 3;
 
@@ -116,12 +116,13 @@ try {
             $user->setEmail($email);
             $user->setPassword($password);
             $user->setExtUserAvatar($extUserAvatar);
-            $user->setCreated_at($created_at);
-            $user->setUpdated_at($updated_at);
+            // $user->setCreated_at($created_at);
+            // $user->setUpdated_at($updated_at);
             // $user->setValidated_at($validated_at);
             $user->setId_roles($id_roles);
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($user->add() === true) {
+
                 // je sauvegarde l'avatar :
                 $user = User::getByEmail($email);
                 $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
@@ -130,15 +131,32 @@ try {
                 $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
 
+
+
+                // mail de validation :
+                $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
+                $for = $user->email;
+                $subject = 'Validation de votre inscription sur Roxylya R';
+                $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
+                mail($for, $subject, $text);
+
+                //    pourquoi le mail ne s'envoie pas ? pas d'interception de laragon. Voir le hashage de lien pour l'envoi de mail de validation + mot de passe oublié
+
+                // redirection vers la page de connexion :
+                $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
+                Session::setMessage($message);
+
+
                 // définition des points de référence image en portrait ou en paysage :
                 $size = 400;
-
                 if (isPortrait($to) === true) {
                     $width_scaled = $size;
                     $height_scaled = -1;
                 } else {
-                    $width_scaled = round($width_original / $height_original) * $height_scaled;
+                    $width_original = getWidthOriginal($to);
+                    $height_original = getHeightOriginal($to);
                     $height_scaled = $size;
+                    $width_scaled = round($width_original / $height_original) * $height_scaled;
                 }
 
                 //  je redimensionne l'image à 400px de large max :  
@@ -200,20 +218,7 @@ try {
                     die;
                 }
 
-                // mail de validation :
-                $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
-                $for = $user->mail;
-                $subject = 'Validation de votre inscription sur Roxylya R';
-                $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
-                mail($for, $subject, $text);
 
-                //     array|string $additional_headers = [],
-                //     string $additional_params = ""
-                // php mailer pour faire de l'envoi de mail (configurer le server smtp) 
-
-                // redirection vers la page de connexion :
-                $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
-                Session::setMessage($message);               
                 header('location: /connexion.html');
                 die;
             } else {

@@ -149,14 +149,14 @@ class User
         // on note les marqueurs nominatifs exemple :birthdate sert de contenant à une valeur
 
         $sql = 'INSERT INTO `users`(`pseudo`, `email`, `password`, `extUserAvatar`, `created_at`, `updated_at`, `id_roles`) 
-        VALUES(:pseudo, :email, :password, :extUserAvatar, :created_at, :updated_at, :id_roles);';
+        VALUES(:pseudo, :email, :password, :extUserAvatar, Now(), Now(), :id_roles);';
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':pseudo', $this->pseudo);
         $sth->bindValue(':email', $this->email);
         $sth->bindValue(':password', $this->password);
         $sth->bindValue(':extUserAvatar', $this->extUserAvatar);
-        $sth->bindValue(':created_at', $this->created_at);
-        $sth->bindValue(':updated_at', $this->updated_at);
+        // $sth->bindValue(':created_at', $this->created_at);
+        // $sth->bindValue(':updated_at', $this->updated_at);
         $sth->bindValue(':id_roles', $this->id_roles, PDO::PARAM_INT);
         $sth->execute();
 
@@ -241,7 +241,7 @@ class User
     {
         $pdo = Database::getInstance();
         $sql = ' UPDATE `users` 
-        SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `extUserAvatar`=:extUserAvatar, `updated_at`=:updated_at 
+        SET `pseudo`=:pseudo, `email`=:email, `password`=:password, `extUserAvatar`=:extUserAvatar, `updated_at`= Now() 
         WHERE `id_users`=:id_users;';
         //On insère les données reçues   
         //  on note les marqueurs nominatifs :
@@ -251,7 +251,7 @@ class User
         $sth->bindValue(':email', $this->email);
         $sth->bindValue(':password', $this->password);
         $sth->bindValue(':extUserAvatar', $this->extUserAvatar);
-        $sth->bindValue(':updated_at', $this->updated_at);
+        // $sth->bindValue(':updated_at', $this->updated_at);
         $sth->execute();
         // on vérifie si l'ajout a bien été effectué :
         $nbResults = $sth->rowCount();

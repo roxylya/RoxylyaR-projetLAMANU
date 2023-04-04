@@ -1,6 +1,7 @@
 <div class="w-100 mobile d-md-none m-0 p-0 d-flex flex-column align-items-center">
     <h1 class="text-center blackClover gold"><span class="bdRenaissanceH1">B</span>ienvenue dans l'atelier
         Roxylya R</h1>
+        <p class="py-1 blue fondamento little"><?= $message ?? '' ?></p>
     <img class="py-3" src="/public/assets/img/Roxy7.png" alt="personnage Roxylya">
     <div class="borderGold bgBlue py-3">
         <p class="gold blackClover medium justify px-3"><span class="bdRenaissanceP">A</span>fin de pouvoir commander un

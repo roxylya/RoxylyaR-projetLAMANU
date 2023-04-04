@@ -16,6 +16,14 @@ require_once(__DIR__ . '/../models/User.php');
 try {
     $error = [];
     $message = Session::getMessage();
+    $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
+
+    if($code === 12){
+       $message = 'Pour vous connecter, valider votre email.';
+    }
+    if($code === 13){
+        $message = 'Mail validé, vous pouvez vous connecter.';
+    }
 
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
