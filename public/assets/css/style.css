@@ -601,14 +601,16 @@ input[type="checkbox"]:checked+label::before {
 
 /* =================================================================================================== */
 /* table */
-table{
+table {
     border: 1px solid #a47a07;
     border-radius: 1rem;
     overflow: hidden;
 }
-th{
+
+th {
     padding: 0.5rem;
     font-size: 1.3rem;
+    font-weight: lighter;
     color: transparent;
     background: #a47a07;
     -webkit-background-clip: text;
@@ -617,7 +619,7 @@ th{
     text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
 }
 
-td{
+td {
     font-size: 1rem;
     padding: 0.5rem;
     border-bottom: 1px solid #a47a07;
@@ -629,16 +631,40 @@ td{
     /* text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5); */
 }
 
-td>a>img{
+td>a>img {
     width: 1.5rem;
     height: 1.5rem;
     object-fit: contain;
 }
 
+/* dashboard */
 
+.navDashboard>ul {
+    padding-left: 0;
+}
 
+.navDashboard>li {
+    padding: 1rem;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom: 1px solid #a47a07;
+    border: 1px solid #a47a07;
+    font-size: 1.5rem;
+    font-family: 'Fondamento';
+}
 
+.navDashboard>.active {
+    border-top-right-radius: 1px solid 1rem;
+    border-top-left-radius: 1px solid 1rem;
+    border-bottom: none;
+    overflow: hidden;
 
+}
+
+.dashboardUsers {
+    border-radius: 1rem;
+
+}
 
 /* =================================================================================================== */
 /* footer */
