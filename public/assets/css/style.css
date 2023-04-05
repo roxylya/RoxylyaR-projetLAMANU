@@ -719,6 +719,19 @@ td>a>img {
 
 /* =================================================================================================== */
 /* dashboard */
+@media (min-width: 1110px) {
+    .dashboard {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dashboardDisplay{
+        display: none;
+    }
+}
+
 
 .navDashboard>ul {
     padding-left: 0;
@@ -768,7 +781,7 @@ input[type="search"] {
     border-radius: 15px;
     font-size: 1rem;
     color: #a47a07c3;
-    width: 8rem;
+    width: 7rem;
     height: 2rem;
 }
 
@@ -917,4 +930,14 @@ input[type="search"] {
 
 footer {
     border-top: 7px groove #8a551a;
+}
+
+
+@media (max-width: 1110px) {
+
+    .modeOff,
+    .dashboard {
+        display: none;
+    }
+    
 }

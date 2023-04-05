@@ -45,6 +45,9 @@ try {
     // On calcule le nombre de pages 
     $pageNb = ceil(count($nbUsersTotal) / $limit);
 
+
+    
+
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $message = $th->getMessage();

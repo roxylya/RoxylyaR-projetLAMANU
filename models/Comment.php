@@ -59,34 +59,104 @@ class Comment
 
 
 
-    // Afficher tous les commentaires :
-    public static function getAll()
+    // Afficher tous les commentaires de tous les utilisateurs:
+    public static function getAll($search = "", $firstComment = 0, $limit = 10)
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `comments`.*, `users`.`pseudo`
-          FROM `comments` 
-          JOIN `users`
-          ON  `comments`.`id_users` = `users`.`id_users`
-          ORDER BY `created_at`';
+        FROM `comments` 
+        JOIN `users`
+        ON  `comments`.`id_users` = `users`.`id_users`
+        WHERE `pseudo` LIKE :search OR `comments`.`created_at` LIKE :search OR `notice` LIKE :search 
+        ORDER BY `created_at`
+        LIMIT :firstComment, :limit ;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        $sth->bindValue(':firstComment',  $firstComment, PDO::PARAM_INT);
+        $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
         $sth->execute();
         $results = $sth->fetchAll();
 
         return $results;
     }
 
-    public static function get($id_users)
+    // Récupérer le nombre de commentaires de la recherche sinon afficher tout :
+    public static function getAllCommentsCount($search = "")
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `comments`.*, `users`.`pseudo`
+        FROM `comments` 
+        JOIN `users`
+        ON  `comments`.`id_users` = `users`.`id_users`
+        WHERE `pseudo` LIKE :search OR `comments`.`created_at` LIKE :search OR `notice` LIKE :search ;';
+        $sth = $pdo->prepare($sql);
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        $sth->execute();
+        $results = $sth->fetchAll();
+
+        return $results;
+    }
+
+
+
+
+
+    // Afficher le nombres de commentaires d'un utilisateur :
+    public static function getAllCountUser($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `comments`.*, `users`.`pseudo`
+             FROM `comments` 
+             JOIN `users`
+             ON  `comments`.`id_users` = `users`.`id_users`
+             ORDER BY `created_at`';
+        $sth = $pdo->prepare($sql);
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->execute();
+
+        // on vérifie si l'ajout a bien été effectué :
+        $nbResults = $sth->rowCount();
+
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return $nbResults;
+    }
+
+
+    // Afficher tous les commentaires d'un utilisateur :
+    public static function getAllCommentsUser($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `comments`.*, `users`.`pseudo`
+                   FROM `comments` 
+                   JOIN `users`
+                   ON  `comments`.`id_users` = `users`.`id_users`
+                   ORDER BY `created_at`';
+        $sth = $pdo->prepare($sql);
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->execute();
+        $results = $sth->fetchAll();
+
+        return $results;
+    }
+
+
+    // Afficher un commentaire selon son id_comments :
+
+    public static function get($id_comments)
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `comments`.*, `users`.`pseudo`
           FROM `comments` 
           JOIN `users`
           ON  `comments`.`id_users` = `users`.`id_users`
-          WHERE `comments`.`id_users`=:id_users;';
+          WHERE `comments`.`id_comments`=:id_comments;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
-        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->bindValue(':id_comments', $id_comments, PDO::PARAM_INT);
         $sth->execute();
         $results = $sth->fetchAll();
 
