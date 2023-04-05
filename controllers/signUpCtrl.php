@@ -140,8 +140,6 @@ try {
                 $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
                 mail($for, $subject, $text);
 
-                //    pourquoi le mail ne s'envoie pas ? pas d'interception de laragon. Voir le hashage de lien pour l'envoi de mail de validation + mot de passe oublié
-
                 // redirection vers la page de connexion :
                 $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
                 Session::setMessage($message);
@@ -151,7 +149,7 @@ try {
                 $size = 200;
                 $width_original = getWidthOriginal($to);
                 $height_original = getHeightOriginal($to);
-                if (isPortrait($to) === true && $width_original > 200) {
+                if (isPortrait($to) === true && $width_original > 300) {
                     $width_scaled = $size;
                     $height_scaled = -1;
 
@@ -172,7 +170,7 @@ try {
                         die;
                     }
                 }
-                if (isPortrait($to) === false && $height_original > 200) {
+                if (isPortrait($to) === false && $height_original > 300) {
                     $height_scaled = $size;
                     $width_scaled = intval(($width_original / $height_original) * $height_scaled);
 

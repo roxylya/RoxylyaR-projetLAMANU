@@ -18,7 +18,7 @@ try {
         die;
     } else {
         $user = $_SESSION['user'];
-        // $userConnected = User::getById($id_users);
+
 
 
         // je crée un tableau où se trouveront tous les messages d'erreur :
@@ -119,15 +119,87 @@ try {
                 $userUpdate->setUpdated_at($updated_at);
                 // Modifier les informations de l'user en fonction de son id sur la base de données :
                 if ($userUpdate->update($user->id_users) === true) {
-                    $code = 5;
+                    $message = 'La modification a été enregistrée.';
+                    Session::setMessage($message);
+                    Session::getMessage();
+
+
                     $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
                     $from = $_FILES['avatar']['tmp_name'];
                     $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                     move_uploaded_file($from, $to);
-                    header('location: /mon-compte.html?code=' . $code);
-                    die;
-                } else {
-                    $code = 4;
+
+                    // si changement de mail renvoyer mail de validation
+                    // mail de validation :
+                    //    $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
+                    //    $for = $user->email;
+                    //    $subject = 'Validation de votre inscription sur Roxylya R';
+                    //    $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
+                    //    mail($for, $subject, $text);
+
+                    // $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
+                    // Session::setMessage($message);
+                    // Session::getMessage();
+
+                    // définition des points de référence image en portrait ou en paysage :
+                    $size = 200;
+                    $width_original = getWidthOriginal($to);
+                    $height_original = getHeightOriginal($to);
+                    if (isPortrait($to) === true && $width_original > 300) {
+                        $width_scaled = $size;
+                        $height_scaled = -1;
+
+                        if ($type == 'image/png') {
+                            $gd_original = imagecreatefrompng($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagepng($gd_scaled, $to_scaled);
+                        } elseif ($type == 'image/jpeg') {
+                            $gd_original = imagecreatefromjpeg($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagejpeg($gd_scaled, $to_scaled, 85);
+                        } else {
+                            $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. Merci.";
+                            Session::setMessage($message);
+                            header('location: /erreur.html');
+                            die;
+                        }
+                    }
+                    if (isPortrait($to) === false && $height_original > 300) {
+                        $height_scaled = $size;
+                        $width_scaled = intval(($width_original / $height_original) * $height_scaled);
+
+                        //  je redimensionne l'image à 200px de large max :  
+                        if ($type == 'image/gif') {
+                            $gd_original = imagecreatefromgif($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagegif($gd_scaled, $to_scaled);
+                        } elseif ($type == 'image/png') {
+                            $gd_original = imagecreatefrompng($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagepng($gd_scaled, $to_scaled);
+                        } elseif ($type == 'image/jpeg') {
+                            $gd_original = imagecreatefromjpeg($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagejpeg($gd_scaled, $to_scaled, 85);
+                        } else {
+                            $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. Merci.";
+                            Session::setMessage($message);
+                            header('location: /erreur.html');
+                            die;
+                        }
+
+                        header('location: /mon-compte.html');
+                        die;
+                    } else {
+                        $message = 'La modification n\'a pu être effectuée.';
+                        Session::setMessage($message);
+                        Session::getMessage();
+                    }
                 }
             }
         }
