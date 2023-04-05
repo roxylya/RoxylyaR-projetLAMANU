@@ -14,7 +14,7 @@
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/panier-en-osier.png" alt="icône panier en osier">Commander</div>
         </a>
     </div>
-    <img class="avatarProfil" src="/public/uploads/avatars/avatar_<?= $user->id_users . '.' . $user->extUserAvatar ?>" alt="avatarUser">
+    <img class="avatarProfil" src="/public/uploads/avatars/avatar_<?= $user->id_users . '.' . $user->extUserAvatar ?>?<?= rand(1,2000) ?>" alt="avatarUser">
     <div class="lookUser p-3">
         <a href="/mon-compte-mon-dressing.html">
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/penderie.png" alt="icône penderie">Mon dressing</div>

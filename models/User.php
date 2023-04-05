@@ -251,36 +251,73 @@ class User
         $sth->bindValue(':email', $this->email);
         $sth->bindValue(':password', $this->password);
         $sth->bindValue(':extUserAvatar', $this->extUserAvatar);
-        // $sth->bindValue(':updated_at', $this->updated_at);
-        $sth->execute();
-        // on vérifie si l'ajout a bien été effectué :
-        $nbResults = $sth->rowCount();
-
-        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
-        return ($nbResults > 0) ? true : false;
+        return $sth->execute();
     }
 
 
-    // Update Password quand mot de passe oublié :
+    // Update Email:
+
+    public function updateEmail($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = ' UPDATE `users` 
+        SET `email`=:email, `updated_at`= Now() 
+         WHERE `id_users`=:id_users;';
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->bindValue(':email', $this->email);
+        return $sth->execute();
+    }
+
+
+    // Update Pseudo:
+
+    public function updatePseudo($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = ' UPDATE `users` 
+        SET `pseudo`=:pseudo, `updated_at`= Now() 
+         WHERE `id_users`=:id_users;';
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->bindValue(':pseudo', $this->pseudo);
+        return $sth->execute();
+    }
+
+    // Update Password quand mot de passe oublié  et update sur profilAccount:
 
     public function updatePassword($id_users)
     {
         $pdo = Database::getInstance();
         $sql = ' UPDATE `users` 
-         SET `password`=:password, `updated_at`=:updated_at 
+        SET `password`=:password, `updated_at`= Now() 
          WHERE `id_users`=:id_users;';
         //On insère les données reçues   
         //  on note les marqueurs nominatifs :
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
         $sth->bindValue(':password', $this->password);
-        $sth->bindValue(':updated_at', $this->updated_at);
-        $sth->execute();
-        // on vérifie si l'ajout a bien été effectué :
-        $nbResults = $sth->rowCount();
+        return $sth->execute();
+    }
 
-        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
-        return ($nbResults > 0) ? true : false;
+    // Update extension de l'avatar :
+
+    public function updateExtUserAvatar($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = ' UPDATE `users` 
+         SET `extUserAvatar`=:extUserAvatar, `updated_at`= Now() 
+         WHERE `id_users`=:id_users;';
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->bindValue(':extUserAvatar', $this->extUserAvatar);
+        return $sth->execute();
     }
 
 

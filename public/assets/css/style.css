@@ -471,7 +471,7 @@ input[type="checkbox"]:checked+label::before {
 
 .delete {
     font-size: 1rem;
-    color: #03182D;
+    
 }
 
 .delete:hover,
@@ -525,21 +525,22 @@ input[type="checkbox"]:checked+label::before {
     width: 2rem;
 }
 
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-input[type="file"]:focus,
+.update>div>div>textarea:focus,
+.update>div>div>input[type="text"]:focus,
+.update>div>div>input[type="password"]:focus,
+.update>div>div>input[type="email"]:focus,
+.update>div>div>input[type="file"]:focus,
 .uneditable-input:focus {
     border-color: rgb(169, 127, 7, 0.8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(3, 24, 45, 0.6);
     outline: 0 none;
-    max-width: 30rem;
+    height: 2rem;
 }
 
 
 .form-control {
     border: 1px solid rgb(169, 127, 7);
+    height: 2rem;
 }
 
 
