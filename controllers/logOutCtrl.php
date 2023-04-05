@@ -1,4 +1,9 @@
 <?php
+
+// on a besoin d'accéder au helper :
+require_once(__DIR__ . '/../helper/dd.php');
+
+
 try {
     session_start();
     $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
