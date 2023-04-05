@@ -8,6 +8,8 @@ require_once(__DIR__ . '/../config/constants.php');
 require_once(__DIR__ . '/../config/SessionFlash.php');
 // on a besoin d'accéder au helper :
 require_once(__DIR__ . '/../helper/dd.php');
+// on a besoin d'accéder aux fonctions :
+require_once(__DIR__ . '/../helper/functions.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../models/User.php');
 // on a besoin du model :
@@ -103,9 +105,6 @@ try {
         }
 
         if (empty($error)) {
-            // $created_at = date('Y-m-d H:i:s');
-            // $updated_at = date('Y-m-d H:i:s');
-            // $validated_at = 'NOPE';
             $id_roles = 3;
 
             $user = new User();
@@ -114,9 +113,6 @@ try {
             $user->setEmail($email);
             $user->setPassword($password);
             $user->setExtUserAvatar($extUserAvatar);
-            // $user->setCreated_at($created_at);
-            // $user->setUpdated_at($updated_at);
-            // $user->setValidated_at($validated_at);
             $user->setId_roles($id_roles);
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($user->add() === true) {
@@ -128,7 +124,6 @@ try {
                 $type = $_FILES['avatar']['type'];
                 $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                 move_uploaded_file($from, $to);
-
 
 
                 // mail de validation :
@@ -147,7 +142,7 @@ try {
                 $size = 200;
                 $width_original = getWidthOriginal($to);
                 $height_original = getHeightOriginal($to);
-                if (isPortrait($to) === true && $width_original > 300) {
+                if (isPortrait($to) === true && $width_original > 200) {
                     $width_scaled = $size;
                     $height_scaled = -1;
 
@@ -168,7 +163,7 @@ try {
                         die;
                     }
                 }
-                if (isPortrait($to) === false && $height_original > 300) {
+                if (isPortrait($to) === false && $height_original > 200) {
                     $height_scaled = $size;
                     $width_scaled = intval(($width_original / $height_original) * $height_scaled);
 

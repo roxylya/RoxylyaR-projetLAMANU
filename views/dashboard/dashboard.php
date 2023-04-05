@@ -1,9 +1,7 @@
-<!-- <div class="text-center gold blackClover">
-    <h1><span class="bdRenaissanceH1">B</span>ienvenue Chef <?= $user->pseudo ?> !</h1>
-</div> -->
+
 <p class="pt-2 mt-5"><?= $message ?? '' ?></p>
 
-<div class="w-75 d-flex justify-content-between align-items-center">
+<div class="w-75 d-flex dashboard justify-content-between align-items-center">
 
     <!-- nav dashboard start -->
     <ul class="navDashboard d-flex justify-content-center align-items-center m-0 ms-0 ps-0 p-0">

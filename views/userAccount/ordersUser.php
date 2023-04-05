@@ -1,7 +1,7 @@
 <div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">M</span>es <span class="bdRenaissanceH1">A</span>chats</h1>
 </div>
-<div class="userOrderList my-5 d-flex flex-column justify-content-center align-items-center">
+<div class="userOrderList my-5 mx-md-3 d-flex flex-column justify-content-center align-items-center">
     <table class=" box text-center fondamento">
         <tr class="bgBlue">
             <th>Crée le</th>

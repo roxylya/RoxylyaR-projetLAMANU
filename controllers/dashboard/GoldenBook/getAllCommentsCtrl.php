@@ -10,6 +10,8 @@ require_once(__DIR__ . '/../../../config/SessionFlash.php');
 require_once(__DIR__ . '/../../../helper/dd.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../../models/User.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../../../models/Comment.php');
 
 
 try {
@@ -27,13 +29,19 @@ try {
             include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
         }
     }
+    if ($user->id_roles != 2 && $user->id_roles != 1) {
+        header('location: /../../controllers/logOutCtrl.php');
+        die;
+    } else {
+        $comments = Comment::getAll();
+    }
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $message = $th->getMessage();
     Session::setMessage($message);
     header('location: /erreur.html');
     die;
-  }
+}
 
 include(__DIR__ . '/../../../views/dashboard/goldenBook.php');
 include(__DIR__ . '/../../../views/templates/footer.php');
