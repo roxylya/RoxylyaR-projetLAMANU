@@ -510,6 +510,39 @@ input[type="checkbox"]:checked+label::before {
     font-family: 'Black Clover Font';
 }
 
+/* profilAccount (update data) */
+
+.btn-update {
+    background-color: #03182D;
+    border: 1px solid #A97F07;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    width: 3rem;
+    padding: 0.5rem;
+}
+
+.btn-update>img{
+    width: 2rem;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+.uneditable-input:focus {
+    border-color: rgb(169, 127, 7, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(3, 24, 45, 0.6);
+    outline: 0 none;
+    max-width: 30rem;
+}
+
+
+.form-control {
+    border: 1px solid rgb(169, 127, 7);
+}
+
+
 /* catalogue */
 
 .navCatalog>a {

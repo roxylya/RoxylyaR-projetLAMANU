@@ -1,7 +1,7 @@
 <div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">B</span>ienvenue <?= $user->pseudo ?> !</h1>
 </div>
-<p class="pt-2"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
+<p class="pt-2"><?= $message ?? '' ?></p>
 <div class="box bgBlue medium d-flex flex-lg-row flex-column justify-content-around align-items-center mt-3 mb-5 p-3 p-md-5">
     <div class="actionUser p-3">
         <a href="/mon-compte-mes-informations.html">

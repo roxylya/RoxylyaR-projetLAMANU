@@ -1,7 +1,7 @@
 <div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">S</span>uppression de <span class="bdRenaissanceH1">M</span>on <span class="bdRenaissanceH1">C</span>ompte</h1>
 </div>
-<p class="py-1"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
+<p class="py-1"><?= $message ?? '' ?></p>
 <div class="box d-flex flex-column justify-content-center align-items-center p-md-5 m-3 mb-0 p-3">
     <h2 class="mb-3"><span class="bdRenaissanceH2">I</span>nformations</h2>
     <p> * Vous vous apprêtez à supprimer votre compte ainsi que les données enregistrées. <br>
