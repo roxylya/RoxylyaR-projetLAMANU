@@ -32,7 +32,7 @@
     <!-- table start -->
     <table class="modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
-            <a href="/controllers/dashboard/Catalogs/catalogAddCreationCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle commande</a>
+            <a href="/controllers/dashboard/Orders/addOrderCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle commande</a>
             <tr class="bgBlue">
                 <th>Crée le</th>
                 <th>Pseudo</th>

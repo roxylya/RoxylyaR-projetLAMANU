@@ -32,14 +32,13 @@
     <!-- table start -->
     <table class="modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
-            <a href="/controllers/dashboard/Catalogs/catalogAddCreationCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle création</a>
+            <a href="/controllers/dashboard/Galleries/addGalleryCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle toile</a>
             <tr class="bgBlue">
                 <th>Crée le</th>
                 <th>Créateur</th>
                 <th>Nom</th>
                 <th>Catégorie</th>
                 <th>Actions</th>
-
             </tr>
             <?php foreach ($galleries as $gallery) { ?>
                 <tr class="bgWhite">

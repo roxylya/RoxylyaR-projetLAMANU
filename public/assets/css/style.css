@@ -372,16 +372,27 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
 input[type="file"]:focus,
-.uneditable-input:focus {
+.uneditable-input:focus,
+select:focus {
     border-color: rgb(169, 127, 7, 0.8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(3, 24, 45, 0.6);
     outline: 0 none;
     max-width: 30rem;
 }
 
+select{
+    border-color: rgb(169, 127, 7, 0.8);
+    outline: 0 none;
+}
 
-.form-control {
+.form-control, .form-select {
     border: 1px solid rgb(169, 127, 7);
+}
+
+.form-select:focus, .form-select:active, .form-select:hover{
+    outline: 0 none;
+    border : none;
+    box-shadow: none;
 }
 
 
@@ -540,7 +551,9 @@ input[type="checkbox"]:checked+label::before {
 .update>div>div>input[type="password"]:focus,
 .update>div>div>input[type="email"]:focus,
 .update>div>div>input[type="file"]:focus,
-.uneditable-input:focus {
+.uneditable-input:focus,
+select:focus,
+option:focus {
     border-color: rgb(169, 127, 7, 0.8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(3, 24, 45, 0.6);
     outline: 0 none;
@@ -548,7 +561,7 @@ input[type="checkbox"]:checked+label::before {
 }
 
 
-.form-control {
+.form-control, select{
     border: 1px solid rgb(169, 127, 7);
     height: 2rem;
 }

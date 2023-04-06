@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../config/Database.php');
 // le helper :
 require_once(__DIR__ . '/../helper/dd.php');
 
-class Gallery  	
+class Gallery
 
 {
     private int $id_galleries;
@@ -71,6 +71,47 @@ class Gallery
         return $this->id_users;
     }
 
+
+    // 
+
+    // ajouter une oeuvre à  la galerie :
+
+    public function add()
+    {
+        // connection à la bd :
+        $pdo = Database::getInstance();
+
+        //On insère les données reçues   
+        // on note les marqueurs nominatifs exemple :birthdate sert de contenant à une valeur
+
+        $sql = 'INSERT INTO `galleries`(`name`, `created_at`, `id_types`, `id_users`) 
+          VALUES(:name, Now(), :id_types, :id_users);';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':name', $this->name);
+        $sth->bindValue(':id_types', $this->id_types, PDO::PARAM_INT);
+        $sth->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
+        $sth->execute();
+
+        // on vérifie si l'ajout a bien été effectué :
+        $nbResults = $sth->rowCount();
+
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return ($nbResults > 0) ? true : false;
+    }
+
+
+    // on vérifie si le nom n'est pas déjà existant dans la base de données :
+
+    public static function existsName(string $name)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `name` FROM `galleries` WHERE `name` = ?;';
+        $sth = $pdo->prepare($sql);
+        $sth->execute([$name]);
+        $results = $sth->fetchAll();
+
+        return (empty($results)) ? false : true;
+    }
 
 
     // Afficher toutes les peintures de tous les utilisateurs:
@@ -165,7 +206,7 @@ class Gallery
     }
 
 
-    // Afficher une tenue selon son id_galleries :
+    // Afficher une oeuvre selon son id_galleries :
 
     public static function get($id_galleries)
     {
@@ -182,6 +223,27 @@ class Gallery
         $sth->bindValue(':id_galleries', $id_galleries, PDO::PARAM_INT);
         $sth->execute();
         $results = $sth->fetchAll();
+
+        return $results;
+    }
+
+    // Afficher une oeuvre selon son name :
+
+    public static function getByName($name)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        FROM `galleries` 
+        JOIN `users`
+        ON  `galleries`.`id_users` = `users`.`id_users`
+        JOIN `types`
+        ON `galleries`.`id_types` = `types`.`id_types`
+        WHERE `galleries`.`id_galleries`=:name;';
+        $sth = $pdo->prepare($sql);
+        // On affecte les valeurs au marqueur nominatif :
+        $sth->bindValue(':name', $name, PDO::PARAM_INT);
+        $sth->execute();
+        $results = $sth->fetch();
 
         return $results;
     }
