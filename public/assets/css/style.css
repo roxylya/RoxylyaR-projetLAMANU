@@ -628,7 +628,7 @@ input[type="checkbox"]:checked+label::before {
 }
 
 .gallery>.box {
-    width: 27rem;
+    width: 25rem;
     height: 20rem;
 }
 
@@ -719,6 +719,16 @@ td>a>img {
 
 /* =================================================================================================== */
 /* dashboard */
+
+@media (max-width: 1110px) {
+
+    .modeOff,
+    .dashboard {
+        display: none;
+    }
+    
+}
+
 @media (min-width: 1110px) {
     .dashboard {
         display: flex;
@@ -784,6 +794,7 @@ input[type="search"] {
     width: 7rem;
     height: 2rem;
 }
+
 
 /* =================================================================================================== */
 /* pagination */
@@ -933,11 +944,3 @@ footer {
 }
 
 
-@media (max-width: 1110px) {
-
-    .modeOff,
-    .dashboard {
-        display: none;
-    }
-    
-}

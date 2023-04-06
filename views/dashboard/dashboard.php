@@ -49,8 +49,8 @@
                 <td><?= $allUser->email ?></td>
                 <td><?= date('d-m-Y H:i', strtotime($allUser->created_at)) ?></td>
                 <td><?= date('d-m-Y H:i', strtotime($allUser->validated_at)) ?></td>
-                <td></td>
-                <td></td>
+                <td><?=  $nbCommandsUser = Order::getAllCountOrdersUser($allUser->id_users);?></td>
+                <td><?=  $nbCommentsUser = Comment::getAllCountCommentsUser($allUser->id_users);?></td>
                 <td><a href="/controllers/dashboard/Users/getUserCtrl.php?id_users=<?= $allUser->id_users ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                     <a href="/controllers/dashboard/Users/deleteUserCtrl.php<?= $allUser->id_users ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                 </td>

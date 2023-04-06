@@ -349,14 +349,10 @@ class User
     public static function getAll($search = "", $firstUser = 0, $limit = 10)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `users`.*, `roles`.`name`, `comments`.`id_comments`, `orders`.`id_orders`
+        $sql = 'SELECT `users`.*, `roles`.`name`
             FROM `users` 
             JOIN `roles`
             ON  `roles`.`id_roles` = `users`.`id_roles`
-            -- JOIN `comments`
-            -- ON `comments`.`id_users`= `users`.`id_users`
-            -- JOIN `orders`
-            -- ON `orders`.`id_users`= `users`.`id_users`
             WHERE `pseudo` LIKE :search OR `email` LIKE :search OR `password` LIKE :search OR `extUserAvatar` LIKE :search OR `created_at` LIKE :search OR `validated_at` LIKE :search OR `name` LIKE :search 
             ORDER BY `pseudo`
             LIMIT :firstUser, :limit ;';

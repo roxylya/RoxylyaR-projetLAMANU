@@ -10,6 +10,10 @@ require_once(__DIR__ . '/../../config/SessionFlash.php');
 require_once(__DIR__ . '/../../helper/dd.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../models/User.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../../models/Comment.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../../models/Order.php');
 
 try {
     session_start();
@@ -18,6 +22,8 @@ try {
 
         header('location: /logOutCtrl.php');
     }
+
+   
 
    // Nettoyage et validation du formulaire reçu en post :
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));

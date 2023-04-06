@@ -100,18 +100,16 @@ class Comment
     }
 
 
-
-
-
     // Afficher le nombres de commentaires d'un utilisateur :
-    public static function getAllCountUser($id_users)
+    public static function getAllCountCommentsUser($id_users)
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `comments`.*, `users`.`pseudo`
              FROM `comments` 
              JOIN `users`
              ON  `comments`.`id_users` = `users`.`id_users`
-             ORDER BY `created_at`';
+             WHERE `comments`.`id_users` = :id_users
+             ORDER BY `created_at`;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
@@ -130,10 +128,10 @@ class Comment
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `comments`.*, `users`.`pseudo`
-                   FROM `comments` 
-                   JOIN `users`
-                   ON  `comments`.`id_users` = `users`.`id_users`
-                   ORDER BY `created_at`';
+        FROM `comments` 
+        JOIN `users`
+        ON  `comments`.`id_users` = `users`.`id_users`
+                   ORDER BY `created_at`;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
