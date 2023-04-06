@@ -7,7 +7,7 @@
 </div>
 <div class="catalog d-flex flex-wrap justify-content-around align-items-center mb-2">
     <!-- article start -->
-    <div class="box bgBlue col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-5 my-3">
+    <div class="box bgBlue d-flex flex-column justify-content-center align-items-center p-3 m-md-3 my-3">
         <!-- titre de l'article -->
         <h2 class="gold blackClover">Plouf</h2>
         <p class="little gold fondamento"> Par Roxylya<span class="blue"> | </span>Le 12/12/2021<span class="blue"> | </span>Hommes.</p>

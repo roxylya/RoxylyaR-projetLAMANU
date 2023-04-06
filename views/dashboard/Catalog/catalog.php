@@ -1,7 +1,7 @@
-<p class="pt-2 mt-5"><?= $message ?? '' ?></p>
-
-<h1 class ="dashboardDisplay text-center fondamento blue medium">Accessible à partir de 1110px de largeur d'écran ! </h1>
-
+<p class="pt-3"><?= $message ?? '' ?></p>
+<h1 class="blackClover blue pb-3"> <span class="bdRenaissanceH1 blue ">L</span>e <span class="bdRenaissanceH1 blue ">C</span>atalogue</h1>
+<h2 class="dashboardDisplay text-center fondamento blue medium">Accessible à partir de 1110px de largeur d'écran ! </h2>
+<div class="modeOff m-0 p-0">
     <div class="dashboard">
         <!-- nav dashboard start -->
         <ul class="navDashboard d-flex justify-content-center align-items-center m-0 me-3 ms-0 ps-0 p-0">
@@ -30,29 +30,32 @@
         <!-- research end -->
     </div>
     <!-- table start -->
-    <table class="modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
-        <tr class="bgBlue">
-            <th>Crée le</th>
-            <th>Créateur</th>
-            <th>Nom</th>
-            <th>Catégorie</th>
-            <th>Description</th>
-            <th>Actions</th>
-
-        </tr>
-        <?php foreach ($articles as $article) { ?>
-            <tr class="bgWhite">
-                <td><?= date('d-m-Y H:i', strtotime($article->created_at)) ?></td>
-                <td><?= $article->pseudo ?></td>
-                <td><?= $article->nameArticle ?></td>
-                <td><?= $article->categoryName ?></td>
-                <td><?= $article->resume  ?></td>
-                <td><a href="/controllers/dashboard/Catalogs/updateCatalogCtrl.php?id_users=<?= $article->id_articles ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
-                    <a href="/controllers/dashboard/Catalogs/deleteCatalogCtrl.php<?= $article->id_articles ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
-                </td>
+    <table class="modeOff dashboardUsers mt-0 fondamento text-center mb-1">
+        <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
+            <a href="/controllers/dashboard/Catalogs/addCatalogCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle création</a>
+            <tr class="bgBlue">
+                <th>Crée le</th>
+                <th>Créateur</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Description</th>
+                <th>Actions</th>
 
             </tr>
-        <?php } ?>
+            <?php foreach ($articles as $article) { ?>
+                <tr class="bgWhite">
+                    <td><?= date('d-m-Y H:i', strtotime($article->created_at)) ?></td>
+                    <td><?= $article->pseudo ?></td>
+                    <td><?= $article->nameArticle ?></td>
+                    <td><?= $article->categoryName ?></td>
+                    <td><?= $article->resume  ?></td>
+                    <td><a href="/controllers/dashboard/Catalogs/updateCatalogCtrl.php?id_users=<?= $article->id_articles ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                        <a href="/controllers/dashboard/Catalogs/deleteCatalogCtrl.php<?= $article->id_articles ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                    </td>
+
+                </tr>
+            <?php } ?>
+        </div>
     </table>
     <!-- table end -->
     <!-- pagination start -->
@@ -81,3 +84,4 @@
         </ul>
     </nav>
     <!-- pagination end -->
+</div>

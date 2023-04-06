@@ -57,5 +57,5 @@ try {
 }
 
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/dashboard/orders.php');
+include(__DIR__ . '/../../../views/dashboard/Order/orders.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

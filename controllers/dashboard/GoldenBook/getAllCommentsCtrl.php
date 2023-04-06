@@ -56,5 +56,5 @@ try {
 }
 
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/dashboard/goldenBook.php');
+include(__DIR__ . '/../../../views/dashboard/GoldenBook/goldenBook.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

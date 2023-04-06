@@ -8,7 +8,7 @@
 <div class="catalog d-flex flex-wrap justify-content-around align-items-center mb-2">
     <h2 class="my-5 blue blackClover">La rubrique est vide...</h2>
     <!-- article start -->
-    <!-- <div class="box bgBlue col-lg-3 d-flex flex-column justify-content-center align-items-center p-3 m-md-5 my-3">
+    <!-- <div class="box bgBlue d-flex flex-column justify-content-center align-items-center p-3 m-md-3 my-3">
       
         <h2 class="gold blackClover">Annev</h2>
         <p class="little gold fondamento"> Par Roxylya <span class="blue">|</span> Le 20/12/2021 <span class="blue">|</span> Femmes.</p>

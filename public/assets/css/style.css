@@ -765,8 +765,11 @@ td>a>img {
 
 }
 
-.dashboardUsers {
+.add{
     border-top-right-radius: 1rem;
+}
+
+.dashboardUsers {
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border-left: 1px solid #a47a07;

@@ -56,5 +56,5 @@ try {
     die;
 }
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/dashboard/catalog.php');
+include(__DIR__ . '/../../../views/dashboard/Catalog/catalog.php');
 include(__DIR__ . '/../../../views/templates/footer.php');
