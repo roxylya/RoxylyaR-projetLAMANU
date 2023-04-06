@@ -33,7 +33,7 @@
         <!-- récupération avatar -->
         <div class="w-100 form-group">
             <label for="avatar" class="form-label">Avatar :</label>
-            <input class="form-control" type="file" id="avatar" name="avatar" value="<?= $avatar ?? '' ?>" accept="image/png, image/jpg, image/JPG, image/jpeg, image/gif" required>
+            <input class="form-control" type="file" id="avatar" name="avatar" value="<?= $avatar ?? '' ?>" accept="image/png, image/jpeg" required>
             <p class="red little text-center"><?= $error['avatar'] ?? '' ?></p>
         </div>
         <div class="w-100 checkCgu form-group little py-3 d-flex flex-column justify-content-around align-items-center">

@@ -30,13 +30,13 @@
         <!-- research end -->
     </div>
     <!-- table start -->
-    <table class="modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
+    <table class="w-100 modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
             <a href="/controllers/dashboard/Galleries/addGalleryCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle toile</a>
             <tr class="bgBlue">
                 <th>Crée le</th>
                 <th>Créateur</th>
-                <th>Nom</th>
+                <th class="widthThTd">Nom</th>
                 <th>Catégorie</th>
                 <th>Actions</th>
             </tr>
@@ -44,12 +44,11 @@
                 <tr class="bgWhite">
                     <td><?= date('d-m-Y H:i', strtotime($gallery->created_at)) ?></td>
                     <td><?= $gallery->pseudo ?></td>
-                    <td><?= $gallery->galleryName ?></td>
+                    <td class="widthThTd"><?= $gallery->galleryName ?></td>
                     <td><?= $gallery->typeName ?></td>
                     <td><a href="/controllers/dashboard/Galleries/updateGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                         <a href="/controllers/dashboard/Galleries/deleteGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                     </td>
-
                 </tr>
             <?php } ?>
         </div>

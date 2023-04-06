@@ -26,12 +26,12 @@
         <!-- récupération picture -->
         <div class="w-100 form-group">
             <label for="picture" class="form-label">Oeuvre :</label>
-            <input class="form-control" type="file" id="picture" name="picture" value="<?= $picture ?? '' ?>" accept="image/png" required>
+            <input class="form-control" type="file" id="picture" name="picture"  accept="image/png" required>
             <p class="red little text-center"><?= $error['picture'] ?? '' ?></p>
         </div>
 
         <!-- bouton pour envoyer le formulaire -->
-        <div class="form-group text-center py-2">
+        <div class="form-group text-center py-2 mt-3">
             <button type="submit" id="submit" class="btn">Envoyer</button>
         </div>
     </div>

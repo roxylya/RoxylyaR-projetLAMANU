@@ -24,7 +24,7 @@ try {
         header('location: /logOutCtrl.php');
     }
     $id_users = $user->id_users;
-    $types= Type::getAll();
+    $types = Type::getAll();
 
     // je crée un tableau où se trouveront tous les messages d'erreur :
     $error = [];
@@ -43,13 +43,13 @@ try {
         }
 
 
-        $id_types = trim(filter_input(INPUT_POST, 'id_types', FILTER_SANITIZE_NUMBER_INT));
+        $id_types = intval(filter_input(INPUT_POST, 'id_types', FILTER_SANITIZE_NUMBER_INT));
         if (empty($id_types)) {
             $error['id_types'] = "Veuillez renseigner le type de l'oeuvre.";
         } else {
             if ($id_types != 1 && $id_types != 2) {
                 $alert['id_types'] = 'Veuillez choisir l\'une des deux propositions du sélécteur.';
-            } 
+            }
         }
 
 
@@ -86,12 +86,11 @@ try {
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($gallery->add() === true) {
 
-                // je sauvegarde l'picture :
+                // je sauvegarde l'image :
                 $picture = Gallery::getByName($name);
-                    $pictureName = $picture->typeName . '_' . $picture->id_galleries . '.' . $extUserpicture;
-                    $from = $_FILES['picture']['tmp_name'];
-                    $type = $_FILES['picture']['type'];
-                    $to = LOCATION_UPLOAD . '/gallery/' . $pictureName;
+                $pictureName = $picture->typeName . '_' . $picture->id_galleries . '.' . $extUserpicture;
+                $from = $_FILES['picture']['tmp_name'];
+                $to = LOCATION_UPLOAD . '/gallery/' . $pictureName;
 
                 move_uploaded_file($from, $to);
             }

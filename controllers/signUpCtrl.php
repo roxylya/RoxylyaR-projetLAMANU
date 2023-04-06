@@ -133,9 +133,7 @@ try {
                 $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
                 mail($for, $subject, $text);
 
-                // redirection vers la page de connexion :
-                $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
-                Session::setMessage($message);
+
 
 
                 // définition des points de référence image en portrait ou en paysage :
@@ -168,12 +166,7 @@ try {
                     $width_scaled = intval(($width_original / $height_original) * $height_scaled);
 
                     //  je redimensionne l'image à 200px de large max :  
-                    if ($type == 'image/gif') {
-                        $gd_original = imagecreatefromgif($to);
-                        $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
-                        $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                        imagegif($gd_scaled, $to_scaled);
-                    } elseif ($type == 'image/png') {
+                    if ($type == 'image/png') {
                         $gd_original = imagecreatefrompng($to);
                         $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
                         $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
@@ -189,6 +182,9 @@ try {
                         header('location: /erreur.html');
                         die;
                     }
+                    // redirection vers la page de connexion :
+                    $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
+                    Session::setMessage($message);
                     header('location: /connexion.html');
                     die;
                 }

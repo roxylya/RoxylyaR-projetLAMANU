@@ -118,7 +118,7 @@ class Gallery
     public static function getAll($search = "", $firstGallery = 0, $limit = 10)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
@@ -138,7 +138,7 @@ class Gallery
         return $results;
     }
 
-    // Récupérer le nombre de peintures de la recherche sinon afficher tout :
+    // Récupérer les peintures de la recherche sinon afficher tout :
     public static function getAllGalleriesCount($search = "")
     {
         $pdo = Database::getInstance();
@@ -232,13 +232,13 @@ class Gallery
     public static function getByName($name)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
         JOIN `types`
         ON `galleries`.`id_types` = `types`.`id_types`
-        WHERE `galleries`.`id_galleries`=:name;';
+        WHERE `galleries`.`name`=:name;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':name', $name, PDO::PARAM_INT);

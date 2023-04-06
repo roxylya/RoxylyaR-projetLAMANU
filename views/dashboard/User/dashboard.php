@@ -30,7 +30,7 @@
         <!-- research end -->
     </div>
     <!-- table start -->
-    <table class="modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
+    <table class="w-100 modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
             <a href="/controllers/dashboard/Users/addUserCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter un nouvel inscrit</a>
             <tr class="bgBlue">

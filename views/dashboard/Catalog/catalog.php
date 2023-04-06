@@ -30,7 +30,7 @@
         <!-- research end -->
     </div>
     <!-- table start -->
-    <table class="modeOff dashboardUsers mt-0 fondamento text-center mb-1">
+    <table class="w-100 modeOff dashboardUsers mt-0 fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
             <a href="/controllers/dashboard/Catalogs/addCatalogCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle création</a>
             <tr class="bgBlue">
