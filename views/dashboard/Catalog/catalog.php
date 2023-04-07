@@ -23,7 +23,7 @@
         </ul>
         <!-- nav dashboard end -->
         <!-- research start -->
-        <form method="get" action="/controllers/dashboard/dashboardCtrl.php" class="d-flex justify-content-around align-items-center ms-5">
+        <form method="get" action="/controllers/dashboard/Catalogs/getAllCatalogsCtrl.php" class="d-flex justify-content-around align-items-center ms-5">
             <input type="search" name="search" id="search" placeholder="Rechercher" value="<?= $research ?? '' ?>">
             <input type="submit" name="btn-search" class="btn-search fondamento ms-3 me-2" value="Rechercher">
         </form>
@@ -46,7 +46,7 @@
                 <tr class="bgWhite">
                     <td><?= date('d-m-Y H:i', strtotime($article->created_at)) ?></td>
                     <td><?= $article->pseudo ?></td>
-                    <td><?= $article->nameArticle ?></td>
+                    <td><?= $article->articleName ?></td>
                     <td><?= $article->categoryName ?></td>
                     <td><?= $article->resume  ?></td>
                     <td><a href="/controllers/dashboard/Catalogs/updateCatalogCtrl.php?id_users=<?= $article->id_articles ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>

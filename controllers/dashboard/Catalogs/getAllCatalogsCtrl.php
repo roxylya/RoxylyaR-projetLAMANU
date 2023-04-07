@@ -12,7 +12,8 @@ require_once(__DIR__ . '/../../../helper/dd.php');
 require_once(__DIR__ . '/../../../models/User.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../../models/Article.php');
-
+// on a besoin du model :
+require_once(__DIR__ . '/../../../models/Category.php');
 
 try {
     session_start();

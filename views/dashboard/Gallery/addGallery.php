@@ -25,7 +25,7 @@
         <!-- name -->
         <div class="w-100 form-group">
             <label for="name">Titre :</label>
-            <input type="text" class="form-control" id="name" name="name" value="<?= $name ?? '' ?>" required>
+            <input type="text" class="form-control" id="name" minlength="3" maxlength="50" name="name" value="<?= $name ?? '' ?>" required>
             <p class="red little text-center"><?= $error['name'] ?? '' ?></p>
         </div>
 

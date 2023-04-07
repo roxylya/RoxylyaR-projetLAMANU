@@ -72,8 +72,6 @@ class Gallery
     }
 
 
-    // 
-
     // ajouter une oeuvre à  la galerie :
 
     public function add()
@@ -115,7 +113,7 @@ class Gallery
 
 
     // Afficher toutes les peintures de tous les utilisateurs:
-    public static function getAll($search = "", $firstGallery = 0, $limit = 10)
+    public static function getAll($search = "", $first = 0, $limit = 9)
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
@@ -126,11 +124,11 @@ class Gallery
         ON `galleries`.`id_types` = `types`.`id_types`
         WHERE `pseudo` LIKE :search OR `galleries`.`created_at` LIKE :search  OR `galleries`.`name` LIKE :search  OR `types`.`name` LIKE :search 
         ORDER BY `created_at`
-        LIMIT :firstGallery, :limit ;';
+        LIMIT :first, :limit ;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-        $sth->bindValue(':firstGallery',  $firstGallery, PDO::PARAM_INT);
+        $sth->bindValue(':first',  $first, PDO::PARAM_INT);
         $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
         $sth->execute();
         $results = $sth->fetchAll();

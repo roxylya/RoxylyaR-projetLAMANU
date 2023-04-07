@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../config/Database.php');
 // le helper :
 require_once(__DIR__ . '/../helper/dd.php');
 
-class Article  	
+class Article
 
 {
     private int $id_articles;
@@ -78,13 +78,53 @@ class Article
         return $this->id_users;
     }
 
+    // on vérifie si le nom n'est pas déjà existant dans la base de données :
+
+    public static function existsName(string $name)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT `name` FROM `articles` WHERE `name` = ?;';
+        $sth = $pdo->prepare($sql);
+        $sth->execute([$name]);
+        $results = $sth->fetchAll();
+
+        return (empty($results)) ? false : true;
+    }
+
+
+    // ajouter une oeuvre à  la galerie :
+
+    public function add()
+    {
+        // connection à la bd :
+        $pdo = Database::getInstance();
+
+        //On insère les données reçues   
+        // on note les marqueurs nominatifs exemple :birthdate sert de contenant à une valeur
+
+        $sql = 'INSERT INTO `articles`(`name`, `resume`, `created_at`, `id_categories`, `id_users`) 
+       VALUES(:name, :resume, Now(), :id_categories, :id_users);';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':name', $this->name);
+        $sth->bindValue(':resume', $this->resume);
+        $sth->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
+        $sth->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
+        $sth->execute();
+
+        // on vérifie si l'ajout a bien été effectué :
+        $nbResults = $sth->rowCount();
+
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return ($nbResults > 0) ? true : false;
+    }
+
 
 
     // Afficher toutes les tenues de tous les utilisateurs:
     public static function getAll($search = "", $firstArticle = 0, $limit = 10)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
         FROM `articles` 
         JOIN `users`
         ON  `articles`.`id_users` = `users`.`id_users`
@@ -108,7 +148,7 @@ class Article
     public static function getAllArticlesCount($search = "")
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
         FROM `articles` 
         JOIN `users`
         ON  `articles`.`id_users` = `users`.`id_users`
@@ -129,7 +169,7 @@ class Article
     public static function getAllCountArticlesUser($id_users)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`,  `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
         FROM `articles` 
         JOIN `users`
         ON  `articles`.`id_users` = `users`.`id_users`
@@ -154,7 +194,7 @@ class Article
     public static function getAllArticlesUser($id_users)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`,  `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
         FROM `articles` 
         JOIN `users`
         ON  `articles`.`id_users` = `users`.`id_users`
@@ -177,7 +217,7 @@ class Article
     public static function get($id_articles)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
         FROM `articles` 
         JOIN `users`
         ON  `articles`.`id_users` = `users`.`id_users`
@@ -188,7 +228,7 @@ class Article
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
         $sth->execute();
-        $results = $sth->fetchAll();
+        $results = $sth->fetch();
 
         return $results;
     }
