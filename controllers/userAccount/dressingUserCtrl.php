@@ -13,7 +13,6 @@ require_once(__DIR__ . '/../../models/User.php');
 
 try {
     session_start();
-    session_start();
     if (!isset($_SESSION['user'])) {
         header('location: /accueil.html');
         die;

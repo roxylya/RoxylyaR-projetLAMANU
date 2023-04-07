@@ -36,7 +36,7 @@ try {
 
     // pagination  
     // $limite= $limit (le nombre de patient à afficher par page) 
-    $limit = 10;
+    $limit = 9;
 
     // je récupère le numéro de la page sur laquelle on se trouve
     $page = intval(filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS));

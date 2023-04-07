@@ -58,22 +58,65 @@ class Comment
     }
 
 
+    // <div class="box bgBlue comments m-3 m-md-4 p-3 d-flex flex-column">
+    // <!-- comment header -->
+    // <div class="commentHeader d-flex justify-content-around align-items-center ">
+    //     <img src="/public/uploads/avatars/avatar_10.jpg" alt="avatar de l'user en cours">
+    //     <div class="d-flex flex-column justify-content-center align-items-center">
+    //         <h2 class="ms-2 gold blackClover large text-center">Pseudo de l'user</h2>
+    //         <p class="gold small fondamento">date de la création</p>
+    //     </div>
+    // </div>
+    // <!-- comment body -->
+    // <p class="pt-2 gold fondamento justify">Merci à Dame Cassiopée pour cette magnifique tenue d'invitée pour le mariage de ma fille. Je reviendrais!</p>
+    // <!-- comment footer -->
+    // <p class="gold small fondamento d-flex align-self-end m-0 p-0">Denière édition : date de dernière édition</p>
+
+
+
+
+
+
+    // ajouter un commentaire au livre d'or :
+
+    public function add()
+    {
+        // connection à la bd :
+        $pdo = Database::getInstance();
+
+        //On insère les données reçues   
+        // on note les marqueurs nominatifs exemple :id_users sert de contenant à une valeur
+
+        $sql = 'INSERT INTO `comments`(`created_at`, `notice`, `id_users`) 
+       VALUES(Now(), :notice, :id_users);';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':notice', $this->notice);
+        $sth->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
+        $sth->execute();
+
+        // on vérifie si l'ajout a bien été effectué :
+        $nbResults = $sth->rowCount();
+
+        // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+        return ($nbResults > 0) ? true : false;
+    }
+
 
     // Afficher tous les commentaires de tous les utilisateurs:
-    public static function getAll($search = "", $firstComment = 0, $limit = 10)
+    public static function getAll($search = "", $first = 0, $limit = 12)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `comments`.*, `users`.`pseudo`
+        $sql = 'SELECT `comments`.*, `users`.`id_users` AS `userIdUser`, `users`.`pseudo`, `users`.`extUserAvatar`
         FROM `comments` 
         JOIN `users`
         ON  `comments`.`id_users` = `users`.`id_users`
         WHERE `pseudo` LIKE :search OR `comments`.`created_at` LIKE :search OR `notice` LIKE :search 
         ORDER BY `created_at`
-        LIMIT :firstComment, :limit ;';
+        LIMIT :first, :limit ;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-        $sth->bindValue(':firstComment',  $firstComment, PDO::PARAM_INT);
+        $sth->bindValue(':first',  $first, PDO::PARAM_INT);
         $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
         $sth->execute();
         $results = $sth->fetchAll();
@@ -85,7 +128,7 @@ class Comment
     public static function getAllCommentsCount($search = "")
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `comments`.*, `users`.`pseudo`
+        $sql = 'SELECT `comments`.*, `users`.*
         FROM `comments` 
         JOIN `users`
         ON  `comments`.`id_users` = `users`.`id_users`
@@ -104,7 +147,7 @@ class Comment
     public static function getAllCountCommentsUser($id_users)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `comments`.*, `users`.`pseudo`
+        $sql = 'SELECT `comments`.*, `users`.`id_users`
              FROM `comments` 
              JOIN `users`
              ON  `comments`.`id_users` = `users`.`id_users`
@@ -147,7 +190,7 @@ class Comment
     public static function get($id_comments)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `comments`.*, `users`.`pseudo`
+        $sql = 'SELECT `comments`.*, `users`.*
           FROM `comments` 
           JOIN `users`
           ON  `comments`.`id_users` = `users`.`id_users`
@@ -156,7 +199,7 @@ class Comment
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':id_comments', $id_comments, PDO::PARAM_INT);
         $sth->execute();
-        $results = $sth->fetchAll();
+        $results = $sth->fetch();
 
         return $results;
     }

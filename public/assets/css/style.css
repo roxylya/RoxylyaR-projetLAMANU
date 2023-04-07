@@ -376,7 +376,6 @@ input[type="file"]:focus,
 select:focus {
     border-color: rgb(169, 127, 7, 0.8);
     outline: 0 none;
-    max-width: 30rem;
 }
 
 select{
@@ -566,6 +565,9 @@ option:focus {
     height: 2rem;
 }
 
+.form-control>.textarea{
+    height: 6rem;
+}
 
 
 
@@ -815,9 +817,25 @@ input[type="search"] {
     height: 2rem;
 }
 
+textarea.form-control, textarea.form-control:focus {
+    min-height: 6rem;
+}
+
+
+
+
 
 /* =================================================================================================== */
 /* pagination */
+
+.active>.page-link, .page-link.active {
+    border-color: #a47a07c3;
+}
+
+
+.page-link:focus {
+    box-shadow: none
+}
 
 .pagination {
     height: 36px;
