@@ -1,5 +1,5 @@
 <h1 class="text-center gold blackClover"><span class="bdRenaissanceH2">N</span>ouveau<br><span class="bdRenaissanceH2">M</span>ot de <span class="bdRenaissanceH2">P</span>asse </h1>
-<p class="py-1"><?= (isset($_GET["code"]))  ? CODES[$_GET["code"]] : '' ?></p>
+<p class="py-1"><?= $message ?? '' ?></p>
 <form method="post" class="connect gold fondamento medium mt-3 mb-5" enctype="multipart/form-data">
     <div class="d-md-flex flex-column justify-content-around align-items-center pt-3">
         <div class="d-lg-flex flex-wrap justify-content-around align-items-center">

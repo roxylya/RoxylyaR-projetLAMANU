@@ -1,26 +1,36 @@
 <div class="text-center gold blackClover">
     <h1><span class="bdRenaissanceH1">L</span>ivre d' <span class="bdRenaissanceH1">O</span>r</h1>
 </div>
+<div class="d-flex justify-content-around align-items-center">
+    <!-- bouton ajout de commentaire accessible seulement pour les users connectés start -->
+<?php if(isset($user)) {?>
+
+<input type="button" class="btn-comment fondamento" value="+ Ajouter un commentaire">
+
+<?php }?>
+    <!-- bouton ajout de commentaire accessible seulement pour les users connectés end -->
 <!-- research start -->
 <form method="get" action="/controllers/goldenBookCtrl.php" class="d-flex justify-content-around align-items-center ms-5 py-3">
     <input type="search" name="search" id="search" placeholder="Rechercher" value="<?= $research ?? '' ?>">
     <input type="submit" class="btn-search fondamento ms-3 me-2" value="Rechercher">
 </form>
 <!-- research end -->
+
+</div>
 <div class="goldenBook d-flex flex-wrap justify-content-around align-items-center mt-3">
     <?php foreach ($comments as $comment) { ?>
         <!-- comment start -->
         <div class="box bgBlue comments m-3 m-md-4 p-3 d-flex flex-column">
             <!-- comment header -->
             <div class="commentHeader d-flex justify-content-around align-items-center ">
-                <img src="/public//uploads/avatars/avatar_<?= $comments->id_users . '.' . $comments->extUserAvatar ?>?<?= rand(1, 2000) ?>" alt="avatar de <?= $comments->pseudo ?>">
+                <img src="/public//uploads/avatars/avatar_<?= $comment->id_users . '.' . $comment->extUserAvatar ?>?<?= rand(1, 2000) ?>" alt="avatar de <?= $comment->pseudo ?>">
                 <div class="d-flex flex-column justify-content-center align-items-center">
-                    <h2 class="ms-2 gold blackClover large text-center"><?= $comments->pseudo ?></h2>
-                    <p class="gold small fondamento"><?= date('d-m-Y', strtotime($comments->created_at)) ?></p>
+                    <h2 class="ms-2 gold blackClover large text-center"><?= $comment->pseudo ?></h2>
+                    <p class="gold small fondamento"><?= date('d-m-Y,  H:i', strtotime($comment->created_at)) ?></p>
                 </div>
             </div>
             <!-- comment body -->
-            <p class="pt-2 gold fondamento justify"><?= $comments->notice ?></p>
+            <p class="pt-2 gold fondamento justify"><?= $comment->notice ?></p>
         </div>
         <!-- comment end -->
     <?php  } ?>

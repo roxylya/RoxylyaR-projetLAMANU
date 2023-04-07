@@ -18,20 +18,7 @@ try {
     // si une session est en cours on la récupère :
     session_start();
     // on affiche l'header correspondant selon si user connecté ou non :
-    if (!isset($_SESSION['user'])) {
-        include(__DIR__ . '/../views/templates/header.php');
-    } else {
-        // on récupère l'id_users connecté:
-        $user = $_SESSION['user'];
-        // // on récupère les informations de l'user connecté :
-        // $userConnected = User::getById($id_users);
-        if ($user->id_roles === 1 || $user->id_roles === 2 || $user->id_roles === 3) {
-            include(__DIR__ . '/../views/templates/headerUserAccount.php');
-        }
-    }
-
-    $id_users = $user->id_users;
-
+   
     // Nettoyage et validation du formulaire reçu en post :
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
 
@@ -65,5 +52,16 @@ try {
     die;
 }
 
+if (!isset($_SESSION['user'])) {
+    include(__DIR__ . '/../views/templates/header.php');
+} else {
+    // on récupère l'id_users connecté:
+    $user = $_SESSION['user'];
+    // // on récupère les informations de l'user connecté :
+    // $userConnected = User::getById($id_users);
+    if ($user->id_roles === 1 || $user->id_roles === 2 || $user->id_roles === 3) {
+        include(__DIR__ . '/../views/templates/headerUserAccount.php');
+    }
+}
 include(__DIR__ . '/../views/goldenBook.php');
 include(__DIR__ . '/../views/templates/footer.php');

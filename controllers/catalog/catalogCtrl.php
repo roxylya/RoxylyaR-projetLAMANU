@@ -29,8 +29,6 @@ try {
         }
     }
 
-    $id_users = $user->id_users;
-
     // Nettoyage et validation du formulaire reçu en post :
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
 
