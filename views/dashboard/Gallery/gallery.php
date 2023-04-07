@@ -1,4 +1,4 @@
-<p class="pt-3"><?= $message ?? '' ?></p>
+<p class="pt-3 fondamento blue medium"><?= $message ?? '' ?></p>
 <h1 class="blackClover blue pb-3"> <span class="bdRenaissanceH1 blue ">L</span>a <span class="bdRenaissanceH1 blue ">G</span>alerie</h1>
 <h2 class="dashboardDisplay text-center fondamento blue medium">Accessible à partir de 1110px de largeur d'écran ! </h2>
 <div class="modeOff m-0 p-0">

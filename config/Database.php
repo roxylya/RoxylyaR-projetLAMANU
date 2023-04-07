@@ -6,20 +6,20 @@ require_once(__DIR__ . '/../config/constants.php');
 require_once(__DIR__ . '/../helper/dd.php');
 
 
-class Database
-{
+// class Database
+// {
 
-    public static function getInstance()
-    {
+//     public static function getInstance()
+//     {
 
-        $db = new PDO(DSN, USER, PASSWORD);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+//         $db = new PDO(DSN, USER, PASSWORD);
+//         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-        return $db;
-    }
+//         return $db;
+//     }
 
-}
+// }
 
 
 // class Database
@@ -37,3 +37,27 @@ class Database
 //         return self::$connection;
 //     }
 // }
+
+class Database
+{
+
+
+    private static $instance = null;
+    private static object $connection;
+
+    private function __construct()
+    {
+        $this::$connection = new PDO(DSN, USER, PASSWORD);
+        $this::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this::$connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+    }
+
+    public static function getInstance()
+    {
+
+        if (is_null(self::$instance)) {
+            self::$instance = new Database();
+        }
+        return self::$connection;
+    }
+}

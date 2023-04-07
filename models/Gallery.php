@@ -211,7 +211,7 @@ class Gallery
     public static function get($id_galleries)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`id_galleries`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
@@ -222,7 +222,7 @@ class Gallery
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':id_galleries', $id_galleries, PDO::PARAM_INT);
         $sth->execute();
-        $results = $sth->fetchAll();
+        $results = $sth->fetch();
 
         return $results;
     }
@@ -232,10 +232,8 @@ class Gallery
     public static function getByName($name)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `types`.`name` AS `typeName`
         FROM `galleries` 
-        JOIN `users`
-        ON  `galleries`.`id_users` = `users`.`id_users`
         JOIN `types`
         ON `galleries`.`id_types` = `types`.`id_types`
         WHERE `galleries`.`name`=:name;';

@@ -37,8 +37,8 @@ try {
         if (empty($name)) {
             $error['name'] = "Veuillez renseigner le nom de l'oeuvre.";
         } else {
-            if (Gallery::existsName($name) === true) {
-                $alert['name'] = 'Ce nom est déjà existant.';
+            if (Gallery::existsName($name) != false) {
+                $error['name'] = 'Ce nom est déjà existant.';
             }
         }
 
@@ -48,7 +48,7 @@ try {
             $error['id_types'] = "Veuillez renseigner le type de l'oeuvre.";
         } else {
             if ($id_types != 1 && $id_types != 2) {
-                $alert['id_types'] = 'Veuillez choisir l\'une des deux propositions du sélécteur.';
+                $error['id_types'] = 'Veuillez choisir l\'une des deux propositions du sélécteur.';
             }
         }
 
@@ -78,6 +78,9 @@ try {
 
 
         if (empty($error)) {
+            $pdo = Database::getInstance();
+            $pdo->beginTransaction();
+
             $gallery = new Gallery();
             // je lui donne les valeurs récupérées, nettoyées et validées :
             $gallery->setName($name);
@@ -85,14 +88,26 @@ try {
             $gallery->setId_users($id_users);
             // Ajouter l'enregistrement du nouveau user à la base de données :
             if ($gallery->add() === true) {
-
+                $id_galleries = $pdo->lastInsertId();
+                
                 // je sauvegarde l'image :
-                $picture = Gallery::getByName($name);
-                $pictureName = $picture->typeName . '_' . $picture->id_galleries . '.' . $extUserpicture;
+                $gallery = Gallery::get($id_galleries);
+        
+                $pictureName = $gallery->typeName . '_' . $id_galleries . '.' . $extUserpicture;
+  
                 $from = $_FILES['picture']['tmp_name'];
                 $to = LOCATION_UPLOAD . '/gallery/' . $pictureName;
-
                 move_uploaded_file($from, $to);
+                if ($gallery != false) {
+                    $pdo->commit();
+                    $message = 'Nouvelle oeuvre ajoutée!';
+                    Session::setMessage($message);
+                    header('location: /controllers/dashboard/Galleries/getAllGalleriesCtrl.php');
+                    die;
+                } else {
+                    $pdo->rollBack();
+                    throw new Exception('Echec de l\'enregistrement.');
+                }
             }
         }
     }
