@@ -26,14 +26,14 @@ try {
         // Nettoyer l'email :
         $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
         if (empty($email)) {
-            $error['email'] = "Veuillez renseigner votre mail.";
+            $error['email'] = "Veuillez renseigner votre e-mail.";
         } else {
             // Valider l'email :
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
             } else {
                 if (User::existsEmail($email) === true) {
-                    $alert['email'] = 'Email déjà existant.';
+                    $alert['email'] = 'E-mail déjà existant.';
                 }
             }
         }
@@ -130,7 +130,7 @@ try {
                 $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
                 $for = $user->email;
                 $subject = 'Validation de votre inscription sur Roxylya R';
-                $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
+                $text = 'Bonjour, <br>Afin de valider votre inscription sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '. <br> A Galon <br> Cassiopée Nox">lien</a>.';
                 mail($for, $subject, $text);
 
 

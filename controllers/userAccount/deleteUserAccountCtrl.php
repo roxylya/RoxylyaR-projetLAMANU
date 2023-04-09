@@ -41,12 +41,14 @@ try {
                             // var_dump($oldAvatar);
                             unlink($oldAvatar);
                         }
-                        $code = 1;
-                        header('location: /controllers/logOutCtrl.php?code=' . $code);
+                        $message = 'Le compte n\'existe plus.';
+                        Session::setMessage($message);
+                        header('location: /controllers/logOutCtrl.php');
                         die;
                     } else {
-                        $code = 0;
-                        header('location: /mon-compte-mes-informations.html?code=' . $code);
+                        $message = 'Une erreur est survenue et PAF le compte est existe encore. Veuillez réitérer votre demande ou demander à votre admin de vous supprimer votre compte.';
+                        Session::setMessage($message);
+                        header('location: /mon-compte-mes-informations.html');
                         die;
                     }
                 }

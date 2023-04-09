@@ -37,8 +37,12 @@ try {
         if (empty($error)) {
             $user = User::getByEmail($email);
             // envoyer un lien sur le mail communiqué qui redirigera vers formChangePassword
-
-            // à faire mail
+            // mail de lien pour changer le mot de passe :
+            $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/forgetPassword/formChangePasswordCtrl.php?id_users=' . $user->id_users;
+            $for = $user->email;
+            $subject = 'Je change mon mot de passe sur Roxylya R';
+            $text = 'Bonjour, <br>Pour changer votre mot de passe de votre compte sur le site Roxylya R, merci de cliquer sur ce <a href="' . $link . '. <br> A Galon <br> Cassiopée Nox">lien</a>.';
+            mail($for, $subject, $text);
         }
     }
 } catch (\Throwable $th) {

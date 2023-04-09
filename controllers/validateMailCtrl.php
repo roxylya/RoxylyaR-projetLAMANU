@@ -20,12 +20,14 @@ try {
     $validationIsOk = User::updateValidate($id_users);
 
     if ($validationIsOk) {
-        $code = 13;
-        header('location: /connexion.html?code=' . $code);
+        $message = 'Mail validé, vous pouvez vous connecter.';
+        Session::setMessage($message);
+        header('location: /connexion.html');
         die;
     } else {
-        $code = 12;
-        header('location: /accueil.html' . $code);
+        $message = 'Pour vous connecter, valider votre email.';
+        Session::setMessage($message);
+        header('location: /accueil.html');
         die;
     }
 } catch (\Throwable $th) {

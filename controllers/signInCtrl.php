@@ -14,16 +14,9 @@ require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../config/SessionFlash.php');
 
 try {
+     // on démarre la session :
     $error = [];
     $message = Session::getMessage();
-    $code = intval(filter_input(INPUT_GET, 'code', FILTER_SANITIZE_NUMBER_INT));
-
-    if($code === 12){
-       $message = 'Pour vous connecter, valider votre email.';
-    }
-    if($code === 13){
-        $message = 'Mail validé, vous pouvez vous connecter.';
-    }
 
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -65,16 +58,17 @@ try {
         if (empty($error)) {
             $user = User::getByEmail($email);
             if ($user->validated_at != NULL) {
-                // on démarre la session :
                 session_start();
                 $_SESSION['user'] = $user;
-
-                if ($user->id_roles === 3 || $user->id_roles === 1 || $user->id_roles === 2) {
-                    header('location: /mon-compte.html');
+                if (!isset($_SESSION['user'])) {
+                    header('location: /accueil.html');
                     die;
+                } else {
+                    $user = $_SESSION['user'];
+                    header('location: /mon-compte.html');
                 }
             } else {
-               $message = 'Validez votre mail pour pouvoir vous connecter.';
+                $message = 'Validez votre mail pour pouvoir vous connecter.';
             }
         }
     }

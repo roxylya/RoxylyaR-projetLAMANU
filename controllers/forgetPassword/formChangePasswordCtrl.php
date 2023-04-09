@@ -17,9 +17,7 @@ try {
     // je crée un tableau où se trouveront tous les messages d'erreur :
     $error = [];
 
-    // on doit récupérer via le lien cliqué l'id_user correspondant:
-    // $id_users;
-    // récupération de l'id_users
+    // récupération de l'id_users compris dans le lien :
     $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
 
     // Vérifier les données envoyées :
@@ -53,11 +51,13 @@ try {
             $user->setUpdated_at($updated_at);
             // Modifier les informations de l'user en fonction de son id sur la base de données :
             if ($user->updatePassword($id_users) === true) {
-                $code = 15;
-                header('location: /../connection.html?code=' . $code);
+                $message = 'Votre nouveau mot de passe a bien été enregistré. Vous pouvez vous connecter.';
+                Session::setMessage($message);
+                header('location: /../connection.html');
                 die;
             } else {
-                $code = 16;
+                $message = 'Une erreure est survenue, reformulez votre demande.';
+                Session::setMessage($message);
             }
         }
     }
