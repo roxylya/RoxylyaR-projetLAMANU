@@ -35,38 +35,80 @@ try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Nettoyer le name :
-        $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
-        if (empty($name)) {
-            $error['name'] = "Veuillez renseigner le nom de l'oeuvre.";
-        } else {
-            if (Article::existsName($name) === true && $name != $theArticle->name) {
-                $error['name'] = 'Ce nom est déjà existant.';
+        if (isset($_POST['name'])) {
+            $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
+            if (empty($name)) {
+                $error['name'] = "Veuillez renseigner le nom de l'oeuvre.";
+            } else {
+                if (Article::existsName($name) === true && $name != $theArticle->name) {
+                    $error['name'] = 'Ce nom est déjà existant.';
+                } else {
+                    if (empty($error)) {
+                        $article = new Article();
+                        // je lui donne les valeurs récupérées, nettoyées et validées :
+                        $article->setName($name);
+                        // Ajouter l'enregistrement du nouveau user à la base de données :
+                        if ($article->updateName($id_articles) === true) {
+                            $message = 'Modification enregistrée!';
+                        } else {
+                            throw new Exception('Echec de l\'enregistrement.');
+                        }
+                    }
+                }
             }
         }
+
 
         // Nettoyer l'id_catégories :
-
-        $id_categories = intval(filter_input(INPUT_POST, 'id_categories', FILTER_SANITIZE_NUMBER_INT));
-        if (empty($id_categories)) {
-            $error['id_categories'] = "Veuillez renseigner la catégorie de l'article.";
-        } else {
-            if ($id_categories <1 || $id_categories >5) {
-                $error['id_categories'] = 'Veuillez choisir l\'une des propositions du sélécteur.';
+        if (isset($_POST['id_categories'])) {
+            $id_categories = intval(filter_input(INPUT_POST, 'id_categories', FILTER_SANITIZE_NUMBER_INT));
+            if (empty($id_categories)) {
+                $error['id_categories'] = "Veuillez renseigner la catégorie de l'article.";
+            } else {
+                if ($id_categories < 1 || $id_categories > 5) {
+                    $error['id_categories'] = 'Veuillez choisir l\'une des propositions du sélécteur.';
+                } else {
+                    if (empty($error)) {
+                        $article = new Article();
+                        // je lui donne les valeurs récupérées, nettoyées et validées :
+                        $article->setId_Categories($id_categories);
+                        // Ajouter l'enregistrement du nouveau user à la base de données :
+                        if ($article->updateId_categories($id_articles) === true) {
+                            $message = 'Modification enregistrée!';
+                        } else {
+                            throw new Exception('Echec de l\'enregistrement.');
+                        }
+                    }
+                }
             }
         }
+
 
 
         // Nettoyer le resume :
-        $resume = trim(filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_SPECIAL_CHARS));
-        if (empty($resume)) {
-            $error['resume'] = "Veuillez renseigner le nom de l'oeuvre.";
+        if (isset($_POST['resume'])) {
+            $resume = trim(filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_SPECIAL_CHARS));
+            if (empty($resume)) {
+                $error['resume'] = "Veuillez renseigner le nom de l'oeuvre.";
+            } else {
+                if (empty($error)) {
+                    $article = new Article();
+                    // je lui donne les valeurs récupérées, nettoyées et validées :
+                    $article->setResume($resume);
+                    // Ajouter l'enregistrement du nouveau user à la base de données :
+                    if ($article->updateResume($id_articles) === true) {
+                        $message = 'Modification enregistrée!';
+                    } else {
+                        throw new Exception('Echec de l\'enregistrement.');
+                    }
+                }
+            }
         }
 
 
         // Vérification de l'image :
-        if (!isset($_FILES['picture'])) {
-            $error['picture'] = 'Une erreur est survenue.';
-        } else {
+
+        if (isset($_FILES['picture'])) {
             $picture = $_FILES['picture']['name'];
             $pictureType = $_FILES['picture']['type'];
             $pictureError = $_FILES['picture']['error'];
@@ -82,42 +124,19 @@ try {
             if ($_FILES['picture']['size'] > MAX_FILESIZE_PICTURE) {
                 $error['picture'] = 'Le poids de l\'image doit être inférieur à 2mo.';
             } else {
-                $extUserpicture = pathinfo($picture, PATHINFO_EXTENSION);
-            }
-        }
+                if (empty($error)) {
 
+                    $oldPicture = __DIR__ . '/../../public/uploads/catalog/' . $theArticle->categoryName . $id_articles . '.png';
+                    if (file_exists($oldPicture)) {
+                        //sinon enlever la condition et mettre un @ devant unlink;
+                        unlink($oldPicture);
+                    }
+                    $pictureName = $theArticle->categoryName . '_' . $id_articles . '.png';
+                    $from = $_FILES['picture']['tmp_name'];
+                    $to = LOCATION_UPLOAD . '/catalog/' . $pictureName;
+                    move_uploaded_file($from, $to);
 
-        if (empty($error)) {
-            $pdo = Database::getInstance();
-            $pdo->beginTransaction();
-
-            $article = new Article();
-            // je lui donne les valeurs récupérées, nettoyées et validées :
-            $article->setName($name);
-            $article->setResume($resume);
-            $article->setId_categories($id_categories);
-            $article->setId_users($id_users);
-            // Ajouter l'enregistrement du nouveau user à la base de données :
-            if ($article->add() === true) {
-                $id_articles = $pdo->lastInsertId();
-
-                // je sauvegarde l'image :
-                $article = Article::get($id_articles);
-
-                $pictureName = $article->categoryName . '_' . $id_articles . '.' . $extUserpicture;
-
-                $from = $_FILES['picture']['tmp_name'];
-                $to = LOCATION_UPLOAD . '/catalog/' . $pictureName;
-                move_uploaded_file($from, $to);
-                if ($article != false) {
-                    $pdo->commit();
-                    $message = 'Nouvelle oeuvre ajoutée!';
-                    Session::setMessage($message);
-                    header('location: /controllers/dashboard/Catalogs/getAllCatalogsCtrl.php');
-                    die;
-                } else {
-                    $pdo->rollBack();
-                    throw new Exception('Echec de l\'enregistrement.');
+                    $message = 'Modification enregistrée!';
                 }
             }
         }

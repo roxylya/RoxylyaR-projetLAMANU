@@ -232,4 +232,81 @@ class Article
 
         return $results;
     }
+
+    // update :
+
+ // Update Name:
+
+ public function updateName($id_articles)
+ {
+     $pdo = Database::getInstance();
+     $sql = ' UPDATE `articles` 
+     SET `name`=:name
+     WHERE `id_articles`=:id_articles;';
+     //On insère les données reçues   
+     //  on note les marqueurs nominatifs :
+     $sth = $pdo->prepare($sql);
+     $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+     $sth->bindValue(':name', $this->name);
+     return $sth->execute();
+ }
+
+
+ // Update id_categories:
+
+ public function updateId_categories($id_articles)
+ {
+     $pdo = Database::getInstance();
+     $sql = ' UPDATE `articles` 
+     SET `id_categories`=:id_categories
+      WHERE `id_articles`=:id_articles;';
+     //On insère les données reçues   
+     //  on note les marqueurs nominatifs :
+     $sth = $pdo->prepare($sql);
+     $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+     $sth->bindValue(':id_categories', $this->id_categories);
+     return $sth->execute();
+ }
+
+
+ // Update resume :
+
+ public function updateResume($id_articles)
+ {
+     $pdo = Database::getInstance();
+     $sql = ' UPDATE `articles` 
+     SET `resume`=:resume
+      WHERE `id_articles`=:id_articles;';
+     //On insère les données reçues   
+     //  on note les marqueurs nominatifs :
+     $sth = $pdo->prepare($sql);
+     $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+     $sth->bindValue(':resume', $this->resume);
+     return $sth->execute();
+ }
+
+
+
+ // Delete un article :
+
+ public static function delete($id_articles)
+ {
+     $pdo = Database::getInstance();
+     // je mets des as pour différencier mes id des différentes tables :
+     $sql = 'DELETE FROM `articles` 
+           WHERE `articles`.`id_articles`=:id_articles ;';
+     // on prépare la requête
+     $sth = $pdo->prepare($sql);
+     // On affecte les valeurs au marqueur nominatif :
+     $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
+     // on exécute la requête
+     $sth->execute();
+     // on vérifie si la suppression a bien été effectuée :
+     $nbResults = $sth->rowCount();
+     // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+     return ($nbResults > 0) ? true : false;
+ }
+
+
+
 }

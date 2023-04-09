@@ -23,7 +23,7 @@ try {
     if ($user->id_roles != 1) {
         header('location: /logOutCtrl.php');
     }
-
+    $message = Session::getMessage();
 
     // Nettoyage et validation du formulaire reçu en post :
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));

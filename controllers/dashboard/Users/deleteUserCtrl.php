@@ -22,6 +22,11 @@ try {
 
     $theUser = User::delete($id_users);
     if ($theUser) {
+        $oldAvatar = LOCATION_UPLOAD . '/avatars/avatar_' . $user->id_users . '.' . $user->extUserAvatar;
+        if (file_exists($oldAvatar)) {
+            // var_dump($oldAvatar);
+            unlink($oldAvatar);
+        }
         $message ='Le compte a bien été supprimé.';
         Session::setMessage($message);
     } else {

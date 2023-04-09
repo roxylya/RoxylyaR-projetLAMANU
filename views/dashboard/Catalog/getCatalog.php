@@ -70,7 +70,7 @@
         <!-- fermeture formulaire -->
 
          <!-- image de l'article -->
-         <img class="align-self-center" src="/public/uploads/catalog/<?= $theArticle->categoryName . '_' . $theArticle->id_articles . '.png'  ?>" alt="<?= $theArticle->articleName ?>">
+         <img class="align-self-center" src="/public/uploads/catalog/<?= $theArticle->categoryName . '_' . $theArticle->id_articles . '.png'  ?>?<?= rand(1,2000) ?>" alt="<?= $theArticle->articleName ?>">
 
         <!-- ouverture formulaire -->
         <form method="post" class="w-100 update mb-3 mb-lg-0 medium gold blackClover d-flex flex-column flex-lg-row justify-content-center align-items-center p-3" enctype="multipart/form-data">
