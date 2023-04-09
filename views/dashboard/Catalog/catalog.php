@@ -40,7 +40,6 @@
                 <th>Catégorie</th>
                 <th>Description</th>
                 <th>Actions</th>
-
             </tr>
             <?php foreach ($articles as $article) { ?>
                 <tr class="bgWhite">
@@ -49,10 +48,28 @@
                     <td><?= $article->articleName ?></td>
                     <td><?= $article->categoryName ?></td>
                     <td><?= stopText($article->resume)  ?></td>
-                    <td><a href="/controllers/dashboard/Catalogs/updateCatalogCtrl.php?id_users=<?= $article->id_articles ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
-                        <a href="/controllers/dashboard/Catalogs/deleteCatalogCtrl.php<?= $article->id_articles ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                    <td><a href="/controllers/dashboard/Catalogs/getCatalogCtrl.php?id_articles=<?= $article->id_articles ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                        <a data-bs-toggle="modal" data-bs-target="#deleteArticle"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteArticle" tabindex="-1" aria-labelledby="deleteArticleLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bgBlue">
+                                        <h1 class="modal-title fs-5 fondamento gold medium" id="deleteArticleLabel">Suppression d'un article</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                                    </div>
+                                    <div class="modal-body fondamento blue medium">
+                                        Êtes-vous sûr de vouloir supprimer cet article ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btnNo medium" data-bs-dismiss="modal">Non</button>
+                                        <a href="/controllers/dashboard/Catalogs/deleteCatalogCtrl.php?id_articles=<?= $article->id_articles ?>"> <button type="button" class="btn btnDelete medium">Oui.</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
                     </td>
-
                 </tr>
             <?php } ?>
         </div>

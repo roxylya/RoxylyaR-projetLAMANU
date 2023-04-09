@@ -42,7 +42,6 @@
                 <th>Commande</th>
                 <th>Commentaires</th>
                 <th>Actions</th>
-
             </tr>
             <?php foreach ($allUsers as $allUser) { ?>
                 <tr class="bgWhite">

@@ -44,7 +44,7 @@ class Category
         $sql = 'SELECT `id_categories` FROM `categories` WHERE `name` = ?;';
         $sth = $pdo->prepare($sql);
         $sth->execute([$name]);
-        $results = $sth->fetchAll();
+        $results = $sth->fetch();
         return $results;
     }
 

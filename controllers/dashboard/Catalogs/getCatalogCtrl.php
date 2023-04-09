@@ -14,8 +14,8 @@ require_once(__DIR__ . '/../../../models/User.php');
 require_once(__DIR__ . '/../../../models/Article.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../../models/Category.php');
-
-
+// on a besoin du model :
+require_once(__DIR__ . '/../../../helper/functions.php');
 
 try {
     session_start();
@@ -23,7 +23,9 @@ try {
     if ($user->id_roles != 1) {
         header('location: /logOutCtrl.php');
     }
-    $id_users = $user->id_users;
+    $id_articles = intval(filter_input(INPUT_GET, 'id_articles', FILTER_SANITIZE_NUMBER_INT));
+    $theArticle = Article::get($id_articles);
+
     $categories = Category::getAll();
 
     // je crée un tableau où se trouveront tous les messages d'erreur :
@@ -37,7 +39,7 @@ try {
         if (empty($name)) {
             $error['name'] = "Veuillez renseigner le nom de l'oeuvre.";
         } else {
-            if (Article::existsName($name) != false) {
+            if (Article::existsName($name) === true && $name != $theArticle->name) {
                 $error['name'] = 'Ce nom est déjà existant.';
             }
         }
@@ -46,9 +48,9 @@ try {
 
         $id_categories = intval(filter_input(INPUT_POST, 'id_categories', FILTER_SANITIZE_NUMBER_INT));
         if (empty($id_categories)) {
-            $error['id_categories'] = "Veuillez renseigner le type de l'oeuvre.";
+            $error['id_categories'] = "Veuillez renseigner la catégorie de l'article.";
         } else {
-            if ($id_categories > 5 || $id_categories < 1) {
+            if ($id_categories <1 || $id_categories >5) {
                 $error['id_categories'] = 'Veuillez choisir l\'une des propositions du sélécteur.';
             }
         }
@@ -58,7 +60,7 @@ try {
         $resume = trim(filter_input(INPUT_POST, 'resume', FILTER_SANITIZE_SPECIAL_CHARS));
         if (empty($resume)) {
             $error['resume'] = "Veuillez renseigner le nom de l'oeuvre.";
-        } 
+        }
 
 
         // Vérification de l'image :
@@ -127,7 +129,6 @@ try {
     header('location: /erreur.html');
     die;
 }
-
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/dashboard/Catalog/addCatalog.php');
+include(__DIR__ . '/../../../views/dashboard/Catalog/getCatalog.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

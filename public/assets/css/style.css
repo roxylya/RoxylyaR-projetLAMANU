@@ -880,7 +880,17 @@ textarea.form-control, textarea.form-control:focus {
 
 .formUpdate{
     border-radius: 1rem;
-    border: 1px solid #a47a07;
+    border-bottom: 1px solid #a47a07;
+    border-left: 1px solid #a47a07;
+    border-right: 1px solid #a47a07;
+}
+
+.formUpdateShort{
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom: 1px solid #a47a07;
+    border-left: 1px solid #a47a07;
+    border-right: 1px solid #a47a07;
 }
 /* =================================================================================================== */
 /* pagination */

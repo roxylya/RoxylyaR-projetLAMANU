@@ -194,7 +194,7 @@ class Article
     public static function getAllArticlesUser($id_users)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`,  `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`,  `articles`.`id_articles`, `articles`. `id_categories AS `idCat`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
         FROM `articles` 
         JOIN `users`
         ON  `articles`.`id_users` = `users`.`id_users`
@@ -217,7 +217,7 @@ class Article
     public static function get($id_articles)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`, `articles`.`id_categories` AS `idCat`, `categories`.`id_categories`
         FROM `articles` 
         JOIN `users`
         ON  `articles`.`id_users` = `users`.`id_users`
