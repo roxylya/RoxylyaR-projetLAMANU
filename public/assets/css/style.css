@@ -811,10 +811,11 @@ td>a>img {
 
 input[type="search"] {
     width: 15rem;
-    background-color: #eee1c3;
+    background-color: #fff;
     border-radius: 1rem;
     border: 1px solid #A97F07;
     color: #03182D;
+    text-align: center;
 }
 
 .btn-search {
@@ -905,7 +906,7 @@ textarea.form-control, textarea.form-control:focus {
 .pagination .disabled span,
 .pagination .disabled a,
 .pagination .disabled a:hover {
-    color: #999999;
+    color: #6d6767;
     background-color: transparent;
     cursor: default;
 }
