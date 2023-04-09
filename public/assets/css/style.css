@@ -606,33 +606,6 @@ option:focus {
 /* =================================================================================================== */
 /* catalogue */
 
-.navCatalog>a {
-    color: transparent;
-    background: #a47a07;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    font-size: 1.8rem;
-    font-family: 'Black Clover Font';
-}
-
-.navCatalog>a:hover,
-.navCatalog>a:focus,
-.navCatalog>a:active {
-    color: transparent;
-    background: #03182D;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(30, 15, 15, 0.5);
-    border-bottom: 1px solid #03182D;
-}
-
-.navCatalog>a {
-    border-bottom: 1px solid #A97F07;
-}
-
 .catalog>.box {
     width: 22rem;
     height: 35rem;
@@ -746,9 +719,6 @@ td>a>img {
 /* =================================================================================================== */
 /* dashboard */
 
-.widthThTd{
-    width: 12rem;
-}
 
 @media (max-width: 1110px) {
 

@@ -36,7 +36,7 @@
             <tr class="bgBlue">
                 <th>Crée le</th>
                 <th>Créateur</th>
-                <th class="widthThTd">Nom</th>
+                <th>Nom</th>
                 <th>Catégorie</th>
                 <th>Actions</th>
             </tr>
@@ -44,7 +44,7 @@
                 <tr class="bgWhite">
                     <td><?= date('d-m-Y H:i', strtotime($gallery->created_at)) ?></td>
                     <td><?= $gallery->pseudo ?></td>
-                    <td class="widthThTd"><?= $gallery->galleryName ?></td>
+                    <td ><?= $gallery->galleryName ?></td>
                     <td><?= $gallery->typeName ?></td>
                     <td><a href="/controllers/dashboard/Galleries/updateGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                         <a href="/controllers/dashboard/Galleries/deleteGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>

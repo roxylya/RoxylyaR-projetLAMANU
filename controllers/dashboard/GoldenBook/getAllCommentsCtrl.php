@@ -12,6 +12,8 @@ require_once(__DIR__ . '/../../../helper/dd.php');
 require_once(__DIR__ . '/../../../models/User.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../../models/Comment.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../../../helper/functions.php');
 
 
 try {

@@ -30,7 +30,7 @@
         <!-- research end -->
     </div>
     <!-- table start -->
-    <table class="w-100 modeOff dashboardUsers mt-0 fondamento text-center mb-1">
+    <table class="w-100 modeOff dashboardUsers mt-0 fondamento bgBlue text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
             <a href="/controllers/dashboard/Catalogs/addCatalogCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle création</a>
             <tr class="bgBlue">
@@ -48,7 +48,7 @@
                     <td><?= $article->pseudo ?></td>
                     <td><?= $article->articleName ?></td>
                     <td><?= $article->categoryName ?></td>
-                    <td><?= $article->resume  ?></td>
+                    <td><?= stopText($article->resume)  ?></td>
                     <td><a href="/controllers/dashboard/Catalogs/updateCatalogCtrl.php?id_users=<?= $article->id_articles ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                         <a href="/controllers/dashboard/Catalogs/deleteCatalogCtrl.php<?= $article->id_articles ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                     </td>

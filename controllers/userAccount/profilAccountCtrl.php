@@ -46,7 +46,6 @@ try {
                     // Modifier les informations de l'user en fonction de son id sur la base de données :
                     if ($userUpdate->updateEmail($id_users) === true) {
                      
-                        // // si changement de mail renvoyer mail de validation à voir si on le fait ou pas ... Modifier le message et la redirection en conséquence.
                         // mail de validation :
                         $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
                         $for = $user->email;

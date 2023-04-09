@@ -113,3 +113,19 @@ function getWidthOriginal($to)
 //     header('location: /erreur.html');
 //     die;
 // }
+
+
+// limiter le nombre de caractères affiché dans le dashboard :
+
+
+
+function stopText($notice)
+{
+    if (strlen($notice) > 60) {
+        $notice = substr($notice, 0, 60);
+        $position_espace = strrpos($notice, " ");
+        $text = substr($notice, 0, $position_espace);
+        $notice = $text . "...";
+    };
+    return $notice;
+}

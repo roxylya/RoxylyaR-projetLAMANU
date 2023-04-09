@@ -14,6 +14,7 @@ require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../models/Comment.php');
 
 
+
 try {
     // si une session est en cours on la récupère :
     session_start();

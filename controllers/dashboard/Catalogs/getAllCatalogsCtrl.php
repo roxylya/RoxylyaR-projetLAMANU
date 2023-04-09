@@ -14,6 +14,8 @@ require_once(__DIR__ . '/../../../models/User.php');
 require_once(__DIR__ . '/../../../models/Article.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../../models/Category.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../../../helper/functions.php');
 
 try {
     session_start();
@@ -28,7 +30,7 @@ try {
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
 
     // pagination  
-    // $limite= $limit (le nombre de patient à afficher par page) 
+
     $limit = 10;
 
     // je récupère le numéro de la page sur laquelle on se trouve
@@ -44,7 +46,7 @@ try {
     // je limite l'affichage par page :
     $articles = Article::getAll($search, $firstArticle, $limit);
 
-    // j'appelle ma méthode pour obtenir la liste des commentaires :
+    // j'appelle ma méthode pour obtenir la liste des articles :
     $nbArticlesTotal = Article::getAllArticlesCount($search);
 
     // On calcule le nombre de pages 

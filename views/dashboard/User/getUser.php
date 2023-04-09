@@ -28,7 +28,7 @@
                 <div class="w-100 form-group m-0">
                     <label for="email">Email :</label>
                     <div class="d-flex justify-content-center align-items-center">
-                        <input type="email" class="form-control fondamento" id="email" name="email" value="<?= $email ?? $user->email ?>" pattern="<?= REGEX_EMAIL ?>" required>
+                        <input type="email" class="form-control fondamento" id="email" name="email" value="<?= $email ?? $theUser->email ?>" pattern="<?= REGEX_EMAIL ?>" required>
                         <button type="submit" id="submitEmail" class="btn-update text-center blackClover ms-2"><img src="/public/assets/img/quill-dessinant-une-lignegold.png" alt="plume dorée"></button>
                     </div>
                     <p class="error red fondamento text-center"><?= $error['email'] ?? '' ?></p>
@@ -41,7 +41,7 @@
                 <div class="w-100 form-group m-0">
                     <label for="pseudo">Pseudo RR:</label>
                     <div class="d-flex justify-content-center align-items-center">
-                        <input type="text" class="form-control fondamento" id="pseudo" name="pseudo" value="<?= $pseudo ?? $user->pseudo ?>" pattern="<?= REGEX_PSEUDO ?>" required>
+                        <input type="text" class="form-control fondamento" id="pseudo" name="pseudo" value="<?= $pseudo ?? $theUser->pseudo ?>" pattern="<?= REGEX_PSEUDO ?>" required>
                         <button type="submit" id="submitPseudo" class="btn-update text-center blackClover ms-2"><img src="/public/assets/img/quill-dessinant-une-lignegold.png" alt="plume dorée"></button>
                     </div>
                     <p class="error red fondamento text-center"><?= $error['pseudo'] ?? '' ?></p>
@@ -80,7 +80,7 @@
                 <div class="w-100 form-group m-0">
                     <label for="avatar" class="form-label">Avatar :</label>
                     <div class="w-100 d-flex justify-content-center align-items-center">
-                        <input class="form-control fondamento" type="file" id="avatar" name="avatar" value="<?= $avatar ?? 'avatar_' . $user->id_users . '.' . $user->extUserAvatar ?>" accept="image/png, image/jpg, image/JPG, image/jpeg, image/gif" required>
+                        <input class="form-control fondamento" type="file" id="avatar" name="avatar" value="<?= $avatar ?? 'avatar_' . $theUser->id_users . '.' . $theUser->extUserAvatar ?>" accept="image/png, image/jpg, image/JPG, image/jpeg, image/gif" required>
                         <button type="submit" id="submitAvatar" class="btn-update text-center ms-2 blackClover"><img src="/public/assets/img/quill-dessinant-une-lignegold.png" alt="plume dorée"></button>
                     </div>
                     <p class="error red fondamento text-center"><?= $error['avatar'] ?? '' ?></p>
