@@ -140,7 +140,7 @@ class Gallery
     public static function getAllGalleriesCount($search = "")
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
@@ -161,7 +161,7 @@ class Gallery
     public static function getAllCountGalleriesUser($id_users)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
@@ -186,7 +186,7 @@ class Gallery
     public static function getAllGalleriesUser($id_users)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
@@ -209,7 +209,7 @@ class Gallery
     public static function get($id_galleries)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `articleName`, `galleries`.`id_galleries`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`id_galleries`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
@@ -230,7 +230,7 @@ class Gallery
     public static function getByName($name)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `articleName`, `galleries`.`created_at`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `types`.`name` AS `typeName`
         FROM `galleries` 
         JOIN `types`
         ON `galleries`.`id_types` = `types`.`id_types`

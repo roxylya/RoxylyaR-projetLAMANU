@@ -1,7 +1,7 @@
 <!-- titre de la page -->
 <h1 class="gold blackClover"><span class="bdRenaissanceH1">I</span>nscription </h1>
 <!-- ouverture formulaire -->
-<form method="post" class="connect mt-3 mb-5 medium gold fondamento" enctype="multipart/form-data" novalidate>
+<form method="post" class="connect mt-3 mb-5 medium gold fondamento" enctype="multipart/form-data">
     <div class="d-flex flex-column justify-content-around align-items-center pt-3 px-1 px-lg-0">
         <!-- mail -->
         <div class="w-100 form-group">
@@ -27,7 +27,7 @@
         </div>
         <!-- message d'erreur mot de passe -->
         <div class="w-100 text-center pt-1">
-            <p class="red little"><?= $error['password'] ?? '' ?></p>
+            <p class="red little" id="alertPassword"><?= $error['password'] ?? '' ?></p>
         </div>
         <!--    REGEX PASSWORD : min 8, 1 maj, 1 min, 1 chiffre, 1 caractère spécial-->
         <!-- récupération avatar -->
