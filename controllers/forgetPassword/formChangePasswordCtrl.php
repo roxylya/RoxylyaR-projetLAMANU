@@ -53,7 +53,7 @@ try {
             if ($user->updatePassword($id_users) === true) {
                 $message = 'Votre nouveau mot de passe a bien été enregistré. Vous pouvez vous connecter.';
                 Session::setMessage($message);
-                header('location: /../connection.html');
+                header('location: /connexion.html');
                 die;
             } else {
                 $message = 'Une erreure est survenue, reformulez votre demande.';

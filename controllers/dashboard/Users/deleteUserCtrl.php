@@ -18,7 +18,18 @@ try {
     if ($user->id_roles != 1) {
         header('location: /logOutCtrl.php');
     }
-    $id_users = $user->id_users;
+    $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
+
+    $theUser = User::delete($id_users);
+    if ($theUser) {
+        $message ='Le compte a bien été supprimé.';
+        Session::setMessage($message);
+    } else {
+        $message = 'Une erreur est survenue. Le compte n\' a été supprimé.';
+        Session::setMessage($message);
+    }
+    header('location: /admin.html');
+    die;
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $message = $th->getMessage();
@@ -27,5 +38,5 @@ try {
     die;
 }
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/dashboard/users.php');
+include(__DIR__ . '/../../../views/dashboard/dashboard.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

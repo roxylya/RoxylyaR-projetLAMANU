@@ -45,16 +45,18 @@ try {
                     $userUpdate->setEmail($email);
                     // Modifier les informations de l'user en fonction de son id sur la base de données :
                     if ($userUpdate->updateEmail($id_users) === true) {
-                        $message = 'Votre changement d\'email a été enregistré.';
-                        Session::setMessage($message);
-                        Session::getMessage();
+                     
                         // // si changement de mail renvoyer mail de validation à voir si on le fait ou pas ... Modifier le message et la redirection en conséquence.
-                        // // mail de validation :
-                        // $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
-                        // $for = $user->email;
-                        // $subject = 'Confirmer votre changement d\'email sur Roxylya R';
-                        // $text = 'Bonjour, <br>Afin de valider le changement de votre email, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
-                        // mail($for, $subject, $text);
+                        // mail de validation :
+                        $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
+                        $for = $user->email;
+                        $subject = 'Confirmer votre changement d\'email sur Roxylya R';
+                        $text = 'Bonjour, <br>Afin de valider le changement de votre email, merci de cliquer sur ce <a href="' . $link . '">lien</a>.';
+                        mail($for, $subject, $text);
+
+                        $message = 'Votre changement d\'email a été enregistré. Validez-le en cliquant sur le lien reçu sur votre messagerie.';
+                        Session::setMessage($message);
+                        header('location /connexion.html');
 
                     }
                 }

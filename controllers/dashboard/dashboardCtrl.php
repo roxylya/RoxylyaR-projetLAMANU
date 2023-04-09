@@ -19,12 +19,12 @@ try {
     session_start();
     $user = $_SESSION['user'];
     if ($user->id_roles != 1) {
-
         header('location: /logOutCtrl.php');
     }
 
-
-   // Nettoyage et validation du formulaire reçu en post :
+    $message = Session::getMessage();
+    
+    // Nettoyage et validation du formulaire reçu en post :
     $search = trim((string)filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIAL_CHARS));
 
     // pagination  
@@ -46,13 +46,9 @@ try {
 
     // j'appelle ma méthode pour obtenir la liste des patients :
     $nbUsersTotal = User::getAllCount($search);
-    
+
     // On calcule le nombre de pages 
     $pageNb = ceil(count($nbUsersTotal) / $limit);
-
-
-    
-
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $message = $th->getMessage();

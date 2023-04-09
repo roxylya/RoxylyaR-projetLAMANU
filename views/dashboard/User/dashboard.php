@@ -1,4 +1,4 @@
-<p class="pt-3"><?= $message ?? '' ?></p>
+<p class="pt-3 fondamento medium blue"><?= $message ?? '' ?></p>
 <h1 class="blackClover blue pb-3"> <span class="bdRenaissanceH1 blue ">L</span>es <span class="bdRenaissanceH1 blue ">I</span>nscrits</h1>
 <h2 class="dashboardDisplay text-center fondamento blue medium">Accessible à partir de 1110px de largeur d'écran ! </h2>
 <div class="modeOff m-0 p-0">
@@ -54,9 +54,27 @@
                     <td><?= $nbCommandsUser = Order::getAllCountOrdersUser($allUser->id_users); ?></td>
                     <td><?= $nbCommentsUser = Comment::getAllCountCommentsUser($allUser->id_users); ?></td>
                     <td><a href="/controllers/dashboard/Users/getUserCtrl.php?id_users=<?= $allUser->id_users ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
-                        <a href="/controllers/dashboard/Users/deleteUserCtrl.php<?= $allUser->id_users ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                        <a data-bs-toggle="modal" data-bs-target="#deleteUser"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bgBlue">
+                                        <h1 class="modal-title fs-5 fondamento gold medium" id="deleteUserLabel">Suppression d'un compte utilisateur</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                                    </div>
+                                    <div class="modal-body fondamento blue medium">
+                                        Êtes-vous sûr de vouloir supprimer ce compte utilisateur ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btnNo medium" data-bs-dismiss="modal">Non</button>
+                                        <a href="/controllers/dashboard/Users/deleteUserCtrl.php?id_users=<?= $allUser->id_users ?>"> <button type="button" class="btn btnDelete medium">Oui.</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
                     </td>
-
                 </tr>
             <?php } ?>
         </div>

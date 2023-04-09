@@ -261,8 +261,8 @@ class User
     {
         $pdo = Database::getInstance();
         $sql = ' UPDATE `users` 
-        SET `email`=:email, `updated_at`= Now() 
-         WHERE `id_users`=:id_users;';
+        SET `email`=:email, `updated_at`= Now(), `validate_at` = Null 
+        WHERE `id_users`=:id_users;';
         //On insère les données reçues   
         //  on note les marqueurs nominatifs :
         $sth = $pdo->prepare($sql);
