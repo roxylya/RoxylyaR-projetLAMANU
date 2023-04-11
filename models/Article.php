@@ -260,7 +260,7 @@ class Article
      //  on note les marqueurs nominatifs :
      $sth = $pdo->prepare($sql);
      $sth->bindValue(':id_articles', $id_articles, PDO::PARAM_INT);
-     $sth->bindValue(':id_categories', $this->id_categories);
+     $sth->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
      return $sth->execute();
  }
 

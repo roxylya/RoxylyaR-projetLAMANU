@@ -205,7 +205,7 @@ class Gallery
     public static function get($id_galleries)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`id_galleries`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`id_galleries`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`, `types`.`id_types`
         FROM `galleries` 
         JOIN `users`
         ON  `galleries`.`id_users` = `users`.`id_users`
@@ -226,7 +226,7 @@ class Gallery
     public static function getByName($name)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `types`.`name` AS `typeName`,`types`.`id_types`
         FROM `galleries` 
         JOIN `types`
         ON `galleries`.`id_types` = `types`.`id_types`
@@ -239,4 +239,64 @@ class Gallery
 
         return $results;
     }
+
+       // update :
+
+ // Update Name:
+
+ public function updateName($id_galleries)
+ {
+     $pdo = Database::getInstance();
+     $sql = ' UPDATE `galleries` 
+     SET `name`=:name
+     WHERE `id_galleries`=:id_galleries;';
+     //On insère les données reçues   
+     //  on note les marqueurs nominatifs :
+     $sth = $pdo->prepare($sql);
+     $sth->bindValue(':id_galleries', $id_galleries, PDO::PARAM_INT);
+     $sth->bindValue(':name', $this->name);
+     return $sth->execute();
+ }
+
+
+ // Update id_types:
+
+ public function updateId_types($id_galleries)
+ {
+     $pdo = Database::getInstance();
+     $sql = ' UPDATE `galleries` 
+     SET `id_types`=:id_types
+      WHERE `id_galleries`=:id_galleries;';
+     //On insère les données reçues   
+     //  on note les marqueurs nominatifs :
+     $sth = $pdo->prepare($sql);
+     $sth->bindValue(':id_galleries', $id_galleries, PDO::PARAM_INT);
+     $sth->bindValue(':id_types', $this->id_types, PDO::PARAM_INT);
+     return $sth->execute();
+ }
+
+
+
+
+ // Delete un article :
+
+ public static function delete($id_galleries)
+ {
+     $pdo = Database::getInstance();
+     // je mets des as pour différencier mes id des différentes tables :
+     $sql = 'DELETE FROM `galleries` 
+           WHERE `galleries`.`id_galleries`=:id_galleries ;';
+     // on prépare la requête
+     $sth = $pdo->prepare($sql);
+     // On affecte les valeurs au marqueur nominatif :
+     $sth->bindValue(':id_galleries', $id_galleries, PDO::PARAM_INT);
+     // on exécute la requête
+     $sth->execute();
+     // on vérifie si la suppression a bien été effectuée :
+     $nbResults = $sth->rowCount();
+     // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+     return ($nbResults > 0) ? true : false;
+ }
+
+
 }

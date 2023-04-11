@@ -46,7 +46,7 @@
                     <td>Cassiopée Nox</td>
                     <td ><?= $gallery->galleryName ?></td>
                     <td><?= $gallery->typeName ?></td>
-                    <td><a href="/controllers/dashboard/Galleries/updateGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                    <td><a href="/controllers/dashboard/Galleries/getGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                         <a href="/controllers/dashboard/Galleries/deleteGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                     </td>
                 </tr>

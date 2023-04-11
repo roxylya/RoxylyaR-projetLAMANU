@@ -10,6 +10,9 @@ require_once(__DIR__ . '/../../../config/SessionFlash.php');
 require_once(__DIR__ . '/../../../helper/dd.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../../models/User.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../../../models/Comment.php');
+
 
 
 try {
@@ -18,8 +21,34 @@ try {
     if ($user->id_roles != 1) {
         header('location: /logOutCtrl.php');
     }
-    $id_users = $user->id_users;
+    $id_comments = intval(filter_input(INPUT_GET, 'id_comments', FILTER_SANITIZE_NUMBER_INT));
     $commentsUser = Comment::get($id_comments);
+    // Vérifier les données envoyées :
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+        // Nettoyer le notice :
+        if (isset($_POST['notice'])) {
+            $notice = trim(filter_input(INPUT_POST, 'notice', FILTER_SANITIZE_SPECIAL_CHARS));
+            if (empty($notice)) {
+                $error['notice'] = "Veuillez renseigner le nom de l'oeuvre.";
+            } else {
+                if (empty($error)) {
+                    $gallery = new Gallery();
+                    // je lui donne les valeurs récupérées, nettoyées et validées :
+                    $gallery->setNotice($notice);
+                    // Ajouter l'enregistrement du nouveau user à la base de données :
+                    if ($gallery->updateNotice($id_galleries) === true) {
+                        $message = 'Modification enregistrée!';
+                    } else {
+                        throw new Exception('Echec de l\'enregistrement.');
+                    }
+                }
+            }
+        }
+    }
+
+    $theComment = Comment::get($id_comments);
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $message = $th->getMessage();
@@ -29,5 +58,5 @@ try {
 }
 
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/dashboard/goldenBook.php');
+include(__DIR__ . '/../../../views/dashboard/GoldenBook/getComment.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

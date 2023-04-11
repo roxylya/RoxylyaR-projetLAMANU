@@ -1,9 +1,9 @@
 <p class="pt-3 fondamento medium blue"><?= $message ?? '' ?></p>
-<h1 class="blackClover blue pb-3"> <span class="bdRenaissanceH1 blue ">M</span>odifier un <span class="bdRenaissanceH1 blue ">I</span>nscrit</h1>
+<h1 class="blackClover blue pb-3"> <span class="bdRenaissanceH1 blue ">M</span>odifier un <span class="bdRenaissanceH1 blue ">A</span>rticle</h1>
 <div class="dashboard d-flex flex-column justify-content-center align-items-center">
     <!-- nav dashboard start -->
     <ul class="navDashboard d-flex justify-content-center align-items-center m-0 p-0">
-        <li class="active bgBlue">
+        <li class="bgBlue">
             <a class="gold " href="/controllers/dashboard/dashboardCtrl.php">Inscrits</a>
         </li>
         <li class="active bgBlue">
