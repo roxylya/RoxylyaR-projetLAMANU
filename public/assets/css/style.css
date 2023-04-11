@@ -778,6 +778,13 @@ td>a>img {
     overflow: hidden;
 }
 
+.dashboardUsers1 {
+    border-radius: 1rem;
+    border: 1px solid #a47a07;
+    overflow: hidden;
+   
+}
+
 
 input[type="search"] {
     width: 15rem;

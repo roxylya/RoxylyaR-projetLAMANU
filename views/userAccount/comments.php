@@ -2,7 +2,22 @@
     <h1><span class="bdRenaissanceH1">M</span>es <span class="bdRenaissanceH1">M</span>essages</h1>
 </div>
 <p class="pt-2"><?= $message ?? '' ?></p>
-<div class="box  medium d-flex flex-lg-row flex-column justify-content-around align-items-center mt-3 mb-5 p-3 p-md-5">
-    
-    </div>
-</div>
+
+<!-- table start -->
+<table class="dashboardUsers1 bgBlue mt-0 p-1 fondamento text-center mb-1">    
+    <tr class="bgBlue">
+        <th>Date</th>
+        <th>Message</th>
+        <th>Actions</th>
+    </tr>
+    <?php foreach ($comments as $comment) { ?>
+        <tr class="bgWhite">
+            <td><?= date('d-m-Y H:i', strtotime($comment->created_at)) ?></td>
+            <td><?= stopText($comment->notice) ?></td>
+            <td><a href="/controllers/dashboard/GoldenBook/getCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                <a href="/controllers/dashboard/GoldenBook/deleteCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+            </td>
+        </tr>
+    <?php } ?>
+</table>
+<!-- table end -->

@@ -174,7 +174,8 @@ class Comment
         FROM `comments` 
         JOIN `users`
         ON  `comments`.`id_users` = `users`.`id_users`
-                   ORDER BY `created_at`;';
+        WHERE `users`.`id_users` = :id_users
+        ORDER BY `created_at`;';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
