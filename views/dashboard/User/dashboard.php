@@ -53,9 +53,9 @@
                     <td><?= $nbCommandsUser = Order::getAllCountOrdersUser($allUser->id_users); ?></td>
                     <td><?= $nbCommentsUser = Comment::getAllCountCommentsUser($allUser->id_users); ?></td>
                     <td><a href="/controllers/dashboard/Users/getUserCtrl.php?id_users=<?= $allUser->id_users ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
-                        <a data-bs-toggle="modal" data-bs-target="#deleteUser"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                        <a href="/controllers/dashboard/Users/deleteUserCtrl.php?id_users=<?= $allUser->id_users ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                         <!-- Modal -->
-                        <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
+                        <!-- <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bgBlue">
@@ -67,12 +67,12 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btnNo medium" data-bs-dismiss="modal">Non</button>
-                                        <a href="/controllers/dashboard/Users/deleteUserCtrl.php?id_users=<?= $allUser->id_users ?>"> <button type="button" class="btn btnDelete medium">Oui.</button></a>
+                                        <a href="/controllers/dashboard/Users/deleteUserCtrl.php?id_users=<= $allUser->id_users >"> <button type="button" class="btn btnDelete medium">Oui.</button></a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Modal -->
+                        </div> -->
+                        <!-- Modal  si je décide de la mettre -->
                     </td>
                 </tr>
             <?php } ?>

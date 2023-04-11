@@ -203,4 +203,42 @@ class Comment
 
         return $results;
     }
+
+    // Update Name:
+
+    public function updateNotice($id_comments)
+    {
+        $pdo = Database::getInstance();
+        $sql = ' UPDATE `comments` 
+        SET `notice`=:notice
+        WHERE `id_comments`=:id_comments;';
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_comments', $id_comments, PDO::PARAM_INT);
+        $sth->bindValue(':notice', $this->notice);
+        return $sth->execute();
+    }
+
+
+     // Delete un comment :
+
+     public static function delete($id_comments)
+     {
+         $pdo = Database::getInstance();
+         // je mets des as pour différencier mes id des différentes tables :
+         $sql = 'DELETE FROM `comments` 
+               WHERE `comments`.`id_comments`=:id_comments ;';
+         // on prépare la requête
+         $sth = $pdo->prepare($sql);
+         // On affecte les valeurs au marqueur nominatif :
+         $sth->bindValue(':id_comments', $id_comments, PDO::PARAM_INT);
+         // on exécute la requête
+         $sth->execute();
+         // on vérifie si la suppression a bien été effectuée :
+         $nbResults = $sth->rowCount();
+         // si le nombre de ligne est strictement supérieur à 0 alors il renverra true :
+         return ($nbResults > 0) ? true : false;
+     }
+ 
 }

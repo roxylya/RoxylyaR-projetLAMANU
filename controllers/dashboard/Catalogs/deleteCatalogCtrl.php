@@ -22,9 +22,6 @@ try {
     }
     $id_articles = intval(filter_input(INPUT_GET, 'id_articles', FILTER_SANITIZE_NUMBER_INT));
 
-    // pourquoi il affiche le premier id_articles et pas celui sélectionné !?
-    var_dump($id_articles);
-    die;
     $theArticle = Article::get($id_articles);
 
     $oldPicture = LOCATION_UPLOAD . '/catalog/' . $theArticle->categoryName . '_' . $id_articles . '.png';

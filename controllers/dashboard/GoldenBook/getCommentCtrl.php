@@ -22,11 +22,9 @@ try {
         header('location: /logOutCtrl.php');
     }
     $id_comments = intval(filter_input(INPUT_GET, 'id_comments', FILTER_SANITIZE_NUMBER_INT));
-    $commentsUser = Comment::get($id_comments);
+    $theComment = Comment::get($id_comments);
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
         // Nettoyer le notice :
         if (isset($_POST['notice'])) {
             $notice = trim(filter_input(INPUT_POST, 'notice', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -34,11 +32,11 @@ try {
                 $error['notice'] = "Veuillez renseigner le nom de l'oeuvre.";
             } else {
                 if (empty($error)) {
-                    $gallery = new Gallery();
+                    $comment = new Comment();
                     // je lui donne les valeurs récupérées, nettoyées et validées :
-                    $gallery->setNotice($notice);
+                    $comment->setNotice($notice);
                     // Ajouter l'enregistrement du nouveau user à la base de données :
-                    if ($gallery->updateNotice($id_galleries) === true) {
+                    if ($comment->updateNotice($id_comments) === true) {
                         $message = 'Modification enregistrée!';
                     } else {
                         throw new Exception('Echec de l\'enregistrement.');

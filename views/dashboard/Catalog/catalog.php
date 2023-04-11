@@ -49,9 +49,9 @@
                     <td><?= $article->categoryName ?></td>
                     <td><?= stopText($article->resume)  ?></td>
                     <td><a href="/controllers/dashboard/Catalogs/getCatalogCtrl.php?id_articles=<?= $article->id_articles ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
-                        <a data-bs-toggle="modal" data-bs-target="#deleteArticle"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                        <a data-bs-toggle="modal" data-bs-target="#deleteArticle<?= $article->id_articles ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                         <!-- Modal -->
-                        <div class="modal fade" id="deleteArticle" tabindex="-1" aria-labelledby="deleteArticleLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteArticle<?= $article->id_articles ?>" tabindex="-1" aria-labelledby="deleteArticleLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header bgBlue">

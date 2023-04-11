@@ -10,6 +10,8 @@ require_once(__DIR__ . '/../../config/SessionFlash.php');
 require_once(__DIR__ . '/../../helper/dd.php');
 // on a besoin du models :
 require_once(__DIR__ . '/../../models/User.php');
+// on a besoin du models :
+require_once(__DIR__ . '/../../models/Comment.php');
 
 try {
     session_start();
@@ -18,8 +20,10 @@ try {
         die;
     } else {
         $user = $_SESSION['user'];
-        // $userConnected = User::getById($id_users);
     }
+
+    $id_users = $user->id_users;
+
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :
     $message = $th->getMessage();

@@ -45,7 +45,7 @@
                     <td><?= $comment->pseudo ?></td>
                     <td><?= stopText($comment->notice) ?></td>
                     <td><a href="/controllers/dashboard/GoldenBook/getCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
-                        <a href="/controllers/dashboard/GoldenBook/deleteCommentCtrl.php<?= $comment->id_comments ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+                        <a href="/controllers/dashboard/GoldenBook/deleteCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                     </td>
                 </tr>
             <?php } ?>
