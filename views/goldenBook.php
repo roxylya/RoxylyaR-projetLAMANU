@@ -5,7 +5,7 @@
     <!-- bouton ajout de commentaire accessible seulement pour les users connectés start -->
 <?php if(isset($user)) {?>
 
-<input type="button" class="btn-comment fondamento" value="+ Ajouter un commentaire">
+<a href="/controllers/addCommentCtrl.php"><input type="button" class="btn-comment fondamento" value="+ Ajouter un commentaire"></a>
 
 <?php }?>
     <!-- bouton ajout de commentaire accessible seulement pour les users connectés end -->
