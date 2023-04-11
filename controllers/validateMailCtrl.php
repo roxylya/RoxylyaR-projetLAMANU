@@ -17,7 +17,7 @@ require_once(__DIR__ . '/../models/User.php');
 try {
     $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
 
-    $validationIsOk = User::updateValidate($id_users);
+    $validationIsOk = User::updateValidated_at($id_users);
 
     if ($validationIsOk) {
         $message = 'Mail validé, vous pouvez vous connecter.';

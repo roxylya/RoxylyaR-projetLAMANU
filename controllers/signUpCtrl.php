@@ -33,7 +33,7 @@ try {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
             } else {
                 if (User::existsEmail($email) === true) {
-                    $alert['email'] = 'E-mail déjà existant.';
+                    $error['email'] = 'E-mail déjà existant.';
                 }
             }
         }
@@ -49,7 +49,7 @@ try {
                 $error['pseudo'] = 'Format incorrect.';
             } else {
                 if (User::existsPseudo($pseudo) === true) {
-                    $alert['pseudo'] = 'Pseudo déjà existant.';
+                    $error['pseudo'] = 'Pseudo déjà existant.';
                 }
             }
         }
@@ -177,9 +177,9 @@ try {
                         $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                         imagejpeg($gd_scaled, $to_scaled, 85);
                     } else {
-                        $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. Merci.";
+                        $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. <br> Il vous reste à valider votre mail pour vous connecter.";
                         Session::setMessage($message);
-                        header('location: /erreur.html');
+                        header('location: /connexion.html');
                         die;
                     }
                     // redirection vers la page de connexion :

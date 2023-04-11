@@ -19,7 +19,8 @@ try {
         header('location: /logOutCtrl.php');
     }
     $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
-
+    var_dump($id_users);
+    die;
     $theUser = User::delete($id_users);
     if ($theUser) {
         $oldAvatar = LOCATION_UPLOAD . '/avatars/avatar_' . $user->id_users . '.' . $user->extUserAvatar;
@@ -27,7 +28,7 @@ try {
             // var_dump($oldAvatar);
             unlink($oldAvatar);
         }
-        $message ='Le compte a bien été supprimé.';
+        $message = 'Le compte a bien été supprimé.';
         Session::setMessage($message);
     } else {
         $message = 'Une erreur est survenue. Le compte n\' a été supprimé.';

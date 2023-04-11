@@ -11,7 +11,7 @@
         <div class="box bgBlue d-flex flex-column justify-content-center align-items-center p-3 m-md-2 my-2">
             <!-- titre de l'article -->
             <h2 class="gold blackClover text-center medium"><?= $gallery->galleryName ?></h2>
-            <p class="little gold fondamento"> <?= $gallery->pseudo ?> <span class="blue">|</span> <?= date('d-m-Y', strtotime($gallery->created_at)) ?><span class="blue">|</span> <?= $gallery->typeName ?></p>
+            <p class="little gold fondamento">Cassiopée Nox <span class="blue">|</span> <?= date('d-m-Y', strtotime($gallery->created_at)) ?><span class="blue">|</span> <?= $gallery->typeName ?></p>
             <!-- image de l'article -->
             <img class="pt-4" src="/public/uploads/gallery/<?= $gallery->typeName . '_' . $gallery->id_galleries . '.png'  ?>" alt="fresque <?= $gallery->galleryName ?>">
         </div>

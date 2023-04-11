@@ -124,13 +124,11 @@ class Article
     public static function getAll($search = "", $firstArticle = 0, $limit = 10)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `categories`.`name` AS `categoryName`
         FROM `articles` 
-        JOIN `users`
-        ON  `articles`.`id_users` = `users`.`id_users`
         JOIN `categories`
         ON `articles`.`id_categories` = `categories`.`id_categories`
-        WHERE `pseudo` LIKE :search OR `articles`.`created_at` LIKE :search  OR `articles`.`name` LIKE :search OR `articles`.`resume` LIKE :search OR `categories`.`name` LIKE :search 
+        WHERE `articles`.`created_at` LIKE :search  OR `articles`.`name` LIKE :search OR `articles`.`resume` LIKE :search OR `categories`.`name` LIKE :search 
         ORDER BY `created_at`
         LIMIT :firstArticle, :limit ;';
         $sth = $pdo->prepare($sql);
@@ -148,13 +146,11 @@ class Article
     public static function getAllArticlesCount($search = "")
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `users`.`pseudo`, `categories`.`name` AS `categoryName`
+        $sql = 'SELECT `articles`.`name` AS `articleName`, `articles`.`id_articles`, `articles`.`resume`, `articles`.`created_at`, `categories`.`name` AS `categoryName`
         FROM `articles` 
-        JOIN `users`
-        ON  `articles`.`id_users` = `users`.`id_users`
         JOIN `categories`
         ON `articles`.`id_categories` = `categories`.`id_categories`
-        WHERE `pseudo` LIKE :search OR `articles`.`created_at` LIKE :search  OR `articles`.`name` LIKE :search OR `articles`.`resume` LIKE :search OR `categories`.`name` LIKE :search ';
+        WHERE `articles`.`created_at` LIKE :search  OR `articles`.`name` LIKE :search OR `articles`.`resume` LIKE :search OR `categories`.`name` LIKE :search ';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);

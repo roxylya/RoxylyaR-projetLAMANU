@@ -27,5 +27,5 @@ try {
     die;
 }
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/dashboard/gallery.php');
+include(__DIR__ . '/../../../views/dashboard/Gallery/gallery.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

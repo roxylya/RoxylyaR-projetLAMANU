@@ -44,7 +44,7 @@ try {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
             } else {
                 if (User::existsEmail($email) === true) {
-                    $alert['email'] = 'Email déjà existant.';
+                    $error['email'] = 'Email déjà existant.';
                 }
             }
         }
@@ -60,7 +60,7 @@ try {
                 $error['pseudo'] = 'Format incorrect.';
             } else {
                 if (User::existsPseudo($pseudo) === true) {
-                    $alert['pseudo'] = 'Pseudo déjà existant.';
+                    $error['pseudo'] = 'Pseudo déjà existant.';
                 }
             }
         }

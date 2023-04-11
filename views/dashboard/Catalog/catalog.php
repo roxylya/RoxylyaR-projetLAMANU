@@ -44,7 +44,7 @@
             <?php foreach ($articles as $article) { ?>
                 <tr class="bgWhite">
                     <td><?= date('d-m-Y H:i', strtotime($article->created_at)) ?></td>
-                    <td><?= $article->pseudo ?></td>
+                    <td>Cassiopée Nox</td>
                     <td><?= $article->articleName ?></td>
                     <td><?= $article->categoryName ?></td>
                     <td><?= stopText($article->resume)  ?></td>

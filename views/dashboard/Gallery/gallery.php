@@ -43,7 +43,7 @@
             <?php foreach ($galleries as $gallery) { ?>
                 <tr class="bgWhite">
                     <td><?= date('d-m-Y H:i', strtotime($gallery->created_at)) ?></td>
-                    <td><?= $gallery->pseudo ?></td>
+                    <td>Cassiopée Nox</td>
                     <td ><?= $gallery->galleryName ?></td>
                     <td><?= $gallery->typeName ?></td>
                     <td><a href="/controllers/dashboard/Galleries/updateGalleryCtrl.php?id_galleries=<?= $gallery->id_galleries ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>

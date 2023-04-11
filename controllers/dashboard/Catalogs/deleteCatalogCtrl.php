@@ -22,9 +22,13 @@ try {
     }
     $id_articles = intval(filter_input(INPUT_GET, 'id_articles', FILTER_SANITIZE_NUMBER_INT));
 
+    // pourquoi il affiche le premier id_articles et pas celui sélectionné !?
+    var_dump($id_articles);
+    die;
     $theArticle = Article::get($id_articles);
 
-    $oldPicture = __DIR__ . '/../../public/uploads/catalog/' . $theArticle->categoryName . '_' . $id_articles . '.png';
+    $oldPicture = LOCATION_UPLOAD . '/catalog/' . $theArticle->categoryName . '_' . $id_articles . '.png';
+
     if (file_exists($oldPicture)) {
         //sinon enlever la condition et mettre un @ devant unlink;
         unlink($oldPicture);
@@ -32,8 +36,6 @@ try {
     if (Article::delete($id_articles)) {
         $message = 'L\'article a bien été supprimé.';
         Session::setMessage($message);
-
-    
     } else {
         $message = 'Une erreur est survenue. L\'article n\' a été supprimé.';
         Session::setMessage($message);

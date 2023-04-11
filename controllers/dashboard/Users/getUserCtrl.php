@@ -12,6 +12,8 @@ require_once(__DIR__ . '/../../../helper/dd.php');
 require_once(__DIR__ . '/../../../helper/functions.php');
 // on a besoin du model :
 require_once(__DIR__ . '/../../../models/User.php');
+// on a besoin du model :
+require_once(__DIR__ . '/../../../models/Role.php');
 
 
 try {
@@ -24,7 +26,7 @@ try {
 
     $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
     $theUser = User::getById($id_users);
-
+    $roles = Role::getAll();
     // je crée un tableau où se trouveront tous les messages d'erreur :
     $error = [];
 
@@ -40,8 +42,8 @@ try {
                 $error['email'] = 'L\'adresse e-mail n\'est pas valide.';
             } else {
                 if (User::existsEmail($email) === true && $email != $user->email) {
-                    // si le mail existe j'ajoute le message d'erreur au tableau d'alert :
-                    $alert['Email'] = 'Email déjà existant.';
+                    // si le mail existe j'ajoute le message d'erreur au tableau d'error :
+                    $error['email'] = 'Email déjà existant.';
                 } else {
                     $userUpdate = new User();
                     // je lui donne les valeurs récupérées, nettoyées et validées :
@@ -73,8 +75,8 @@ try {
                 $error['pseudo'] = 'Format incorrect.';
             } else {
                 if (User::existsPseudo($pseudo) === true && $pseudo != $theUser->pseudo) {
-                    // si le pseudo existe j'ajoute le message d'erreur au tableau d'alert :
-                    $alert['pseudo'] = 'Pseudo utilisé par un autre utilisateur.';
+                    // si le pseudo existe j'ajoute le message d'erreur au tableau d'error :
+                    $error['pseudo'] = 'Pseudo utilisé par un autre utilisateur.';
                 } else {
                     $userUpdate = new User();
                     // je lui donne les valeurs récupérées, nettoyées et validées :
@@ -200,14 +202,33 @@ try {
                                 die;
                             }
                         }
-                        //  $_SESSION['user']=User::getById($id_users);
-                        //  $user = $_SESSION['user'];
                     }
                 }
             } else {
                 $message = 'La modification n\'a pu être effectuée.';
                 Session::setMessage($message);
                 Session::getMessage();
+            }
+        }
+
+        // vérifier et nettoyer le role :
+        if (isset($_POST['id_roles'])) {
+
+            // Nettoyer le pseudo :
+            $id_roles = intval(filter_input(INPUT_POST, 'id_roles', FILTER_SANITIZE_NUMBER_INT));
+            if ($id_roles != 1 && $id_roles != 2 && $id_roles != 3) {
+                // si le id_roles existe j'ajoute le message d'erreur au tableau d'error :
+                $error['id_roles'] = 'Pas de rôle trouvé.';
+            } else {
+                $userUpdate = new User();
+                // je lui donne les valeurs récupérées, nettoyées et validées :
+                $userUpdate->setId_roles($id_roles);
+                // Modifier les informations de l'user en fonction de son id sur la base de données :
+                if ($userUpdate->updateId_roles($id_users) === true) {
+                    $message = 'Le changement de  role a été enregistré.';
+                    Session::setMessage($message);
+                    Session::getMessage();
+                }
             }
         }
     }

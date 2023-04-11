@@ -29,7 +29,7 @@ try {
                 $error['email'] = "L'adresse e-mail n'est pas valide.";
             } else {
                 if (User::existsEmail($email) === false) {
-                    $alert['email'] = 'L\'email ne correspond à aucun compte utilisateur.';
+                    $error['email'] = 'L\'email ne correspond à aucun compte utilisateur.';
                 }
             }
         }

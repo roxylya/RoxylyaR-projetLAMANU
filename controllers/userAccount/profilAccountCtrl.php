@@ -37,8 +37,8 @@ try {
                 $error['email'] = 'L\'adresse e-mail n\'est pas valide.';
             } else {
                 if (User::existsEmail($email) === true && $email != $user->email) {
-                    // si le mail existe j'ajoute le message d'erreur au tableau d'alert :
-                    $alert['Email'] = 'Email déjà existant.';
+                    // si le mail existe j'ajoute le message d'erreur au tableau d'error :
+                    $error['Email'] = 'Email déjà existant.';
                 } else {
                     $userUpdate = new User();
                     // je lui donne les valeurs récupérées, nettoyées et validées :
@@ -72,8 +72,8 @@ try {
                 $error['pseudo'] = 'Format incorrect.';
             } else {
                 if (User::existsPseudo($pseudo) === true && $pseudo != $user->pseudo) {
-                    // si le pseudo existe j'ajoute le message d'erreur au tableau d'alert :
-                    $alert['pseudo'] = 'Pseudo utilisé par un autre utilisateur.';
+                    // si le pseudo existe j'ajoute le message d'erreur au tableau d'error :
+                    $error['pseudo'] = 'Pseudo utilisé par un autre utilisateur.';
                 } else {
                     $userUpdate = new User();
                     // je lui donne les valeurs récupérées, nettoyées et validées :

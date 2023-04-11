@@ -116,13 +116,11 @@ class Gallery
     public static function getAll($search = "", $first = 0, $limit = 9)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`id_galleries`, `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `types`.`name` AS `typeName`
         FROM `galleries` 
-        JOIN `users`
-        ON  `galleries`.`id_users` = `users`.`id_users`
         JOIN `types`
         ON `galleries`.`id_types` = `types`.`id_types`
-        WHERE `pseudo` LIKE :search OR `galleries`.`created_at` LIKE :search  OR `galleries`.`name` LIKE :search  OR `types`.`name` LIKE :search 
+        WHERE `galleries`.`created_at` LIKE :search  OR `galleries`.`name` LIKE :search  OR `types`.`name` LIKE :search 
         ORDER BY `created_at`
         LIMIT :first, :limit ;';
         $sth = $pdo->prepare($sql);
@@ -140,13 +138,11 @@ class Gallery
     public static function getAllGalleriesCount($search = "")
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `users`.`pseudo`, `types`.`name` AS `typeName`
+        $sql = 'SELECT `galleries`.`name` AS `galleryName`, `galleries`.`created_at`, `types`.`name` AS `typeName`
         FROM `galleries` 
-        JOIN `users`
-        ON  `galleries`.`id_users` = `users`.`id_users`
         JOIN `types`
         ON `galleries`.`id_types` = `types`.`id_types`
-        WHERE `pseudo` LIKE :search OR `galleries`.`created_at` LIKE :search  OR `galleries`.`name` LIKE :search OR `types`.`name` LIKE :search ';
+        WHERE `galleries`.`created_at` LIKE :search  OR `galleries`.`name` LIKE :search OR `types`.`name` LIKE :search ';
         $sth = $pdo->prepare($sql);
         // On affecte les valeurs au marqueur nominatif :
         $sth->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);

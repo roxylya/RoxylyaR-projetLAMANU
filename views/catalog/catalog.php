@@ -12,7 +12,7 @@
     <div class="box bgBlue d-flex flex-column justify-content-center align-items-center p-3 m-md-3 my-3">
         <!-- titre de l'article -->
         <h2 class="gold blackClover text-center medium"><?= $article->articleName ?></h2>
-        <p class="little gold fondamento"><?= $article->pseudo ?> <span class="blue">|</span> <?= date('d-m-Y', strtotime($article->created_at)) ?> <span class="blue">|</span> <?= $article->categoryName ?></p>
+        <p class="little gold fondamento">Cassiopée Nox <span class="blue">|</span> <?= date('d-m-Y', strtotime($article->created_at)) ?> <span class="blue">|</span> <?= $article->categoryName ?></p>
         <!-- image de l'article -->
         <img class="py-2" src="/public/uploads/catalog/<?= $article->categoryName . '_' . $article->id_articles . '.png'  ?>" alt="<?= $article->articleName ?>">
         <!-- descritpion de l'article -->

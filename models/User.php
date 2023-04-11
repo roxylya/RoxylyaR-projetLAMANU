@@ -215,7 +215,7 @@ class User
 
     // Update Validation du mail :
 
-    public static function updateValidate($id_users)
+    public static function updateValidated_at($id_users)
     {
         $pdo = Database::getInstance();
         $sql = ' UPDATE `users` 
@@ -261,7 +261,7 @@ class User
     {
         $pdo = Database::getInstance();
         $sql = ' UPDATE `users` 
-        SET `email`=:email, `updated_at`= Now(), `validate_at` = Null 
+        SET `email`=:email, `updated_at`= Now(), `validated_at` = Null 
         WHERE `id_users`=:id_users;';
         //On insère les données reçues   
         //  on note les marqueurs nominatifs :
@@ -320,6 +320,23 @@ class User
         $sth->bindValue(':extUserAvatar', $this->extUserAvatar);
         return $sth->execute();
     }
+
+    // Update le role :
+
+    public function updateId_roles($id_users)
+    {
+        $pdo = Database::getInstance();
+        $sql = ' UPDATE `users` 
+         SET `id_roles`=:id_roles, `updated_at`= Now() 
+         WHERE `id_users`=:id_users;';
+        //On insère les données reçues   
+        //  on note les marqueurs nominatifs :
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+        $sth->bindValue(':id_roles', $this->id_roles, PDO::PARAM_INT);
+        return $sth->execute();
+    }
+
 
 
 
