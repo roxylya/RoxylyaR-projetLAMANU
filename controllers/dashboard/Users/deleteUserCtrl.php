@@ -19,11 +19,12 @@ try {
         header('location: /logOutCtrl.php');
     }
     $id_users = intval(filter_input(INPUT_GET, 'id_users', FILTER_SANITIZE_NUMBER_INT));
-    var_dump($id_users);
-    die;
+    $theAvatar = User::getById($id_users);
+
+    $oldAvatar = LOCATION_UPLOAD . '/avatars/avatar_' . $id_users . '.' . $theAvatar->extUserAvatar;
     $theUser = User::delete($id_users);
     if ($theUser) {
-        $oldAvatar = LOCATION_UPLOAD . '/avatars/avatar_' . $user->id_users . '.' . $user->extUserAvatar;
+
         if (file_exists($oldAvatar)) {
             // var_dump($oldAvatar);
             unlink($oldAvatar);
@@ -34,7 +35,7 @@ try {
         $message = 'Une erreur est survenue. Le compte n\' a été supprimé.';
         Session::setMessage($message);
     }
-    header('location: /admin.html');
+    header('location: /admin-les-inscrits.html');
     die;
 } catch (\Throwable $th) {
     // Si ça ne marche pas afficher la page d'erreur avec le message d'erreur indiquant la raison :

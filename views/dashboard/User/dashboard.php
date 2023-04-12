@@ -6,10 +6,10 @@
         <!-- nav dashboard start -->
         <ul class="navDashboard d-flex justify-content-center align-items-center m-0 me-3 ms-0 ps-0 p-0">
             <li class="active bgBlue">
-                <a class="gold " href="/controllers/dashboard/dashboardCtrl.php">Inscrits</a>
+                <a class="gold " href="/admin-les-inscrits.html">Inscrits</a>
             </li>
             <li class="bgBlue">
-                <a class="gold" href="/controllers/dashboard/Catalogs/getAllCatalogsCtrl.php">Catalogue</a>
+                <a class="gold" href="/admin-catalogue.html">Catalogue</a>
             </li>
             <li class="bgBlue">
                 <a class="gold" href="/controllers/dashboard/Galleries/getAllGalleriesCtrl.php">Galerie</a>
@@ -23,7 +23,7 @@
         </ul>
         <!-- nav dashboard end -->
         <!-- research start -->
-        <form method="get" action="/controllers/dashboard/dashboardCtrl.php" class="d-flex justify-content-around align-items-center ms-5">
+        <form method="get" action="/admin-les-inscrits.html" class="d-flex justify-content-around align-items-center ms-5">
             <input type="search" name="search" id="search" placeholder="Rechercher" value="<?= $research ?? '' ?>">
             <input type="submit" name="btn-search" class="btn-search fondamento ms-3 me-2" value="Rechercher">
         </form>
@@ -32,7 +32,7 @@
     <!-- table start -->
     <table class="w-100 modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
-            <a href="/controllers/dashboard/Users/addUserCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter un nouvel inscrit</a>
+            <a href="/admin-ajouter-un-inscrit.html" class="gold fondamento medium text-center py-2">+ Ajouter un nouvel inscrit</a>
             <tr class="bgBlue">
                 <th>Rôle</th>
                 <th>Pseudo</th>
@@ -52,7 +52,7 @@
                     <td><?= date('d-m-Y H:i', strtotime($allUser->validated_at)) ?></td>
                     <td><?= $nbCommandsUser = Order::getAllCountOrdersUser($allUser->id_users); ?></td>
                     <td><?= $nbCommentsUser = Comment::getAllCountCommentsUser($allUser->id_users); ?></td>
-                    <td><a href="/controllers/dashboard/Users/getUserCtrl.php?id_users=<?= $allUser->id_users ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                    <td><a href="/admin-modifier-un-inscrit.html?id_users=<?= $allUser->id_users ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                         <a href="/controllers/dashboard/Users/deleteUserCtrl.php?id_users=<?= $allUser->id_users ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                         <!-- Modal -->
                         <!-- <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="deleteUserLabel" aria-hidden="true">
@@ -83,21 +83,21 @@
     <nav aria-label="Page navigation" class="modeOff m-0 mb-3 p-0">
         <ul class="pagination justify-content-center">
             <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
-                <a href="/controllers/dashboard/dashboardCtrl.php?page=<?= $page - 1 ?>" class="page-link" aria-label="Preview">
+                <a href="/admin-les-inscrits.html?page=<?= $page - 1 ?>" class="page-link" aria-label="Preview">
                     <span aria-hidden="true">&#171; </span>
                 </a>
             </li>
             <!-- On va effectuer une boucle autant de fois que l'on a de pages  -->
             <?php for ($i = 1; $i <= $pageNb; $i++) { ?>
                 <li class="page-item <?= ($page == $i) ? "active" : "" ?>">
-                    <a class="page-link" href="/controllers/dashboard/dashboardCtrl.php?page=<?= $i ?>"><?= $i ?></a>
+                    <a class="page-link" href="/admin-les-inscrits.html?page=<?= $i ?>"><?= $i ?></a>
                 </li>
             <?php } ?>
 
             <!-- Affiche de l'icone page suivante sauf sur la dernière page en fonction du pageNb -->
             <?php if ($page < $pageNb) { ?>
                 <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
-                    <a class="page-link" href="/controllers/dashboard/dashboardCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
+                    <a class="page-link" href="/admin-les-inscrits.html?page=<?= $page + 1 ?>" aria-label="Next">
                         <span aria-hidden="true">&#187;</span>
                     </a>
                 <?php } ?>

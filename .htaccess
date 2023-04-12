@@ -8,19 +8,9 @@ RewriteRule ^conditions-generales-d-utilisation.html$ /controllers/cguCtrl.php [
 
 RewriteRule ^catalogue.html$ /controllers/catalog/catalogCtrl.php [L]
 
-RewriteRule ^catalogue-hommes.html$ /controllers/catalog/catalogMenCtrl.php [L]
-
-RewriteRule ^catalogue-femmes.html$ /controllers/catalog/catalogWomenCtrl.php [L]
-
-RewriteRule ^catalogue-enfants.html$ /controllers/catalog/catalogChildrenCtrl.php [L]
-
 RewriteRule ^livre-d-or.html$ /controllers/goldenBookCtrl.php [L]
 
 RewriteRule ^galerie.html$ /controllers/gallery/galleryCtrl.php [L]
-
-RewriteRule ^galerie-fresques.html$ /controllers/gallery/galleryFresquesCtrl.php [L]
-
-RewriteRule ^galerie-portraits.html$ /controllers/gallery/galleryPortraitsCtrl.php [L]
 
 RewriteRule ^connexion.html$ /controllers/signInCtrl.php [L]
 
@@ -30,23 +20,54 @@ RewriteRule ^changer-de-mot-de-passe.html$ /controllers/forgetPassword/formChang
 
 RewriteRule ^mot-de-passe-oublie.html$ /controllers/forgetPassword/formForgetPasswordCtrl.php [L]
 
+
+
+
 RewriteRule ^mon-compte.html$ /controllers/userAccount/userAccountCtrl.php [L]
 
 RewriteRule ^mon-compte-mon-dressing.html$ /controllers/userAccount/dressingUserCtrl.php [L]
 
 RewriteRule ^mon-compte-ma-galerie.html$ /controllers/userAccount/galleryUserCtrl.php [L]
 
-RewriteRule ^mon-compte-mes-achats.html$ /controllers/userAccount/ordersUserCtrl.php [L]
+RewriteRule ^mon-compte-mes-achats.html$ /controllers/userAccount/Orders/ordersUserCtrl.php [L]
 
-RewriteRule ^mon-compte-mes-achats-details.html$ /controllers/userAccount/detailsOrderCtrl.php [L]
+RewriteRule ^mon-compte-mes-achats-details.html$ /controllers/userAccount/Orders/detailsOrderCtrl.php [L]
 
 RewriteRule ^mon-compte-je-commande.html$ /controllers/userAccount/commandCtrl.php [L]
 
 RewriteRule ^mon-compte-mes-informations.html$ /controllers/userAccount/profilAccountCtrl.php [L]
 
-RewriteRule ^mon-compte-mes-messages.html$ /controllers/userAccount/commentsCtrl.php [L]
+RewriteRule ^mon-compte-mes-messages.html$ /controllers/userAccount/Comments/commentsCtrl.php [L]
 
-RewriteRule ^admin.html$ /controllers/dashboard/dashboardCtrl.php [L]
+
+
+
+RewriteRule ^admin-les-inscrits.html$ /controllers/dashboard/Users/dashboardCtrl.php [L]
+
+RewriteRule ^admin-ajouter-un-inscrit.html$ /controllers/dashboard/Users/addUserCtrl.php [L]
+
+RewriteRule ^admin-modifier-un-inscrit.html$ /controllers/dashboard/Users/getUserCtrl.php [L]
+
+RewriteRule ^admin-catalogue.html$ /controllers/dashboard/Catalogs/getAllCatalogCtrl.php [L]
+
+RewriteRule ^admin-ajouter-un-article.html$ /controllers/dashboard/Catalogs/addCatalogCtrl.php [L]
+
+RewriteRule ^admin-modifier-un-article.html$ /controllers/dashboard/Catalogs/getCatalogCtrl.php [L]
+
+
+RewriteRule ^admin-galerie.html$ /controllers/dashboard/Galleries/getAllGalleriesCtrl.php [L]
+
+RewriteRule ^admin-galerie.html$ /controllers/dashboard/Galleries/getAllGalleriesCtrl.php [L]
+
+RewriteRule ^admin-galerie.html$ /controllers/dashboard/Galleries/getAllGalleriesCtrl.php [L]
+
+
+
+
+
+RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllCommentCtrl.php [L]
+
+RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllOrdersCtrl.php [L]
 
 RewriteRule ^admin-catalogue.html$ /controllers/dashboard/getAllCatalogCtrl.php [L]
 
@@ -55,6 +76,9 @@ RewriteRule ^admin-galerie.html$ /controllers/dashboard/getAllGalleriesCtrl.php 
 RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllCommentCtrl.php [L]
 
 RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllOrdersCtrl.php [L]
+
+
+
 
 RewriteRule ^erreur.html$ /controllers/errorCtrl.php [L]
 

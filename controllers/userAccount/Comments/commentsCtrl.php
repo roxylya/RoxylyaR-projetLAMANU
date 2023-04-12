@@ -1,19 +1,19 @@
 <?php
 
 // on a besoin d'accéder à la db :
-require_once(__DIR__ . '/../../config/Database.php');
+require_once(__DIR__ . '/../../../config/Database.php');
 // on a besoin d'accéder aux constantes :
-require_once(__DIR__ . '/../../config/constants.php');
+require_once(__DIR__ . '/../../../config/constants.php');
 // on a besoin de la session flash :
-require_once(__DIR__ . '/../../config/SessionFlash.php');
+require_once(__DIR__ . '/../../../config/SessionFlash.php');
 // on a besoin d'accéder au helper :
-require_once(__DIR__ . '/../../helper/dd.php');
+require_once(__DIR__ . '/../../../helper/dd.php');
 // on a besoin d'accéder au helper :
-require_once(__DIR__ . '/../../helper/functions.php');
+require_once(__DIR__ . '/../../../helper/functions.php');
 // on a besoin du models :
-require_once(__DIR__ . '/../../models/User.php');
+require_once(__DIR__ . '/../../../models/User.php');
 // on a besoin du models :
-require_once(__DIR__ . '/../../models/Comment.php');
+require_once(__DIR__ . '/../../../models/Comment.php');
 
 try {
     session_start();
@@ -23,7 +23,7 @@ try {
     } else {
         $user = $_SESSION['user'];
     }
-
+    Session::getMessage($message);
     $id_users = $user->id_users;
     $comments = Comment::getAllCommentsUser($id_users);
 
@@ -37,6 +37,6 @@ try {
 }
 
 
-include(__DIR__ . '/../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../views/userAccount/comments.php');
-include(__DIR__ . '/../../views/templates/footer.php');
+include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
+include(__DIR__ . '/../../../views/userAccount/Comments/comments.php');
+include(__DIR__ . '/../../../views/templates/footer.php');

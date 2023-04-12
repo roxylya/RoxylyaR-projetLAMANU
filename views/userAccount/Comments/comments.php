@@ -14,8 +14,8 @@
         <tr class="bgWhite">
             <td><?= date('d-m-Y H:i', strtotime($comment->created_at)) ?></td>
             <td><?= stopText($comment->notice) ?></td>
-            <td><a href="/controllers/dashboard/GoldenBook/getCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
-                <a href="/controllers/dashboard/GoldenBook/deleteCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
+            <td><a href="/controllers/userAccount/Comments/updateCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                <a href="/controllers/userAccount/Comments/deleteCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
             </td>
         </tr>
     <?php } ?>

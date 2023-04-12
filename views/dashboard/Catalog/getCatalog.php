@@ -4,10 +4,10 @@
     <!-- nav dashboard start -->
     <ul class="navDashboard d-flex justify-content-center align-items-center m-0 p-0">
         <li class="bgBlue">
-            <a class="gold " href="/controllers/dashboard/dashboardCtrl.php">Inscrits</a>
+            <a class="gold " href="/admin-les-inscrits.html">Inscrits</a>
         </li>
         <li class="active bgBlue">
-            <a class="gold" href="/controllers/dashboard/Catalogs/getAllCatalogsCtrl.php">Catalogue</a>
+            <a class="gold" href="/admin-catalogue.html">Catalogue</a>
         </li>
         <li class="bgBlue">
             <a class="gold" href="/controllers/dashboard/Galleries/getAllGalleriesCtrl.php">Galerie</a>

@@ -16,9 +16,11 @@ require_once(__DIR__ . '/../../../models/Comment.php');
 
 try {
     session_start();
-    $user = $_SESSION['user'];
-    if ($user->id_roles != 1) {
-        header('location: /logOutCtrl.php');
+    if (!isset($_SESSION['user'])) {
+        header('location: /accueil.html');
+        die;
+    } else {
+        $user = $_SESSION['user'];
     }
     $id_comments = intval(filter_input(INPUT_GET, 'id_comments', FILTER_SANITIZE_NUMBER_INT));
 
@@ -32,7 +34,7 @@ try {
         $message = 'Une erreur est survenue. L\'article n\' a été supprimé.';
         Session::setMessage($message);
     }
-    header('location: /controllers/dashboard/Catalogs/getAllCatalogsCtrl.php');
+    header('location: /controllers/userAccount/Comments/commentsCtrl.php');
     die;
 
 
@@ -45,5 +47,5 @@ try {
     die;
 }
 include(__DIR__ . '/../../../views/templates/headerUserAccount.php');
-include(__DIR__ . '/../../../views/userAccount/GoldenBook/goldenBook.php');
+include(__DIR__ . '/../../../views/userAccount/Comments/comments.php');
 include(__DIR__ . '/../../../views/templates/footer.php');

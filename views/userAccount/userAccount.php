@@ -23,7 +23,7 @@
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/galerie-dart.png" alt="icône galerie">Ma galerie</div>
         </a>   
         <?php if($user->id_roles === 1 || $user->id_roles === 2){ ?>
-        <a href="/admin.html">
+        <a href="/admin-les-inscrits.html">
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/admin.png" alt="icône admin">Dashboard</div>
         </a>
     <?php } else { ?>

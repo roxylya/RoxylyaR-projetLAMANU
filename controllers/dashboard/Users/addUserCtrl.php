@@ -166,7 +166,7 @@ try {
                         $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                         imagejpeg($gd_scaled, $to_scaled, 85);
                     } else {
-                        $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. Merci.";
+                        $message = "L' avatar n'a pas été pris en compte l'inscrit pourra choisir une autre image sur son compte utilisateur.";
                         Session::setMessage($message);
                         header('location: /erreur.html');
                         die;
@@ -188,15 +188,15 @@ try {
                         $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
                         imagejpeg($gd_scaled, $to_scaled, 85);
                     } else {
-                        $message = "Votre avatar n'a pas été pris en compte vous pourrez choisir une autre image sur votre compte utilisateur. Merci.";
+                        $message = "L' avatar n'a pas été pris en compte l'inscrit pourra choisir une autre image sur son compte utilisateur.";
                         Session::setMessage($message);
                         header('location: /erreur.html');
                         die;
                     }
                     // redirection vers la page de connexion :
-                    $message = 'Votre compte a été enregistré, validez votre mail pour pouvoir vous connecter.';
+                    $message = 'Le compte a été enregistré et le mail de validation envoyé.';
                     Session::setMessage($message);
-                    header('location: /connexion.html');
+                    header('location: /admin-les-inscrits.html');
                     die;
                 }
             }

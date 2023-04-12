@@ -111,7 +111,7 @@ try {
                     $pdo->commit();
                     $message = 'Nouvelle oeuvre ajoutée!';
                     Session::setMessage($message);
-                    header('location: /controllers/dashboard/Catalogs/getAllCatalogsCtrl.php');
+                    header('location: /admin-catalogue.html');
                     die;
                 } else {
                     $pdo->rollBack();
