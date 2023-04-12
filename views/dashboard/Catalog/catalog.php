@@ -25,7 +25,7 @@
         <!-- research start -->
         <form method="get" action="/admin-catalogue.html" class="d-flex justify-content-around align-items-center ms-5">
             <input type="search" name="search" id="search" placeholder="Rechercher" value="<?= $research ?? '' ?>">
-            <input type="submit" name="btn-search" class="btn-search fondamento ms-3 me-2" value="Rechercher">
+            <input type="submit" class="btn-search fondamento ms-3 me-2" value="Rechercher">
         </form>
         <!-- research end -->
     </div>

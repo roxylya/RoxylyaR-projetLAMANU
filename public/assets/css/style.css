@@ -481,6 +481,38 @@ input[type="checkbox"]:checked+label::before {
     font-family: "Black Clover Font";
 }
 
+
+
+.btnUserAccountGrey{
+    background-color: #292e32;
+    border: 1px solid #070603;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    font-size: 1.5rem;
+    color: #070603;
+    width: 12rem;
+    text-align: center;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-family: "Black Clover Font";
+
+}
+
+.btnUserAccountGrey>img {
+    width: 3rem;
+    height: 3rem;
+    color: #070603;
+}
+
+
+.grey{
+    color: #070603;
+}
+
+.grey:focus, .grey:hover, .grey:active{
+    color: #292e32;
+}
+
 .btnUserAccount>img {
     width: 3rem;
     height: 3rem;

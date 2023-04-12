@@ -23,7 +23,7 @@ try {
     } else {
         $user = $_SESSION['user'];
     }
-    Session::getMessage($message);
+
     $id_users = $user->id_users;
     $comments = Comment::getAllCommentsUser($id_users);
 

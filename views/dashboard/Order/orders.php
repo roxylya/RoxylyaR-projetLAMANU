@@ -25,14 +25,15 @@
         <!-- research start -->
         <form method="get" action="/admin-commandes.html" class="d-flex justify-content-around align-items-center ms-5">
             <input type="search" name="search" id="search" placeholder="Rechercher" value="<?= $research ?? '' ?>">
-            <input type="submit" name="btn-search" class="btn-search fondamento ms-3 me-2" value="Rechercher">
+            <input type="submit" class="btn-search fondamento ms-3 me-2" value="Rechercher">
         </form>
         <!-- research end -->
     </div>
     <!-- table start -->
     <table class="w-100 modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
-            <a href="/admin-ajouter-une-commande.html" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle commande</a>
+            <a href="#" class="grey fondamento medium text-center py-2">+ Ajouter une nouvelle commande</a>
+            <!-- /admin-ajouter-une-commande.html -->
             <tr class="bgBlue">
                 <th>Crée le</th>
                 <th>Pseudo</th>

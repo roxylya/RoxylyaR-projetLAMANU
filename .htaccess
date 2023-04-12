@@ -10,6 +10,8 @@ RewriteRule ^catalogue.html$ /controllers/catalog/catalogCtrl.php [L]
 
 RewriteRule ^livre-d-or.html$ /controllers/goldenBookCtrl.php [L]
 
+RewriteRule ^ajouter-un-commentaire.html$ /controllers/addCommentCtrl.php [L]
+
 RewriteRule ^galerie.html$ /controllers/gallery/galleryCtrl.php [L]
 
 RewriteRule ^connexion.html$ /controllers/signInCtrl.php [L]
@@ -39,6 +41,8 @@ RewriteRule ^mon-compte-mes-informations.html$ /controllers/userAccount/profilAc
 
 RewriteRule ^mon-compte-mes-messages.html$ /controllers/userAccount/Comments/commentsCtrl.php [L]
 
+RewriteRule ^mon-compte-modifier-un-message.html$ /controllers/userAccount/Comments/updateCommentCtrl.php [L]
+
 
 
 
@@ -49,7 +53,7 @@ RewriteRule ^admin-ajouter-un-inscrit.html$ /controllers/dashboard/Users/addUser
 RewriteRule ^admin-modifier-un-inscrit.html$ /controllers/dashboard/Users/getUserCtrl.php [L]
 
 
-RewriteRule ^admin-catalogue.html$ /controllers/dashboard/Catalogs/getAllCatalogCtrl.php [L]
+RewriteRule ^admin-catalogue.html$ /controllers/dashboard/Catalogs/getAllCatalogsCtrl.php [L]
 
 RewriteRule ^admin-ajouter-un-article.html$ /controllers/dashboard/Catalogs/addCatalogCtrl.php [L]
 

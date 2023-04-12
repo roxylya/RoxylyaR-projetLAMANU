@@ -44,7 +44,7 @@ try {
                 if ($comment->add() === true) {
                     $message = 'Nouvelle oeuvre ajoutée!';
                     Session::setMessage($message);
-                    header('location: /controllers/goldenBookCtrl.php');
+                    header('location: /livre-d-or.html');
                     die;
                 } else {
                     throw new Exception('Echec de l\'enregistrement.');
