@@ -48,6 +48,7 @@ RewriteRule ^admin-ajouter-un-inscrit.html$ /controllers/dashboard/Users/addUser
 
 RewriteRule ^admin-modifier-un-inscrit.html$ /controllers/dashboard/Users/getUserCtrl.php [L]
 
+
 RewriteRule ^admin-catalogue.html$ /controllers/dashboard/Catalogs/getAllCatalogCtrl.php [L]
 
 RewriteRule ^admin-ajouter-un-article.html$ /controllers/dashboard/Catalogs/addCatalogCtrl.php [L]
@@ -57,25 +58,23 @@ RewriteRule ^admin-modifier-un-article.html$ /controllers/dashboard/Catalogs/get
 
 RewriteRule ^admin-galerie.html$ /controllers/dashboard/Galleries/getAllGalleriesCtrl.php [L]
 
-RewriteRule ^admin-galerie.html$ /controllers/dashboard/Galleries/getAllGalleriesCtrl.php [L]
+RewriteRule ^admin-ajouter-une-oeuvre.html$ /controllers/dashboard/Galleries/addGalleryCtrl.php [L]
 
-RewriteRule ^admin-galerie.html$ /controllers/dashboard/Galleries/getAllGalleriesCtrl.php [L]
-
-
+RewriteRule ^admin-modifier-une-oeuvre.html$ /controllers/dashboard/Galleries/getGalleryCtrl.php [L]
 
 
+RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/GoldenBook/getAllCommentsCtrl.php [L]
 
-RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllCommentCtrl.php [L]
+RewriteRule ^admin-ajouter-un-commentaire.html$ /controllers/dashboard/GoldenBook/addCommentCtrl.php [L]
 
-RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllOrdersCtrl.php [L]
+RewriteRule ^admin-modifier-un-commentaire.html$ /controllers/dashboard/GoldenBook/getCommentCtrl.php [L]
 
-RewriteRule ^admin-catalogue.html$ /controllers/dashboard/getAllCatalogCtrl.php [L]
 
-RewriteRule ^admin-galerie.html$ /controllers/dashboard/getAllGalleriesCtrl.php [L]
+RewriteRule ^admin-commandes.html$ /controllers/dashboard/Orders/getAllOrdersCtrl.php [L]
 
-RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllCommentCtrl.php [L]
+RewriteRule ^admin-ajouter-une-commande.html$ /controllers/dashboard/Orders/addAllOrdersCtrl.php [L]
 
-RewriteRule ^admin-livre-d-or.html$ /controllers/dashboard/getAllOrdersCtrl.php [L]
+RewriteRule ^admin-modifier-une-commande.html$ /controllers/dashboard/Orders/getOrderCtrl.php [L]
 
 
 

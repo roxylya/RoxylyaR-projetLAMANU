@@ -50,7 +50,7 @@ try {
             if ($comment->add() === true) {
                 $message = 'Nouvelle oeuvre ajoutée!';
                 Session::setMessage($message);
-                header('location: /controllers/dashboard/GoldenBook/getAllCommentsCtrl.php');
+                header('location: /admin-livre-d-or.html');
                 die;
             } else {
                 throw new Exception('Echec de l\'enregistrement.');

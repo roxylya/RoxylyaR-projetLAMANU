@@ -12,18 +12,18 @@
                 <a class="gold" href="/admin-catalogue.html">Catalogue</a>
             </li>
             <li class="bgBlue">
-                <a class="gold" href="/controllers/dashboard/Galleries/getAllGalleriesCtrl.php">Galerie</a>
+                <a class="gold" href="/admin-galerie.html">Galerie</a>
             </li>
             <li class="bgBlue">
-                <a class="gold" href="/controllers/dashboard/Orders/getAllOrdersCtrl.php">Commandes</a>
+                <a class="gold" href="/admin-commandes.html">Commandes</a>
             </li>
             <li class="active bgBlue">
-                <a class="gold" href="/controllers/dashboard/GoldenBook/getAllCommentsCtrl.php">Livre d'Or</a>
+                <a class="gold" href="/admin-livre-d-or.html">Livre d'Or</a>
             </li>
         </ul>
         <!-- nav dashboard end -->
         <!-- research start -->
-        <form method="get" action="/controllers/dashboard/GoldenBook/getAllCommentsCtrl.php" class="d-flex justify-content-around align-items-center ms-5">
+        <form method="get" action="/admin-livre-d-or.html" class="d-flex justify-content-around align-items-center ms-5">
             <input type="search" name="search" id="search" placeholder="Rechercher" value="<?= $research ?? '' ?>">
             <input type="submit" name="btn-search" class="btn-search fondamento ms-3" value="Rechercher">
         </form>
@@ -32,7 +32,7 @@
     <!-- table start -->
     <table class="w-100 modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
-            <a href="/controllers/dashboard/GoldenBook/addCommentCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter un nouveau commentaire</a>
+            <a href="/admin-ajouter-un-commentaire.html" class="gold fondamento medium text-center py-2">+ Ajouter un nouveau commentaire</a>
             <tr class="bgBlue">
                 <th>Date</th>
                 <th>Pseudo</th>
@@ -44,7 +44,7 @@
                     <td><?= date('d-m-Y H:i', strtotime($comment->created_at)) ?></td>
                     <td><?= $comment->pseudo ?></td>
                     <td><?= stopText($comment->notice) ?></td>
-                    <td><a href="/controllers/dashboard/GoldenBook/getCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                    <td><a href="/admin-modifier-un-commentaire.html?id_comments=<?= $comment->id_comments ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                         <a href="/controllers/dashboard/GoldenBook/deleteCommentCtrl.php?id_comments=<?= $comment->id_comments ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                     </td>
                 </tr>
@@ -56,21 +56,21 @@
     <nav aria-label="Page navigation" class="modeOff m-0 mb-3 p-0">
         <ul class="pagination justify-content-center">
             <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
-                <a href="/controllers/dashboard/GoldenBook/getAllCommentsCtrl.php?page=<?= $page - 1 ?>" class="page-link" aria-label="Preview">
+                <a href="/admin-livre-d-or.html?page=<?= $page - 1 ?>" class="page-link" aria-label="Preview">
                     <span aria-hidden="true">&#171; </span>
                 </a>
             </li>
             <!-- On va effectuer une boucle autant de fois que l'on a de pages  -->
             <?php for ($i = 1; $i <= $pageNb; $i++) { ?>
                 <li class="page-item <?= ($page == $i) ? "active" : "" ?>">
-                    <a class="page-link" href="/controllers/dashboard/GoldenBook/getAllCommentsCtrl.php?page=<?= $i ?>"><?= $i ?></a>
+                    <a class="page-link" href="/admin-livre-d-or.html?page=<?= $i ?>"><?= $i ?></a>
                 </li>
             <?php } ?>
 
             <!-- Affiche de l'icone page suivante sauf sur la dernière page en fonction du pageNb -->
             <?php if ($page < $pageNb) { ?>
                 <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
-                    <a class="page-link" href="/controllers/dashboard/GoldenBook/getAllCommentsCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
+                    <a class="page-link" href="/admin-livre-d-or.html?page=<?= $page + 1 ?>" aria-label="Next">
                         <span aria-hidden="true">&#187;</span>
                     </a>
                 <?php } ?>

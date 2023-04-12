@@ -102,7 +102,7 @@ try {
                     $pdo->commit();
                     $message = 'Nouvelle oeuvre ajoutée!';
                     Session::setMessage($message);
-                    header('location: /controllers/dashboard/Galleries/getAllGalleriesCtrl.php');
+                    header('location: /admin-galerie.html');
                     die;
                 } else {
                     $pdo->rollBack();

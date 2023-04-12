@@ -122,7 +122,7 @@ try {
                     $pdo->commit();
                     $message = 'Nouvelle oeuvre ajoutée!';
                     Session::setMessage($message);
-                    header('location: /controllers/dashboard/Orders/getAllOrdersCtrl.php');
+                    header('location: /admin-commandes.html');
                     die;
                 } else {
                     $pdo->rollBack();

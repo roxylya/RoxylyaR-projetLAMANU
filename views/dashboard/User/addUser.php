@@ -11,13 +11,13 @@
             <a class="gold" href="/admin-catalogue.html">Catalogue</a>
         </li>
         <li class="bgBlue">
-            <a class="gold" href="/controllers/dashboard/Galleries/getAllGalleriesCtrl.php">Galerie</a>
+            <a class="gold" href="/admin-galerie.html">Galerie</a>
         </li>
         <li class="bgBlue">
-            <a class="gold" href="/controllers/dashboard/Orders/getAllOrdersCtrl.php">Commandes</a>
+            <a class="gold" href="/admin-commandes.html">Commandes</a>
         </li>
         <li class="bgBlue">
-            <a class="gold" href="/controllers/dashboard/GoldenBook/getAllCommentsCtrl.php">Livre d'Or</a>
+            <a class="gold" href="/admin-livre-d-or.html">Livre d'Or</a>
         </li>
     </ul>
     <!-- nav dashboard end -->

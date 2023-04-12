@@ -12,18 +12,18 @@
                 <a class="gold" href="/admin-catalogue.html">Catalogue</a>
             </li>
             <li class="bgBlue">
-                <a class="gold" href="/controllers/dashboard/Galleries/getAllGalleriesCtrl.php">Galerie</a>
+                <a class="gold" href="/admin-galerie.html">Galerie</a>
             </li>
             <li class="active bgBlue">
-                <a class="gold" href="/controllers/dashboard/Orders/getAllOrdersCtrl.php">Commandes</a>
+                <a class="gold" href="/admin-commandes.html">Commandes</a>
             </li>
             <li class="bgBlue">
-                <a class="gold" href="/controllers/dashboard/GoldenBook/getAllCommentsCtrl.php">Livre d'Or</a>
+                <a class="gold" href="/admin-livre-d-or.html">Livre d'Or</a>
             </li>
         </ul>
         <!-- nav dashboard end -->
         <!-- research start -->
-        <form method="get" action="/controllers/dashboard/Orders/getAllOrdersCtrl.php" class="d-flex justify-content-around align-items-center ms-5">
+        <form method="get" action="/admin-commandes.html" class="d-flex justify-content-around align-items-center ms-5">
             <input type="search" name="search" id="search" placeholder="Rechercher" value="<?= $research ?? '' ?>">
             <input type="submit" name="btn-search" class="btn-search fondamento ms-3 me-2" value="Rechercher">
         </form>
@@ -32,7 +32,7 @@
     <!-- table start -->
     <table class="w-100 modeOff dashboardUsers mt-0 p-1 bgBlue fondamento text-center mb-1">
         <div class="add d-flex flex-column bgBlue justify-content-center align-items-center p-0 m-0">
-            <a href="/controllers/dashboard/Orders/addOrderCtrl.php" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle commande</a>
+            <a href="/admin-ajouter-une-commande.html" class="gold fondamento medium text-center py-2">+ Ajouter une nouvelle commande</a>
             <tr class="bgBlue">
                 <th>Crée le</th>
                 <th>Pseudo</th>
@@ -55,7 +55,7 @@
                             echo ('Tenues');
                         } ?></td>
                     <td><?= date('d-m-Y H:i', strtotime($order->received_at)) ?></td>
-                    <td><a href="/controllers/dashboard/Orders/getOrderCtrl.php?id_users=<?= $order->id_orders ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
+                    <td><a href="/admin-modifier-une-commande.html?id_users=<?= $order->id_orders ?>"><img src="/public/assets/img/loupe.png" alt="icône loupe"></a>
                         <a href="/controllers/dashboard/Orders/deleteOrderCtrl.php<?= $order->id_orders ?>"><img class="ms-2" src="/public/assets/img/supprimer.png" alt="icône poubelle"></a>
                     </td>
 
@@ -68,21 +68,21 @@
     <nav aria-label="Page navigation" class="modeOff m-0 mb-3 p-0">
         <ul class="pagination justify-content-center">
             <li class="page-item <?= ($page == 1) ? "disabled" : "" ?>">
-                <a href="/controllers/dashboard/Orders/getAllOrdersCtrl.php?page=<?= $page - 1 ?>" class="page-link" aria-label="Preview">
+                <a href="/admin-commandes.html?page=<?= $page - 1 ?>" class="page-link" aria-label="Preview">
                     <span aria-hidden="true">&#171; </span>
                 </a>
             </li>
             <!-- On va effectuer une boucle autant de fois que l'on a de pages  -->
             <?php for ($i = 1; $i <= $pageNb; $i++) { ?>
                 <li class="page-item <?= ($page == $i) ? "active" : "" ?>">
-                    <a class="page-link" href="/controllers/dashboard/Orders/getAllOrdersCtrl.php?page=<?= $i ?>"><?= $i ?></a>
+                    <a class="page-link" href="/admin-commandes.html?page=<?= $i ?>"><?= $i ?></a>
                 </li>
             <?php } ?>
 
             <!-- Affiche de l'icone page suivante sauf sur la dernière page en fonction du pageNb -->
             <?php if ($page < $pageNb) { ?>
                 <li class="page-item <?= ($page == $pageNb) ? "disabled" : "" ?>">
-                    <a class="page-link" href="/controllers/dashboard/Orders/getAllOrdersCtrl.php?page=<?= $page + 1 ?>" aria-label="Next">
+                    <a class="page-link" href="/admin-commandes.html?page=<?= $page + 1 ?>" aria-label="Next">
                         <span aria-hidden="true">&#187;</span>
                     </a>
                 <?php } ?>

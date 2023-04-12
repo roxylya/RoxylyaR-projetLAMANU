@@ -32,7 +32,7 @@ try {
         $message = 'Une erreur est survenue. L\'article n\' a été supprimé.';
         Session::setMessage($message);
     }
-    header('location: /controllers/dashboard/Catalogs/getAllCatalogsCtrl.php');
+    header('location: /admin-galerie.html');
     die;
 
 } catch (\Throwable $th) {
