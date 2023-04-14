@@ -9,11 +9,11 @@
         </a>
         <a href="#">
             <!-- /mon-compte-mes-achats.html -->
-            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/facture.png" alt="icône facture">Mes achats</div>
+            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/facture.png" alt="icône facture">Mes achats *</div>
         </a>
         <a href="#">
             <!-- /mon-compte-je-commande.html -->
-            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/panier-en-osier.png" alt="icône panier en osier">Commander</div>
+            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/panier-en-osier.png" alt="icône panier en osier">Commander *</div>
         </a>
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center mx-md-3">
@@ -27,14 +27,15 @@
     <div class="lookUser p-3">
         <a href="#">
             <!-- /mon-compte-mon-dressing.html -->
-            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/penderie.png" alt="icône penderie">Mon dressing</div>
+            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/penderie.png" alt="icône penderie">Mon dressing *</div>
         </a>
         <a href="#">
             <!-- /mon-compte-ma-galerie.html -->
-            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/galerie-dart.png" alt="icône galerie">Ma galerie</div>
+            <div class="btnUserAccountGrey d-flex justify-content-around align-items-center"><img src="/public/assets/img/galerie-dart.png" alt="icône galerie">Ma galerie *</div>
         </a>
         <a href="/mon-compte-mes-messages.html">
             <div class="btnUserAccount d-flex justify-content-around align-items-center"><img src="/public/assets/img/message.png" alt="icône message">Mes Messages</div>
         </a>
     </div>
 </div>
+<p class="little fondamento blue">*Disponibles sur la prochaine version.</p> 

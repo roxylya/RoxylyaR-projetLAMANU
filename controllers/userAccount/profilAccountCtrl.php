@@ -27,7 +27,7 @@ try {
 
     // Vérifier les données envoyées :
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+
         if (isset($_POST['email'])) {
             // Nettoyer le mail :
             $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
@@ -45,7 +45,7 @@ try {
                     $userUpdate->setEmail($email);
                     // Modifier les informations de l'user en fonction de son id sur la base de données :
                     if ($userUpdate->updateEmail($id_users) === true) {
-                     
+
                         // mail de validation :
                         $link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/controllers/validateMailCtrl.php?id_users=' . $user->id_users;
                         $for = $user->email;
@@ -56,7 +56,6 @@ try {
                         $message = 'Votre changement d\'email a été enregistré. Validez-le en cliquant sur le lien reçu sur votre messagerie.';
                         Session::setMessage($message);
                         header('location /connexion.html');
-
                     }
                 }
             }
@@ -131,83 +130,94 @@ try {
                 if (!in_array($avatarType, EXTENSION)) {
                     $error['avatar'] = 'Le fichier envoyé n\'est pas valide.';
                 } else {
+                    // je crée une variable $oldAvatar je lui ajoute en valeur le chemin jusqu'à l'image à effacer :
                     $oldAvatar = __DIR__ . '/../../public/uploads/avatars/avatar_' . $user->id_users . '.' . $user->extUserAvatar;
+                    //  je fais une condition pour éviter une erreur si l'image a déjà été supprimé par exemple avec files_exists():
                     if (file_exists($oldAvatar)) {
-                        //sinon enlever la condition et mettre un @ devant unlink;
+                        //sinon enlever la condition et mettre un @ devant unlink() pour éviter que cela retourne un message d'erreur :
+                        // je supprime l'image avec unlink()
                         unlink($oldAvatar);
                     }
+                    // puis je fais un update en intégrant l'extension à remplacer dans la base de données :
                     $extUserAvatar = pathinfo($avatar, PATHINFO_EXTENSION);
+                    // je crée un nouvel objet de la class User :
                     $userUpdate = new User();
                     // je lui donne les valeurs récupérées, nettoyées et validées :
                     $userUpdate->setExtUserAvatar($extUserAvatar);
                     // Modifier les informations de l'user en fonction de son id sur la base de données :
-                    if ($userUpdate->updateExtUserAvatar($id_users) === true) {
-                        $message = 'Le changement de votre avatar a été enregistré.';
-                        Session::setMessage($message);
-                        Session::getMessage();
-                        $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
-                        $from = $_FILES['avatar']['tmp_name'];
-                        $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                        move_uploaded_file($from, $to);
+                    $userUpdate->updateExtUserAvatar($id_users);
+                    // je crée le message de confirmation je le fais passer dans ma Session :
+                    $message = 'Le changement de votre avatar a été enregistré.';
+                    // set enregistre le message dans la session:
+                    Session::setMessage($message);
+                    //  get j'affiche le message et le supprime de la session :
+                    Session::getMessage();
+                    // j'indique le nom du nouvel avatar récupéré :
+                    $avatarName = 'avatar_' . $user->id_users . '.' . $extUserAvatar;
+                    // j'indique dans une variable sa localisation temporaire :
+                    $from = $_FILES['avatar']['tmp_name'];
+                    // j'indique dans une autre variable l'endroit où je veux le sauvegarder :
+                    $to = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                    // je procède à l'enregistrement dans mon dossier uploads/avatars:
+                    move_uploaded_file($from, $to);
 
 
 
-                        // définition des points de référence image en portrait ou en paysage :
-                        $size = 200;
-                        $width_original = getWidthOriginal($to);
-                        $height_original = getHeightOriginal($to);
-                        if (isPortrait($to) === true && $width_original > 200) {
-                            $width_scaled = $size;
-                            $height_scaled = -1;
+                    // définition des points de référence image en portrait ou en paysage :
+                    $size = 200;
+                    $width_original = getWidthOriginal($to);
+                    $height_original = getHeightOriginal($to);
+                    if (isPortrait($to) === true && $width_original > 200) {
+                        $width_scaled = $size;
+                        $height_scaled = -1;
 
-                            if ($avatarType == 'image/png') {
-                                $gd_original = imagecreatefrompng($to);
-                                $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
-                                $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                                imagepng($gd_scaled, $to_scaled);
-                            } elseif ($avatarType == 'image/jpeg') {
-                                $gd_original = imagecreatefromjpeg($to);
-                                $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
-                                $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                                imagejpeg($gd_scaled, $to_scaled, 90);
-                            } else {
-                                $message = "Une erreur est survenue. Essayez encore.";
-                                Session::setMessage($message);
-                                header('location: /erreur.html');
-                                die;
-                            }
+                        if ($avatarType == 'image/png') {
+                            $gd_original = imagecreatefrompng($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagepng($gd_scaled, $to_scaled);
+                        } elseif ($avatarType == 'image/jpeg') {
+                            $gd_original = imagecreatefromjpeg($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagejpeg($gd_scaled, $to_scaled, 90);
+                        } else {
+                            $message = "Une erreur est survenue. Essayez encore.";
+                            Session::setMessage($message);
+                            header('location: /erreur.html');
+                            die;
                         }
-                        if (isPortrait($to) === false && $height_original > 200) {
-                            $height_scaled = $size;
-                            $width_scaled = intval(($width_original / $height_original) * $height_scaled);
-
-                            //  je redimensionne l'image à 200px de large max :  
-                            if ($avatarType == 'image/png') {
-                                $gd_original = imagecreatefrompng($to);
-                                $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
-                                $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                                imagepng($gd_scaled, $to_scaled);
-                            } elseif ($avatarType == 'image/jpeg') {
-                                $gd_original = imagecreatefromjpeg($to);
-                                $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
-                                $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
-                                imagejpeg($gd_scaled, $to_scaled, 90);
-                            } else {
-                                $message = "Une erreur est survenue. Essayez encore.";
-                                Session::setMessage($message);
-                                header('location: /erreur.html');
-                                die;
-                            }
-                        }
-                        $_SESSION['user']=User::getById($id_users);
-                        $user = $_SESSION['user'];
                     }
+                    if (isPortrait($to) === false && $height_original > 200) {
+                        $height_scaled = $size;
+                        $width_scaled = intval(($width_original / $height_original) * $height_scaled);
+
+                        //  je redimensionne l'image à 200px de large max :  
+                        if ($avatarType == 'image/png') {
+                            $gd_original = imagecreatefrompng($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagepng($gd_scaled, $to_scaled);
+                        } elseif ($avatarType == 'image/jpeg') {
+                            $gd_original = imagecreatefromjpeg($to);
+                            $gd_scaled = imagescale($gd_original, $width_scaled, -1, IMG_BICUBIC);
+                            $to_scaled = LOCATION_UPLOAD . '/avatars/' . $avatarName;
+                            imagejpeg($gd_scaled, $to_scaled, 90);
+                        } else {
+                            $message = "Une erreur est survenue. Essayez encore.";
+                            Session::setMessage($message);
+                            header('location: /erreur.html');
+                            die;
+                        }
+                    }
+                    $_SESSION['user'] = User::getById($id_users);
+                    $user = $_SESSION['user'];
                 }
-            } else {
-                $message = 'La modification n\'a pu être effectuée.';
-                Session::setMessage($message);
-                Session::getMessage();
             }
+        } else {
+            $message = 'La modification n\'a pu être effectuée.';
+            Session::setMessage($message);
+            Session::getMessage();
         }
     }
 } catch (\Throwable $th) {

@@ -92,7 +92,7 @@ class Article
     }
 
 
-    // ajouter une oeuvre à  la galerie :
+    // ajouter un article au catalogue :
 
     public function add()
     {
@@ -100,7 +100,7 @@ class Article
         $pdo = Database::getInstance();
 
         //On insère les données reçues   
-        // on note les marqueurs nominatifs exemple :birthdate sert de contenant à une valeur
+        // on note les marqueurs nominatifs
 
         $sql = 'INSERT INTO `articles`(`name`, `resume`, `created_at`, `id_categories`, `id_users`) 
        VALUES(:name, :resume, Now(), :id_categories, :id_users);';
