@@ -1,6 +1,6 @@
 <?php
 // informations de connexion à la base données :
-define("DSN",'mysql:dbname=roxylya;host=127.0.0.1');
+define("DSN",'mysql:dbname=roxylyaProjetEcole;host=127.0.0.1');
 define("USER",'roxylya_user');
 define("PASSWORD",'ON.lbQ]ygAm!!X/v');
 
