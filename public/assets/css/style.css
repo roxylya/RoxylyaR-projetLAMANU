@@ -957,9 +957,9 @@ textarea.form-control, textarea.form-control:focus {
 
 .pagination ul {
     display: inline-block;
-    *display: inline;
+    display: inline;
     /* IE7 inline-block hack */
-    *zoom: 1;
+    zoom: 1;
     margin-left: 0;
     color: #a47a07;
     margin-bottom: 0;
@@ -1038,7 +1038,7 @@ textarea.form-control, textarea.form-control:focus {
     list-style: none;
     text-align: center;
     color: #03182D;
-    *zoom: 1;
+    zoom: 1;
 }
 
 .pager:before,
