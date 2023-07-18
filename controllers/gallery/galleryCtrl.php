@@ -45,7 +45,6 @@ try {
     // Calcul du 1er article de la page
     $first = ($page - 1) * $limit;
 
-
     // je limite l'affichage par page :
     $galleries = Gallery::getAll($search, $first, $limit);
 

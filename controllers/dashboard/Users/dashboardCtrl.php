@@ -20,6 +20,7 @@ try {
     $user = $_SESSION['user'];
     if ($user->id_roles != 1) {
         header('location: /logOutCtrl.php');
+        die;
     }
 
     $message = Session::getMessage();

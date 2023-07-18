@@ -12,12 +12,6 @@ class Role
     private string $name;
 
 
-    // public function __construct(int $id_roles, string $name)
-    // {
-    //     $this->id_roles = $id_roles;
-    //     $this->name = $name;
-    // }
-
     public function setId_roles(int $id_roles)
     {
         $this->id_roles = $id_roles;
